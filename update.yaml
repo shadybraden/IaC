@@ -14,7 +14,7 @@
 
     - name: Send ntfy notification
       uri:
-        url: "https://ntfy.holmlab.org/transfer"
+        url: "https://ntfy.holmlab.org/updates1Q7Mjean"
         method: POST
         body: "{{ did_update.stdout }}"
         headers:
