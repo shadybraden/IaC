@@ -6,7 +6,7 @@
       ansible.builtin.apt:
         upgrade: dist
         update_cache: yes
-      register: did_update
+      register: update_output
 
     - name: Get hostname
       command: hostname
@@ -16,8 +16,8 @@
       uri:
         url: "https://ntfy.holmlab.org/updates1Q7Mjean"
         method: POST
-        body: "{{ did_update.stdout }}"
+        body: "{{ update_output.stdout }}"
         headers:
           Title: "updates ran on {{ hostname_output.stdout }}"
           Priority: "min"
-      when: did_update.stdout is defined
+      when: update_output.stdout is defined
