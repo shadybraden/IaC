@@ -19,4 +19,4 @@ sudo rm -rf /usr/lib/python3.11/EXTERNALLY-MANAGED
 
 ## Running
 
-https://www.jeffgeerling.com/tags/ansible/
+ansible-playbook update.yaml --ask-become-pass
