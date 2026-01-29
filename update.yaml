@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: yes
+  vars_files:
+    - sudo_password.yaml
+  tasks:
+    - name: Run an apt update
+      ansible.builtin.apt:
+        upgrade: dist
+        update_cache: yes
+        vars:
+          ansible_sudo_password: "{{ ansible_sudo_password }}"
