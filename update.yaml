@@ -6,3 +6,18 @@
       ansible.builtin.apt:
         upgrade: dist
         update_cache: yes
+      register: did_update
+
+    - name: Get hostname
+      command: hostname
+      register: hostname_output
+
+    - name: Send ntfy notification
+      uri:
+        url: "https://ntfy.holmlab.org/transfer"
+        method: POST
+        body: "{{ did_update.stdout }}"
+        headers:
+          Title: "updates ran on {{ hostname_output.stdout }}"
+          Priority: "min"
+      when: did_update.stdout is defined
