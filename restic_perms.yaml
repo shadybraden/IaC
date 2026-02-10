@@ -1,0 +1,8 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Set file permissions
+      file:
+        path: /data/resticPassword.txt
+        mode: '0600'
