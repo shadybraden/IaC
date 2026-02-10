@@ -19,4 +19,4 @@ sudo rm -rf /usr/lib/python3.11/EXTERNALLY-MANAGED
 
 ## Running
 
-ansible-playbook update.yaml --ask-become-pass
+`ansible-playbook <playbook>.yaml --ask-become-pass`
