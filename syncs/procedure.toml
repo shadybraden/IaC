@@ -36,7 +36,7 @@ config.schedule_timezone = "America/New_York"
 config.schedule_alert = false
 
 [[procedure.config.stage]]
-name = "Stage 1"
+name = "Deploy"
 enabled = true
 executions = [
   { execution.type = "DeployStack", execution.params.stack = "renovate", execution.params.services = [], enabled = true }
