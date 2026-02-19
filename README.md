@@ -1,8 +1,11 @@
 # IaC
 
-Ansible to setup and update servers
+IaC to setup and update servers
 
-## Install
+## Ansible
+
+<details>
+<summary>Install Ansible</summary>
 
 ```shell
 python3 -m pip install --user ansible
@@ -17,6 +20,17 @@ error: externally-managed-environment:
 sudo rm -rf /usr/lib/python3.11/EXTERNALLY-MANAGED
 ```
 
-## Running
+</details>
+
+<details>
+<summary>Run Ansible Playbook</summary>
 
 `ansible-playbook <playbook>.yaml --ask-become-pass`
+
+</details>
+
+## Syncs (for Komodo)
+
+See `syncs/` 
+
+more to be added
