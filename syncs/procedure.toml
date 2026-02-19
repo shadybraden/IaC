@@ -28,7 +28,7 @@ executions = [
 ##
 
 [[procedure]]
-name = "schedule_renovate"
+name = "schedule renovate"
 config.webhook_enabled = false
 config.schedule_format = "Cron"
 config.schedule = "0 0 */6 * * *"
