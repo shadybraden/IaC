@@ -103,7 +103,7 @@ executions = [
 name = "run_syncs"
 
 [[procedure.config.stage]]
-name = "sleep"
+name = "Run all Syncs"
 enabled = true
 executions = [
   { execution.type = "RunSync", execution.params.sync = "syncs", enabled = true },
