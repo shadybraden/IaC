@@ -28,7 +28,7 @@ executions = [
 ##
 
 [[procedure]]
-name = "schedule_renovate"
+name = "schedule renovate"
 config.webhook_enabled = false
 config.schedule_format = "Cron"
 config.schedule = "0 0 */6 * * *"
@@ -36,7 +36,7 @@ config.schedule_timezone = "America/New_York"
 config.schedule_alert = false
 
 [[procedure.config.stage]]
-name = "Stage 1"
+name = "deploy renovate"
 enabled = true
 executions = [
   { execution.type = "DeployStack", execution.params.stack = "renovate", execution.params.services = [], enabled = true }
