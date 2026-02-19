@@ -11,9 +11,7 @@ resource_path = ["syncs/syncs.toml"]
 name = "servers"
 tags = ["servers"]
 [resource_sync.config]
-git_provider = "git.holmlab.org"
-repo = "shady/compose"
-git_account = "komodo"
+linked_repo = "IaC"
 resource_path = ["syncs/servers.toml"]
 
 ##
@@ -22,9 +20,7 @@ resource_path = ["syncs/servers.toml"]
 name = "repo"
 tags = ["repo"]
 [resource_sync.config]
-git_provider = "git.holmlab.org"
-repo = "shady/compose"
-git_account = "komodo"
+linked_repo = "IaC"
 resource_path = ["syncs/repo.toml"]
 
 ##
@@ -33,9 +29,7 @@ resource_path = ["syncs/repo.toml"]
 name = "holmie"
 tags = ["holmie"]
 [resource_sync.config]
-git_provider = "git.holmlab.org"
-repo = "shady/compose"
-git_account = "komodo"
+linked_repo = "IaC"
 resource_path = ["syncs/holmie.toml"]
 
 ##
@@ -53,9 +47,7 @@ resource_path = ["syncs/mck.toml"]
 name = "shady_desktop"
 tags = ["shady_desktop"]
 [resource_sync.config]
-git_provider = "git.holmlab.org"
-repo = "shady/compose"
-git_account = "komodo"
+linked_repo = "IaC"
 resource_path = ["syncs/shady_desktop.toml"]
 
 ##
@@ -64,9 +56,7 @@ resource_path = ["syncs/shady_desktop.toml"]
 name = "alert"
 tags = ["alert"]
 [resource_sync.config]
-git_provider = "git.holmlab.org"
-repo = "shady/compose"
-git_account = "komodo"
+linked_repo = "IaC"
 resource_path = ["syncs/alert.toml"]
 
 ##
@@ -84,9 +74,7 @@ resource_path = ["syncs/procedure.toml"]
 name = "builders"
 tags = ["builders"]
 [resource_sync.config]
-git_provider = "git.holmlab.org"
-repo = "shady/compose"
-git_account = "komodo"
+linked_repo = "IaC"
 resource_path = ["syncs/builders.toml"]
 
 ##
@@ -95,9 +83,7 @@ resource_path = ["syncs/builders.toml"]
 name = "builds"
 tags = ["builds"]
 [resource_sync.config]
-git_provider = "git.holmlab.org"
-repo = "shady/compose"
-git_account = "komodo"
+linked_repo = "IaC"
 resource_path = ["syncs/builds.toml"]
 
 ##
@@ -106,9 +92,7 @@ resource_path = ["syncs/builds.toml"]
 name = "snow"
 tags = ["snow"]
 [resource_sync.config]
-git_provider = "git.holmlab.org"
-repo = "shady/compose"
-git_account = "komodo"
+linked_repo = "IaC"
 resource_path = ["syncs/snow.toml"]
 
 ##
@@ -117,9 +101,7 @@ resource_path = ["syncs/snow.toml"]
 name = "holmgarage"
 tags = ["holmgarage"]
 [resource_sync.config]
-git_provider = "git.holmlab.org"
-repo = "shady/compose"
-git_account = "komodo"
+linked_repo = "IaC"
 resource_path = ["syncs/holmgarage.toml"]
 
 ##
@@ -128,9 +110,7 @@ resource_path = ["syncs/holmgarage.toml"]
 name = "actions"
 tags = ["actions"]
 [resource_sync.config]
-git_provider = "git.holmlab.org"
-repo = "shady/compose"
-git_account = "komodo"
+linked_repo = "IaC"
 resource_path = ["syncs/actions.toml"]
 
 ##
@@ -139,7 +119,5 @@ resource_path = ["syncs/actions.toml"]
 name = "turret"
 tags = ["turret"]
 [resource_sync.config]
-git_provider = "git.holmlab.org"
-repo = "shady/compose"
-git_account = "komodo"
+linked_repo = "IaC"
 resource_path = ["syncs/turret.toml"]
