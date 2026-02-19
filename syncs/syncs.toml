@@ -65,7 +65,9 @@ resource_path = ["syncs/alert.toml"]
 name = "procedure"
 tags = ["procedure"]
 [resource_sync.config]
-linked_repo = "IaC"
+git_provider = "git.holmlab.org"
+repo = "shady/compose"
+git_account = "komodo"
 resource_path = ["syncs/procedure.toml"]
 
 ##
