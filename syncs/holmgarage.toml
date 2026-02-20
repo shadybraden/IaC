@@ -77,19 +77,6 @@ env_file_path = "/etc/komodo/env/mealie-holmgarage.env"
 ##
 
 [[stack]]
-name = "jellyseerr-holmgarage"
-tags = ["holmgarage", "criticality: 4"]
-[stack.config]
-server = "holmgarage"
-project_name = "jellyseerr-holmgarage"
-linked_repo = "compose_main"
-run_directory = "jellyseerr"
-additional_env_files = ["/etc/komodo/domain.env"]
-env_file_path = "/etc/komodo/env/jellyseerr-holmgarage.env"
-
-##
-
-[[stack]]
 name = "filebrowser-holmgarage"
 tags = ["holmgarage", "criticality: 5"]
 [stack.config]

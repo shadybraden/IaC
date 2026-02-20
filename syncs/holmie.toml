@@ -90,19 +90,6 @@ env_file_path = "/etc/komodo/env/jellyfin.env"
 ##
 
 [[stack]]
-name = "jellyseerr"
-tags = ["holmie", "criticality: 4", "media"]
-[stack.config]
-server = "holmie"
-project_name = "jellyseerr"
-linked_repo = "compose_main"
-run_directory = "jellyseerr"
-additional_env_files = ["/etc/komodo/domain.env"]
-env_file_path = "/etc/komodo/env/jellyseerr.env"
-
-##
-
-[[stack]]
 name = "kiwix"
 tags = ["holmie", "criticality: 5", "external_hdd"]
 [stack.config]
