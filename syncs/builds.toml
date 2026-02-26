@@ -1,6 +1,5 @@
 [[build]]
 name = "skywatch"
-description = "Goal: to get this to trigger on commits to skywatch.py"
 [build.config]
 builder = "holmie"
 image_name = "skywatch"
