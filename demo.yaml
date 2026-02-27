@@ -12,5 +12,5 @@
         method: POST
         body: "hello from ansible"
         headers:
-          Title: "updates ran on {{ hostname_output.stdout }}"
+          Title: "Hello from {{ hostname_output.stdout }}"
           Priority: "min"
