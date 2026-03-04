@@ -1031,3 +1031,16 @@ linked_repo = "compose_main"
 run_directory = "unifi"
 additional_env_files = ["/etc/komodo/domain.env"]
 env_file_path = "/etc/komodo/env/unifi-holmie.env"
+
+##
+
+[[stack]]
+name = "storageview-holmie"
+tags = ["holmie", "criticality: 1"]
+[stack.config]
+server = "holmie"
+project_name = "storageview-holmie"
+linked_repo = "compose_main"
+run_directory = "storageview"
+additional_env_files = ["/etc/komodo/domain.env"]
+env_file_path = "/etc/komodo/env/storageview-holmie.env"
