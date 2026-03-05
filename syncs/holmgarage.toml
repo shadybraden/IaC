@@ -208,19 +208,6 @@ env_file_path = "/etc/komodo/env/nextcloud-holmgarage.env"
 ##
 
 [[stack]]
-name = "reactiveresume-holmgarage"
-tags = ["holmgarage", "env", "criticality: 5"]
-[stack.config]
-server = "holmgarage"
-project_name = "reactiveresume-holmgarage"
-linked_repo = "compose_main"
-run_directory = "reactiveresume"
-additional_env_files = ["/etc/komodo/domain.env"]
-env_file_path = "/etc/komodo/env/reactiveresume.env"
-
-##
-
-[[stack]]
 name = "searxng-holmgarage"
 tags = ["holmgarage", "criticality: 2"]
 [stack.config]
