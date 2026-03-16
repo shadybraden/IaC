@@ -983,19 +983,6 @@ env_file_path = "/etc/komodo/env/bluehood-holmie.env"
 ##
 
 [[stack]]
-name = "semaphore-holmie"
-tags = ["holmie", "criticality: 1"]
-[stack.config]
-server = "holmie"
-project_name = "semaphore-holmie"
-linked_repo = "compose_main"
-run_directory = "semaphore"
-additional_env_files = ["/etc/komodo/domain.env"]
-env_file_path = "/etc/komodo/env/semaphore-holmie.env"
-
-##
-
-[[stack]]
 name = "seerr-holmie"
 tags = ["holmie", "criticality: 4"]
 [stack.config]
