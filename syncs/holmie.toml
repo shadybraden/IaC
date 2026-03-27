@@ -1044,3 +1044,16 @@ linked_repo = "compose_main"
 run_directory = "filebrowserquantum"
 additional_env_files = ["/etc/komodo/domain.env"]
 env_file_path = "/etc/komodo/env/filebrowserquantum-holmie.env"
+
+##
+
+[[stack]]
+name = "rybbit-holmie"
+tags = ["holmie", "criticality: 1"]
+[stack.config]
+server = "holmie"
+project_name = "rybbit-holmie"
+linked_repo = "compose_main"
+run_directory = "rybbit"
+additional_env_files = ["/etc/komodo/domain.env"]
+env_file_path = "/etc/komodo/env/rybbit-holmie.env"
