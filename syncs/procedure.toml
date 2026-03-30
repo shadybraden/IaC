@@ -224,13 +224,6 @@ executions = [
 name = "hugo"
 
 [[procedure.config.stage]]
-name = "git pull"
-enabled = true
-executions = [
-  { execution.type = "PullRepo", execution.params.repo = "hugo-demo", enabled = true }
-]
-
-[[procedure.config.stage]]
 name = "deploy hugo builder"
 enabled = true
 executions = [
