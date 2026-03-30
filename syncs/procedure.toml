@@ -217,3 +217,22 @@ executions = [
   { execution.type = "DeployStack", execution.params.stack = "jackett-holmgarage", execution.params.services = [], enabled = true },
   { execution.type = "DeployStack", execution.params.stack = "searxng-holmgarage", execution.params.services = [], enabled = true }
 ]
+
+##
+
+[[procedure]]
+name = "hugo"
+
+[[procedure.config.stage]]
+name = "git pull"
+enabled = true
+executions = [
+  { execution.type = "PullRepo", execution.params.repo = "hugo-demo", enabled = true }
+]
+
+[[procedure.config.stage]]
+name = "deploy hugo builder"
+enabled = true
+executions = [
+  { execution.type = "DeployStack", execution.params.stack = "hugo-builder", execution.params.services = [], enabled = true }
+]
