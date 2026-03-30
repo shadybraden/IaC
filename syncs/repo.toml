@@ -50,3 +50,14 @@ git_provider = "git.holmlab.org"
 git_account = "komodo"
 repo = "shady/hugo-demo"
 branch = "main"
+
+##
+
+[[repo]]
+name = "hugo-demo"
+[repo.config]
+server = "shady_desktop"
+git_provider = "git.holmlab.org"
+git_account = "komodo"
+repo = "shady/hugo-demo"
+branch = "main"
