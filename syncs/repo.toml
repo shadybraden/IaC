@@ -49,5 +49,9 @@ server = "shady_desktop"
 git_provider = "git.holmlab.org"
 git_account = "komodo"
 repo = "shady/hugo-demo"
-on_clone.path = "git submodule update --init --recursive"
-on_pull.path = "git submodule update --init --recursive"
+on_clone.command = """
+git submodule update --init --recursive
+"""
+on_pull.command = """
+git submodule update --init --recursive
+"""
