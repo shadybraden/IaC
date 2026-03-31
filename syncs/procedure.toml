@@ -224,8 +224,15 @@ executions = [
 name = "hugo"
 
 [[procedure.config.stage]]
-name = "deploy hugo builder"
+name = "run hugo builder"
 enabled = true
 executions = [
   { execution.type = "DeployStack", execution.params.stack = "hugo-builder-holmie", execution.params.services = [], enabled = true }
+]
+
+[[procedure.config.stage]]
+name = "deploy to runner"
+enabled = true
+executions = [
+  { execution.type = "DeployStack", execution.params.stack = "hugo-runner-holmie", execution.params.services = [], enabled = true }
 ]
