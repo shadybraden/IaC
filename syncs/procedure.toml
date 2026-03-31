@@ -224,6 +224,13 @@ executions = [
 name = "hugo"
 
 [[procedure.config.stage]]
+name = "Pull repo"
+enabled = true
+executions = [
+  { execution.type = "PullRepo", execution.params.repo = "hugo-demo", enabled = true }
+]
+
+[[procedure.config.stage]]
 name = "run hugo builder"
 enabled = true
 executions = [
