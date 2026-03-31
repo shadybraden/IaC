@@ -45,19 +45,9 @@ branch = "main"
 [[repo]]
 name = "hugo-demo"
 [repo.config]
-server = "holmie"
-git_provider = "git.holmlab.org"
-git_account = "komodo"
-repo = "shady/hugo-demo"
-branch = "main"
-
-##
-
-[[repo]]
-name = "hugo-demo"
-[repo.config]
 server = "shady_desktop"
 git_provider = "git.holmlab.org"
 git_account = "komodo"
 repo = "shady/hugo-demo"
-branch = "main"
+on_clone.path = "git submodule update --init --recursive"
+on_pull.path = "git submodule update --init --recursive"
