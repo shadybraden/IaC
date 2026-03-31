@@ -45,7 +45,7 @@ branch = "main"
 [[repo]]
 name = "hugo-demo"
 [repo.config]
-server = "shady_desktop"
+server = "holmie"
 git_provider = "git.holmlab.org"
 git_account = "komodo"
 repo = "shady/hugo-demo"
