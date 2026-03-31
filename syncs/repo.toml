@@ -55,3 +55,19 @@ git submodule update --init --recursive
 on_pull.command = """
 git submodule update --init --recursive
 """
+
+##
+
+[[repo]]
+name = "shadybradencom"
+[repo.config]
+server = "holmie"
+git_provider = "git.holmlab.org"
+git_account = "komodo"
+repo = "shady/shadybradencom"
+on_clone.command = """
+git submodule update --init --recursive
+"""
+on_pull.command = """
+git submodule update --init --recursive
+"""
