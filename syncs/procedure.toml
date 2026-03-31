@@ -227,7 +227,7 @@ name = "hugo"
 name = "Pull repo"
 enabled = true
 executions = [
-  { execution.type = "PullRepo", execution.params.repo = "hugo-demo", enabled = true }
+  { execution.type = "PullRepo", execution.params.repo = "shadybradencom", enabled = true }
 ]
 
 [[procedure.config.stage]]
