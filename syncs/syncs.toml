@@ -7,12 +7,12 @@ resource_path = ["syncs/syncs.toml"]
 
 ##
 
-[[resource_sync]]
-name = "servers"
-tags = ["servers"]
-[resource_sync.config]
-linked_repo = "IaC"
-resource_path = ["syncs/servers.toml"]
+#[[resource_sync]]
+#name = "servers"
+#tags = ["servers"]
+#[resource_sync.config]
+#linked_repo = "IaC"
+#resource_path = ["syncs/servers.toml"]
 
 ##
 
