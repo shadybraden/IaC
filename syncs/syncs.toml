@@ -44,11 +44,11 @@ resource_path = ["syncs/mck.toml"]
 ##
 
 [[resource_sync]]
-name = "shady_desktop"
-tags = ["shady_desktop"]
+name = "shady"
+tags = ["shady"]
 [resource_sync.config]
 linked_repo = "IaC"
-resource_path = ["syncs/shady_desktop.toml"]
+resource_path = ["syncs/shady.toml"]
 
 ##
 

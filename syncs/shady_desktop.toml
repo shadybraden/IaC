@@ -1,8 +1,8 @@
 [[stack]]
 name = "crafty-shady"
-tags = ["shady_desktop", "criticality: 2"]
+tags = ["shady", "criticality: 2"]
 [stack.config]
-server = "shady_desktop"
+server = "shady"
 project_name = "crafty"
 linked_repo = "compose_main"
 run_directory = "crafty"
@@ -11,9 +11,9 @@ run_directory = "crafty"
 
 [[stack]]
 name = "immich-ml-shady"
-tags = ["shady_desktop", "criticality: 3"]
+tags = ["shady", "criticality: 3"]
 [stack.config]
-server = "shady_desktop"
+server = "shady"
 project_name = "immich-ml"
 linked_repo = "compose_main"
 run_directory = "hosts/immich_remote_machine_learning"
@@ -22,9 +22,9 @@ run_directory = "hosts/immich_remote_machine_learning"
 
 [[stack]]
 name = "beszelagent-shady"
-tags = ["shady_desktop", "env", "criticality: 2"]
+tags = ["shady", "env", "criticality: 2"]
 [stack.config]
-server = "shady_desktop"
+server = "shady"
 project_name = "beszelagent-shady"
 linked_repo = "compose_main"
 run_directory = "beszelagent"
@@ -34,12 +34,12 @@ env_file_path = "/etc/komodo/env/beszelagent-shady.env"
 ##
 
 [[stack]]
-name = "factorio-shady_desktop"
+name = "factorio-shady"
 description = "192.168.50.16:34197 | 100.75.125.61:34197"
-tags = ["shady_desktop", "criticality: 2"]
+tags = ["shady", "criticality: 2"]
 [stack.config]
-server = "shady_desktop"
-project_name = "factorio-shady_desktop"
+server = "shady"
+project_name = "factorio-shady"
 linked_repo = "compose_main"
 run_directory = "factorio"
 additional_env_files = ["/etc/komodo/domain.env"]
@@ -47,41 +47,41 @@ additional_env_files = ["/etc/komodo/domain.env"]
 ##
 
 [[stack]]
-name = "foldingathome-shady_desktop"
-tags = ["shady_desktop", "criticality: 1"]
+name = "foldingathome-shady"
+tags = ["shady", "criticality: 1"]
 [stack.config]
-server = "shady_desktop"
+server = "shady"
 links = [
   "https://v8-4.foldingathome.org/"
 ]
-project_name = "foldingathome-shady_desktop"
+project_name = "foldingathome-shady"
 linked_repo = "compose_main"
 run_directory = "foldingathome"
 additional_env_files = ["/etc/komodo/domain.env"]
-env_file_path = "/etc/komodo/env/foldingathome-shady_desktop.env"
+env_file_path = "/etc/komodo/env/foldingathome-shady.env"
 
 ##
 
 [[stack]]
-name = "harborguard-shady_desktop"
-tags = ["shady_desktop", "criticality: 1"]
+name = "harborguard-shady"
+tags = ["shady", "criticality: 1"]
 [stack.config]
-server = "shady_desktop"
-project_name = "harborguard-shady_desktop"
+server = "shady"
+project_name = "harborguard-shady"
 linked_repo = "compose_main"
 run_directory = "harborguard"
 additional_env_files = ["/etc/komodo/domain.env"]
-env_file_path = "/etc/komodo/env/harborguard-shady_desktop.env"
+env_file_path = "/etc/komodo/env/harborguard-shady.env"
 
 ##
 
 [[stack]]
-name = "ollama-shady_desktop"
-tags = ["shady_desktop", "criticality: 1"]
+name = "ollama-shady"
+tags = ["shady", "criticality: 1"]
 [stack.config]
-server = "shady_desktop"
-project_name = "ollama-shady_desktop"
+server = "shady"
+project_name = "ollama-shady"
 linked_repo = "compose_main"
 run_directory = "ollama"
 additional_env_files = ["/etc/komodo/domain.env"]
-env_file_path = "/etc/komodo/env/ollama-shady_desktop.env"
+env_file_path = "/etc/komodo/env/ollama-shady.env"

@@ -10,8 +10,8 @@ send_unreachable_alerts = false
 ##
 
 [[server]]
-name = "shady_desktop"
-tags = ["shady_desktop"]
+name = "shady"
+tags = ["shady"]
 [server.config]
 address = "https://periphery-shady.holmlab.org"
 enabled = true
