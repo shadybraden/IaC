@@ -1,0 +1,5 @@
+- name: shady
+  hosts: localhost
+  connection: local
+  roles:
+    - backups
