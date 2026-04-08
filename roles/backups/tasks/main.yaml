@@ -13,8 +13,60 @@
   ansible.builtin.debug:
     msg: "{{ aws_version.stdout }}"
 
-- name: Set file permissions
+- name: Set file permissions for resticPassword
   become: true
   file:
     path: /data/resticPassword.txt
     mode: '0600'
+
+- name: Ensure cron is configured for backup_config
+  become: true
+  ansible.builtin.cron:
+    name: "At 0 minutes past the hour, every 6 hours, every day - backup_config"
+    minute: "0"
+    hour: "*/6"
+    day: "*"
+    month: "*"
+    weekday: "*"
+    job: "/data/config_storage/compose/backup/backup_config.sh"
+    user: "root"
+    state: present
+
+- name: Ensure cron is configured for backup_bulk
+  become: true
+  ansible.builtin.cron:
+    name: "At 03:00, every day - backup_bulk"
+    minute: "0"
+    hour: "3"
+    day: "*"
+    month: "*"
+    weekday: "*"
+    job: "/data/config_storage/compose/backup/backup_bulk.sh"
+    user: "root"
+    state: present
+
+- name: Ensure cron is configured for upload_config
+  become: true
+  ansible.builtin.cron:
+    name: "At 05:00, only on Monday - upload_config"
+    minute: "0"
+    hour: "5"
+    day: "*"
+    month: "*"
+    weekday: "1"
+    job: "/data/config_storage/compose/backup/upload_config.sh"
+    user: "root"
+    state: present
+
+- name: Ensure cron is configured for upload_bulk
+  become: true
+  ansible.builtin.cron:
+    name: "At 01:00, on day 1 of the month - upload_bulk"
+    minute: "0"
+    hour: "1"
+    day: "1"
+    month: "*"
+    weekday: "*"
+    job: "/data/config_storage/compose/backup/upload_bulk.sh"
+    user: "root"
+    state: present
