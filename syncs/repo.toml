@@ -55,3 +55,25 @@ git submodule update --init --recursive
 on_pull.command = """
 git submodule update --init --recursive
 """
+
+##
+
+[[repo]]
+name = "icons-holmie"
+[repo.config]
+server = "holmie"
+git_provider = "git.holmlab.org"
+git_account = "komodo"
+repo = "shady/icons"
+branch = "main"
+
+##
+
+[[repo]]
+name = "icons-holmgarage"
+[repo.config]
+server = "holmgarage"
+git_provider = "git.holmlab.org"
+git_account = "komodo"
+repo = "shady/icons"
+branch = "main"
