@@ -70,7 +70,7 @@ path = "/etc/komodo/repos/icons"
 ##
 
 [[repo]]
-name = "icons-holmie"
+name = "icons-holmgarage"
 [repo.config]
 server = "holmgarage"
 git_provider = "git.holmlab.org"
