@@ -66,3 +66,14 @@ git_provider = "git.holmlab.org"
 git_account = "komodo"
 repo = "shady/icons"
 path = "/etc/komodo/repos/icons"
+
+##
+
+[[repo]]
+name = "icons-holmie"
+[repo.config]
+server = "holmgarage"
+git_provider = "git.holmlab.org"
+git_account = "komodo"
+repo = "shady/icons"
+path = "/etc/komodo/repos/icons"
