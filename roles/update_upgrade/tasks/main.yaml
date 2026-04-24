@@ -1,5 +1,75 @@
+# https://oneuptime.com/blog/post/2026-02-21-ansible-patch-linux-servers/view#basic-patching-playbook
 ---
-- name: Run apt update
+# Update the package cache first
+- name: Update package cache (RedHat)
+  ansible.builtin.dnf:
+    update_cache: true
+  when: ansible_os_family == "RedHat"
+
+- name: Update package cache (Debian)
   ansible.builtin.apt:
-    upgrade: dist
-    update_cache: yes
+    update_cache: true
+    cache_valid_time: 3600
+  when: ansible_os_family == "Debian"
+
+# Apply all available updates
+- name: Apply all updates (RedHat)
+  ansible.builtin.dnf:
+    name: "*"
+    state: latest
+    security: "{{ security_only | default(false) }}"
+  register: dnf_result
+  when: ansible_os_family == "RedHat"
+
+- name: Apply all updates (Debian)
+  ansible.builtin.apt:
+    upgrade: safe
+  register: apt_result
+  when: ansible_os_family == "Debian"
+
+# Display what was updated
+- name: Show updated packages (RedHat)
+  ansible.builtin.debug:
+    msg: "{{ dnf_result.changes.updated | default([]) | length }} packages updated"
+  when: ansible_os_family == "RedHat" and dnf_result is changed
+
+- name: Show updated packages (Debian)
+  ansible.builtin.debug:
+    msg: "Packages updated on {{ inventory_hostname }}"
+  when: ansible_os_family == "Debian" and apt_result is changed
+
+# Check if a reboot is required
+- name: Check if reboot is needed (RedHat)
+  ansible.builtin.command:
+    cmd: needs-restarting -r
+  register: reboot_check
+  changed_when: false
+  failed_when: false
+  when: ansible_os_family == "RedHat"
+
+- name: Check if reboot is needed (Debian)
+  ansible.builtin.stat:
+    path: /var/run/reboot-required
+  register: reboot_file
+  when: ansible_os_family == "Debian"
+
+# Flag servers that need reboot
+- name: Report reboot requirement
+  ansible.builtin.debug:
+    msg: "REBOOT REQUIRED on {{ inventory_hostname }}"
+  when: >
+    (ansible_os_family == "RedHat" and reboot_check.rc | default(0) == 1) or
+    (ansible_os_family == "Debian" and reboot_file.stat.exists | default(false))
+
+# NTFY servers that need reboot
+- name: NTFY reboot requirement
+  uri:
+    url: "https://ntfy.holmlab.org/updates1Q7Mjean"
+    method: POST
+    body: "Reboots needed:"
+    headers:
+      Title: "REBOOT REQUIRED on {{ inventory_hostname }}"
+      Priority: "min"
+  when: >
+    (ansible_os_family == "RedHat" and reboot_check.rc | default(0) == 1) or
+    (ansible_os_family == "Debian" and reboot_file.stat.exists | default(false))
