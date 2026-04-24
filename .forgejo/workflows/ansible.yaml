@@ -48,4 +48,4 @@ jobs:
           curl -X POST https://ntfy.holmlab.org/updates1Q7Mjean \
             -H "Title: ‼️ Actions failed" \
             -H "Priority: low" \
-            -d "Workflow ${{ github.workflow }} failed"
+            -d "Workflow '${{ github.workflow }}' failed"
