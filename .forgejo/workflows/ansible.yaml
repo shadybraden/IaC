@@ -41,3 +41,11 @@ jobs:
           ANSIBLE_HOST_KEY_CHECKING: "False"  # alternative to known_hosts
           ANSIBLE_BECOME_PASS: ${{ secrets.SHADY_SUDO_PASSWORD }}
           ANSIBLE_FORCE_COLOR: "1"
+
+      - name: Notify failure
+        if: failure()
+        run: |
+          curl -X POST https://ntfy.holmlab.org/updates1Q7Mjean \
+            -H "Title: Actions failed" \
+            -H "Priority: med" \
+            -d "Workflow ${{ github.workflow }} failed on ${{ github.ref }}"
