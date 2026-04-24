@@ -2,3 +2,4 @@
   hosts: holmie@192.168.50.65
   roles:
     - ntfy_hostname
+    - backups
