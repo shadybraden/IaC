@@ -22,4 +22,5 @@ jobs:
         run: |
           ansible-playbook -i inventory restic_perms.yaml --limit backups
         env:
+          ANSIBLE_HOST_KEY_CHECKING: "False"  # alternative to known_hosts
           ANSIBLE_BECOME_PASS: ${{ secrets.SUDO_PASSWORD }}
