@@ -5,7 +5,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: debian
+    runs-on: ansible
 
     steps:
       - name: Send ntfy notification
