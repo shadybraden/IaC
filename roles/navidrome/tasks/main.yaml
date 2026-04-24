@@ -2,6 +2,7 @@
 - name: Make and set permissions on /data/config_storage/navidrome
   ansible.builtin.file:
     path: /data/config_storage/navidrome
+    state: directory
     owner: 1000
     group: 1000
     mode: '0755'
