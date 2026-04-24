@@ -19,6 +19,11 @@
     path: /data/resticPassword.txt
     mode: '0600'
 
+- name: Git pull latest changes
+  ansible.builtin.shell:
+    cmd: git pull
+    chdir: "/data/config_storage/compose"
+
 - name: Ensure cron is configured for backup_config
   become: true
   ansible.builtin.cron:
