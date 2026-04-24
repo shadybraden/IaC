@@ -25,3 +25,11 @@ jobs:
           ANSIBLE_HOST_KEY_CHECKING: "False"  # alternative to known_hosts
           ANSIBLE_BECOME_PASS: ${{ secrets.SUDO_PASSWORD }}
           ANSIBLE_FORCE_COLOR: "1"
+
+      - name: Run HolmGarage Ansible
+        run: |
+          ansible-playbook holmgarage.yaml
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: "False"  # alternative to known_hosts
+          ANSIBLE_BECOME_PASS: ${{ secrets.SUDO_PASSWORD }}
+          ANSIBLE_FORCE_COLOR: "1"
