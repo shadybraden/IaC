@@ -1,9 +1,7 @@
 name: Update Komodo core and all Periphery nodes
 
 on:
-  pull_request:
-    types:
-      - closed
+  workflow_dispatch:
 
 jobs:
   deploy:
