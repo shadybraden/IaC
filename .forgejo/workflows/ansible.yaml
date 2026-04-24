@@ -6,7 +6,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: debian
+    runs-on: ansible
 
     steps:
       - name: Checkout
