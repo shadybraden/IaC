@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: git.holmlab.org/shady/IaC
+        uses: git.holmlab.org/shady/IaC@latest
 
       - name: Set up SSH
         run: |
