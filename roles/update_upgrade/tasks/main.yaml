@@ -2,11 +2,13 @@
 ---
 # Update the package cache first
 - name: Update package cache (RedHat)
+  become: true
   ansible.builtin.dnf:
     update_cache: true
   when: ansible_os_family == "RedHat"
 
 - name: Update package cache (Debian)
+  become: true
   ansible.builtin.apt:
     update_cache: true
     cache_valid_time: 3600
@@ -14,6 +16,7 @@
 
 # Apply all available updates
 - name: Apply all updates (RedHat)
+  become: true
   ansible.builtin.dnf:
     name: "*"
     state: latest
@@ -22,6 +25,7 @@
   when: ansible_os_family == "RedHat"
 
 - name: Apply all updates (Debian)
+  become: true
   ansible.builtin.apt:
     upgrade: safe
   register: apt_result
@@ -29,17 +33,20 @@
 
 # Display what was updated
 - name: Show updated packages (RedHat)
+  become: true
   ansible.builtin.debug:
     msg: "{{ dnf_result.changes.updated | default([]) | length }} packages updated"
   when: ansible_os_family == "RedHat" and dnf_result is changed
 
 - name: Show updated packages (Debian)
+  become: true
   ansible.builtin.debug:
     msg: "Packages updated on {{ inventory_hostname }}"
   when: ansible_os_family == "Debian" and apt_result is changed
 
 # Check if a reboot is required
 - name: Check if reboot is needed (RedHat)
+  become: true
   ansible.builtin.command:
     cmd: needs-restarting -r
   register: reboot_check
@@ -48,6 +55,7 @@
   when: ansible_os_family == "RedHat"
 
 - name: Check if reboot is needed (Debian)
+  become: true
   ansible.builtin.stat:
     path: /var/run/reboot-required
   register: reboot_file
