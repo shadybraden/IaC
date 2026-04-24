@@ -1,5 +1,6 @@
 ---
 - name: Make and set permissions on /data/config_storage/navidrome
+  become: true
   ansible.builtin.file:
     path: /data/config_storage/navidrome
     state: directory
@@ -8,6 +9,7 @@
     mode: '0755'
 
 - name: Make and set Music folder permissions
+  become: true
   ansible.builtin.file:
     path: /data/music
     state: directory
