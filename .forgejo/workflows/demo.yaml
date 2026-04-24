@@ -1,6 +1,6 @@
 on: [push]
 jobs:
-  test:
+  demo:
     runs-on: debian
     steps:
       - run: echo All good!
