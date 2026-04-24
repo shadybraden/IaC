@@ -1,0 +1,11 @@
+name: My Manual Job
+
+on:
+  workflow_dispatch:
+
+jobs:
+  my-manual-job:
+    runs-on: ansible
+    steps:
+      - name: Say hello
+        run: echo "Hello from Forgejo Actions!"
