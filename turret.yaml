@@ -1,0 +1,4 @@
+- name: turret
+  hosts: pi3@192.168.50.174
+  roles:
+    - ntfy_hostname

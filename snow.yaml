@@ -1,0 +1,4 @@
+- name: snow
+  hosts: snow@100.71.213.75
+  roles:
+    - ntfy_hostname
