@@ -3,4 +3,5 @@ jobs:
   demo:
     runs-on: debian
     steps:
-      - run: echo All good!
+      - run: echo step 1
+      - run: echo step 2
