@@ -85,16 +85,3 @@ linked_repo = "compose_main"
 run_directory = "ollama"
 additional_env_files = ["/etc/komodo/domain.env"]
 env_file_path = "/etc/komodo/env/ollama-shady.env"
-
-##
-
-[[stack]]
-name = "navidrome-shady"
-tags = ["shady", "criticality: 1"]
-[stack.config]
-server = "shady"
-project_name = "navidrome-shady"
-linked_repo = "compose_main"
-run_directory = "navidrome"
-additional_env_files = ["/etc/komodo/domain.env"]
-env_file_path = "/etc/komodo/env/navidrome-shady.env"
