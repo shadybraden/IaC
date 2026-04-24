@@ -46,6 +46,6 @@ jobs:
         if: failure()
         run: |
           curl -X POST https://ntfy.holmlab.org/updates1Q7Mjean \
-            -H "Title: Actions failed" \
+            -H "Title: ‼️ Actions failed" \
             -H "Priority: low" \
-            -d "Workflow ${{ github.workflow }} failed on ${{ github.ref }}"
+            -d "Workflow ${{ github.workflow }} failed"
