@@ -18,7 +18,7 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
 
-      - name: Run Ansible
+      - name: Run Backups Ansible
         run: |
           ansible-playbook -i inventory restic_perms.yaml --limit backups
         env:
