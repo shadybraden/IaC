@@ -2,28 +2,8 @@
 # merge the pr made by renovate first
 # updates komodo and periphery on all hosts
 # init with `ansible-galaxy collection install community.docker`
-- name: Deploy Komodo
-  hosts: holmie@192.168.50.65
-  become: false
-  
-  vars:
-    compose_dir: "{{ ansible_env.HOME }}/compose/komodo"
-
-  tasks:
-    - name: Git pull latest changes
-      ansible.builtin.shell:
-        cmd: git pull
-        chdir: "{{ compose_dir }}"
-
-    - name: docker compose up -d
-      community.docker.docker_compose_v2:
-        project_src: "{{ compose_dir }}"
-        state: present
-        pull: missing
-      become: true
-
-- name: Deploy periphery services
-  hosts: periphery
+- name: Deploy periphery on shady
+  hosts: shady@192.168.50.16
   become: false
 
   vars:
