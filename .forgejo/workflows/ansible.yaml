@@ -20,6 +20,6 @@ jobs:
 
       - name: Run Ansible
         run: |
-          ansible-playbook -i inventory restic_perms.yml
+          ansible-playbook -i inventory restic_perms.yaml
         env:
           ANSIBLE_HOST_KEY_CHECKING: "False"  # alternative to known_hosts
