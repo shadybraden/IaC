@@ -37,7 +37,7 @@ description = "192.168.50.203 | snow.local | Optiplex 7040"
 tags = ["snow"]
 [server.config]
 tags = ["snow"]
-address = "http://100.71.57.32:8120"
+address = "http://100.71.213.75:8120"
 enabled = true
 send_unreachable_alerts = true
 
