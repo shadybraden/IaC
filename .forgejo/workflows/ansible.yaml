@@ -18,9 +18,9 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
 
-      - name: Run Backups Ansible
+      - name: Run Holmie Ansible
         run: |
-          ansible-playbook -i inventory restic_perms.yaml --limit backups
+          ansible-playbook holmie.yaml
         env:
           ANSIBLE_HOST_KEY_CHECKING: "False"  # alternative to known_hosts
           ANSIBLE_BECOME_PASS: ${{ secrets.SUDO_PASSWORD }}
