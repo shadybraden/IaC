@@ -34,7 +34,7 @@ jobs:
           ANSIBLE_BECOME_PASS: ${{ secrets.SUDO_PASSWORD }}
           ANSIBLE_FORCE_COLOR: "1"
 
-      - name: Run shady Ansible
+      - name: Run Shady Ansible
         run: |
           ansible-playbook shady.yaml
         env:
