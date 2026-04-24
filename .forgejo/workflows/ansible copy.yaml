@@ -1,0 +1,13 @@
+name: Send ntfy notification
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ansible
+
+    steps:
+      - name: Send ntfy notification
+        run: |
+          curl -d "hello from ansible" https://ntfy.holmlab.org/updates1Q7Mjean
