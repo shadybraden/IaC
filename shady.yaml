@@ -1,5 +1,4 @@
 - name: shady
-  hosts: localhost
-  connection: local
+  hosts: shady@192.168.50.16
   roles:
-    - backups
+    - update_upgrade
