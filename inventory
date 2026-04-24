@@ -1,6 +1,9 @@
-[komodo_group]
+[all]
 pi3@192.168.50.174
 snow@100.71.57.32
 holmgarage@100.91.217.107
 mck@100.117.173.46
+holmie@192.168.50.65
+
+[backups]
 holmie@192.168.50.65
