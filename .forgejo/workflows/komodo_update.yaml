@@ -6,14 +6,9 @@ on:
       - closed
 
 jobs:
-  on-merged-update-pr:
-    if: |
-      github.event.pull_request.merged == true &&
-      startsWith(github.event.pull_request.title, 'Update ghcr.io/moghtech/komodo-')
+  deploy:
     runs-on: ansible
     steps:
-      - run: echo "PR merged!"
-
       - name: Checkout
         uses: actions/checkout@v4
 
