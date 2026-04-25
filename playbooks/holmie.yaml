@@ -1,6 +1,6 @@
 - name: holmie
   hosts: holmie@192.168.50.65
   roles:
-    - playbooks/backups
+    - roles/backups
     - playbooks/navidrome
     - playbooks/forgejo_actions
