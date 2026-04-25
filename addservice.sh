@@ -26,4 +26,4 @@ EOF
 )
 
 echo "$TOML_BLOCK" >> syncs/$SERVERNAME.toml
-echo "$PLAYBOOK_ADDITION" >> $SERVERNAME.yaml
+echo "$PLAYBOOK_ADDITION" >> playbooks/$SERVERNAME.yaml
