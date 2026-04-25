@@ -5,7 +5,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ansible
+    runs-on: tools_container
 
     steps:
       - name: Send ntfy notification

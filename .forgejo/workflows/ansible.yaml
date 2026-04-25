@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ansible
+    runs-on: tools_container
 
     steps:
       - name: Checkout
