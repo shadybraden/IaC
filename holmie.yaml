@@ -3,3 +3,4 @@
   roles:
     - backups
     - navidrome
+    - forgejo_actions
