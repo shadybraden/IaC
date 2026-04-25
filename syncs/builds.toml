@@ -49,6 +49,7 @@ builder = "holmie"
 image_name = "tools_container"
 linked_repo = "compose_main"
 build_path = "tools_container"
+dockerfile_path = "Dockerfile.tools_container"
 image_registry = [
   { domain = "git.holmlab.org", account = "shady" }
 ]
