@@ -4,4 +4,3 @@
     - roles/backups
     - roles/navidrome
     - roles/forgejo_actions
-    - roles/sonarqube
