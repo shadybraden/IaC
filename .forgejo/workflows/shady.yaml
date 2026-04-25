@@ -19,7 +19,7 @@ jobs:
 
       - name: Run shady Ansible
         run: |
-          ansible-playbook shady.yaml
+          ansible-playbook playbooks/shady.yaml
         env:
           ANSIBLE_HOST_KEY_CHECKING: "False"  # alternative to known_hosts
           ANSIBLE_BECOME_PASS: ${{ secrets.SHADY_SUDO_PASSWORD }}

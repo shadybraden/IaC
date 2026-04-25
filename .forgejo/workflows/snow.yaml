@@ -19,7 +19,7 @@ jobs:
 
       - name: Run snow Ansible
         run: |
-          ansible-playbook snow.yaml
+          ansible-playbook playbooks/snow.yaml
         env:
           ANSIBLE_HOST_KEY_CHECKING: "False"  # alternative to known_hosts
           ANSIBLE_BECOME_PASS: ${{ secrets.SUDO_PASSWORD }}

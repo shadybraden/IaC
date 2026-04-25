@@ -18,7 +18,7 @@ jobs:
 
       - name: Run Ansible komodo_update
         run: |
-          ansible-playbook komodo_update.yaml
+          ansible-playbook playbooks/komodo_update.yaml
         env:
           ANSIBLE_HOST_KEY_CHECKING: "False"  # alternative to known_hosts
           ANSIBLE_BECOME_PASS: ${{ secrets.SUDO_PASSWORD }}
@@ -26,7 +26,7 @@ jobs:
 
       - name: Run Ansible komodo_update_shady
         run: |
-          ansible-playbook komodo_update_shady.yaml
+          ansible-playbook playbooks/komodo_update_shady.yaml
         env:
           ANSIBLE_HOST_KEY_CHECKING: "False"  # alternative to known_hosts
           ANSIBLE_BECOME_PASS: ${{ secrets.SHADY_SUDO_PASSWORD }}

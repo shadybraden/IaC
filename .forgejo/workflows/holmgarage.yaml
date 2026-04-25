@@ -19,7 +19,7 @@ jobs:
 
       - name: Run holmgarage Ansible
         run: |
-          ansible-playbook holmgarage.yaml
+          ansible-playbook playbooks/holmgarage.yaml
         env:
           ANSIBLE_HOST_KEY_CHECKING: "False"  # alternative to known_hosts
           ANSIBLE_BECOME_PASS: ${{ secrets.SUDO_PASSWORD }}

@@ -19,7 +19,7 @@ jobs:
 
       - name: Run Holmie Ansible
         run: |
-          ansible-playbook holmie.yaml
+          ansible-playbook playbooks/holmie.yaml
         env:
           ANSIBLE_HOST_KEY_CHECKING: "False"  # alternative to known_hosts
           ANSIBLE_BECOME_PASS: ${{ secrets.SUDO_PASSWORD }}

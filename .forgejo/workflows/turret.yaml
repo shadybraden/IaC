@@ -19,7 +19,7 @@ jobs:
 
       - name: Run turret Ansible
         run: |
-          ansible-playbook turret.yaml
+          ansible-playbook playbooks/turret.yaml
         env:
           ANSIBLE_HOST_KEY_CHECKING: "False"  # alternative to known_hosts
           ANSIBLE_BECOME_PASS: ${{ secrets.SUDO_PASSWORD }}

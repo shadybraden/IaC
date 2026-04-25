@@ -19,7 +19,7 @@ jobs:
 
       - name: Run mck Ansible
         run: |
-          ansible-playbook mck.yaml
+          ansible-playbook playbooks/mck.yaml
         env:
           ANSIBLE_HOST_KEY_CHECKING: "False"  # alternative to known_hosts
           ANSIBLE_BECOME_PASS: ${{ secrets.SUDO_PASSWORD }}
