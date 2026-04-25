@@ -4,4 +4,7 @@
   ansible.builtin.file:
     state: touch
     path: /data/config_storage/forgejo-action/forgejo_actions_token.txt
+    owner: 1001
+    group: 1001
     mode: '0600'
+
