@@ -1,5 +1,5 @@
 - name: shady
   hosts: shady@192.168.50.16
   roles:
-    - playbooks/backups
-    - playbooks/navidrome
+    - roles/backups
+    - roles/navidrome

@@ -1,5 +1,5 @@
 - name: holmgarage
   hosts: holmgarage@100.91.217.107
   roles:
-    - playbooks/backups
-    - playbooks/navidrome
+    - roles/backups
+    - roles/navidrome

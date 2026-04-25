@@ -1,4 +1,4 @@
 - name: snow
   hosts: snow@100.71.213.75
   roles:
-    - playbooks/ntfy_hostname
+    - roles/ntfy_hostname

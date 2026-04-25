@@ -21,7 +21,7 @@ EOF
 )
 
 PLAYBOOK_ADDITION=$(cat <<EOF
-    - playbooks/$SERVICE
+    - roles/$SERVICE
 EOF
 )
 

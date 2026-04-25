@@ -1,4 +1,4 @@
 - name: turret
   hosts: pi3@192.168.50.174
   roles:
-    - playbooks/ntfy_hostname
+    - roles/ntfy_hostname
