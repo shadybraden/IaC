@@ -21,7 +21,7 @@ EOF
 )
 
 PLAYBOOK_ADDITION=$(cat <<EOF
-    - $SERVICE
+    - playbooks/$SERVICE
 EOF
 )
 
