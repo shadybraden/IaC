@@ -1,6 +1,6 @@
 ---
 - name: Set file permissions for token file
   become: true
-  file:
+  ansible.builtin.file:
     path: /data/config_storage/forgejo-action/forgejo_actions_token.txt
     mode: '0600'
