@@ -1,0 +1,22 @@
+name: Build tools_container
+
+on:
+  push:
+    paths:
+      - 'containers/Dockerfile.tools_container'
+  workflow_dispatch:
+
+jobs:
+  Build-tools_container:
+    runs-on: tools_container
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Log in to container registry
+        uses: docker/login-action@v4
+        with:
+          registry: git.domain.org
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
