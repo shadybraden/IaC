@@ -5,6 +5,11 @@ on:
     paths:
       - 'containers/Dockerfile.tools_container'
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish - Leave blank to auto-increment.'
+        required: false
+        default: ''
 
 jobs:
   Build-tools_container:
@@ -17,6 +22,56 @@ jobs:
       - name: Log in to container registry
         uses: docker/login-action@v4
         with:
-          registry: git.domain.org
+          registry: git.holmlab.org
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
+
+      - name: Determine version
+        id: version
+        run: |
+          INPUT_VERSION="${{ github.event.inputs.version }}"
+
+          if [ -n "$INPUT_VERSION" ]; then
+            echo "Using manually specified version: $INPUT_VERSION"
+            echo "version=$INPUT_VERSION" >> $GITHUB_OUTPUT
+          else
+            echo "Fetching latest tag from registry..."
+
+            # Fetch tags from Forgejo container registry API
+            TAGS=$(curl -s \
+              -H "Authorization: token ${{ secrets.REGISTRY_PASSWORD }}" \
+              "https://git.holmlab.org/v2/${{ secrets.REGISTRY_USERNAME }}/tools_container/tags/list" \
+              | jq -r '.tags[]? // empty')
+
+            if [ -z "$TAGS" ]; then
+              echo "No existing tags found, starting at 0.0.1"
+              NEW_VERSION="0.0.1"
+            else
+              # Sort tags as semver, pick the highest
+              LATEST=$(echo "$TAGS" \
+                | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' \
+                | sort -t. -k1,1n -k2,2n -k3,3n \
+                | tail -n1)
+
+              echo "Latest version found: $LATEST"
+
+              # Bump patch
+              MAJOR=$(echo "$LATEST" | cut -d. -f1)
+              MINOR=$(echo "$LATEST" | cut -d. -f2)
+              PATCH=$(echo "$LATEST" | cut -d. -f3)
+              NEW_VERSION="$MAJOR.$MINOR.$((PATCH + 1))"
+            fi
+
+            echo "New version: $NEW_VERSION"
+            echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build and push image
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: containers/Dockerfile.tools_container
+          push: true
+          tags: |
+            git.holmlab.org/${{ secrets.REGISTRY_USERNAME }}/tools_container:${{ steps.version.outputs.version }}
+            git.holmlab.org/${{ secrets.REGISTRY_USERNAME }}/tools_container:latest
