@@ -40,7 +40,7 @@ jobs:
             # Fetch tags from Forgejo container registry API
             TAGS=$(curl -s \
               -H "Authorization: token ${{ secrets.REGISTRY_PASSWORD }}" \
-              "https://git.holmlab.org/v2/${{ secrets.REGISTRY_USERNAME }}/tools_container/tags/list" \
+              "https://git.holmlab.org/-/packages/container/tools_container/versions \
               | jq -r '.tags[]? // empty')
 
             if [ -z "$TAGS" ]; then
