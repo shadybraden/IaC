@@ -1,0 +1,52 @@
+name: Run update_upgrade Role
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: "Target:"
+        required: true
+        default: "all"
+        type: choice
+        options:
+          - all
+          - pi3@192.168.50.174
+          - snow@100.71.213.75
+          - holmgarage@100.91.217.107
+          - mck@100.117.173.46
+          - holmie@192.168.50.65
+          - shady@192.168.50.16
+
+jobs:
+  ansible-update-upgrade:
+    name: "update_upgrade → ${{ github.event.inputs.target }}"
+    runs-on: tools_container
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+
+      - name: Run update_upgrade Role
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: "False"  # alternative to known_hosts
+          ANSIBLE_BECOME_PASS: ${{ secrets.SUDO_PASSWORD }}
+          ANSIBLE_FORCE_COLOR: "1"
+        run: |
+          ansible-playbook \
+            -i inventory \
+            --limit "${{ github.event.inputs.target }}" \
+            playbooks/update_upgrade.yaml
+
+      - name: Notify failure
+        if: failure()
+        run: |
+          curl -X POST https://ntfy.holmlab.org/updates1Q7Mjean \
+            -H "Title: ‼️ Actions failed" \
+            -H "Priority: low" \
+            -d "Workflow '${{ github.workflow }}' failed"
