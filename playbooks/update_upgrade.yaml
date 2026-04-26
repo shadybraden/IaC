@@ -1,6 +1,6 @@
 ---
 - name: Run update_upgrade Role
-  hosts: "{{ target }}"
+  hosts: all
   become: true
 
   roles:
