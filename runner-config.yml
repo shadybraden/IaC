@@ -57,7 +57,7 @@ runner:
   #   # Maximum delay between retries, defaults to 0, 0 is treated as no maximum.
   #   max_delay: 0
   # The labels of a runner are used to determine which jobs the runner can run and how to run them.
-  # Like: ["macos-arm64:host", "ubuntu-latest:docker://node:20-bookworm", "ubuntu-22.04:docker://node:20-bookworm"]
+  # Like: ["macos-arm64:host", "ubuntu-latest:docker://node:xx-bookworm", "ubuntu-xx.xx:docker://node:xx-bookworm"]
   # If it's empty when registering, it will ask for inputting labels.
   # If it's empty when executing the `daemon`, it will use labels in the `.runner` file.
   labels:
