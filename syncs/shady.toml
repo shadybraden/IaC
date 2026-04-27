@@ -96,5 +96,9 @@ server = "shady"
 project_name = "forgejo_actions-shady"
 linked_repo = "compose_main"
 run_directory = "forgejo_actions"
-additional_env_files = ["/etc/komodo/domain.env"]
 env_file_path = "/etc/komodo/env/forgejo_actions-shady.env"
+additional_env_files = ["/etc/komodo/domain.env"]
+pre_deploy.path = "/etc/komodo/repos/IaC"
+pre_deploy.command = """
+git pull
+"""
