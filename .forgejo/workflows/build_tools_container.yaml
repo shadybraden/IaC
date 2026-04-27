@@ -80,3 +80,11 @@ jobs:
           tags: |
             git.holmlab.org/shady/tools_container:${{ steps.version.outputs.version }}
             git.holmlab.org/shady/tools_container:latest
+
+      - name: Notify failure
+        if: failure()
+        run: |
+          curl -X POST https://ntfy.holmlab.org/updates1Q7Mjean \
+            -H "Title: ‼️ Actions failed" \
+            -H "Priority: low" \
+            -d "Workflow '${{ github.workflow }}' failed"
