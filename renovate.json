@@ -11,7 +11,7 @@
         "\\.ya?ml$"
       ],
       "matchStrings": [
-        "-\\s*\\w+:docker:\/\/(?<depName>[^:]+):(?<currentValue>[^\\s\"']+)"
+        "docker://(?<depName>[^:]+):(?<currentValue>[\\d][^\\s\"']+)"
       ],
       "datasourceTemplate": "docker",
       "versioningTemplate": "semver"
