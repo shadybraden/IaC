@@ -5,6 +5,7 @@ on:
     paths:
       - 'runner-config.yml'
       - '.forgejo/workflows/restart_actions.yaml'
+    branches: [main]
   workflow_dispatch:
 
 jobs:
