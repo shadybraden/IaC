@@ -10,4 +10,4 @@ jobs:
     steps:
       - name: Send ntfy notification
         run: |
-          curl -d "hello from ansible" https://ntfy.holmlab.org/updates1Q7Mjean
+          curl -d "hello from actions" https://ntfy.holmlab.org/${{ secrets.NTFY_TOPIC }}
