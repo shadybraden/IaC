@@ -3,9 +3,9 @@
 # You don't have to copy this file to your instance,
 # just run `forgejo-runner generate-config > config.yaml` to generate a config file.
 
-#
+
 # The value of level or job_level can be trace, debug, info, warn, error or fatal
-#
+
 log:
   #
   # What is displayed in the output of the runner process but not sent
