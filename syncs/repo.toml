@@ -1,5 +1,5 @@
 [[repo]]
-name = "compose_main"
+name = "compose-holmie"
 [repo.config]
 server = "holmie"
 git_provider = "git.holmlab.org"
@@ -11,7 +11,7 @@ path = "/etc/komodo/repos/compose"
 ## 
 
 [[repo]]
-name = "compose_main"
+name = "compose-shady"
 [repo.config]
 server = "shady"
 git_provider = "git.holmlab.org"
