@@ -1,0 +1,31 @@
+name: Scan with Grype
+
+on:
+  workflow_dispatch:
+    inputs:
+      image:
+        description: 'image to scan'
+        required: true
+        type: string
+        default: 'git.holmlab.org/shady/tools_container:0.1.2'
+
+jobs:
+  scan-tools_container:
+    runs-on: tools_container
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Run Grype
+        id: version
+        run: |
+          grype "${{ github.event.inputs.image }}"
+
+      - name: Notify failure
+        if: failure()
+        run: |
+          curl -X POST https://ntfy.holmlab.org/${{ secrets.NTFY_TOPIC }} \
+            -H "Title: ‼️ Actions failed" \
+            -H "Priority: low" \
+            -d "Workflow '${{ github.workflow }}' failed"
