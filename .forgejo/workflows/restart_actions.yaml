@@ -18,7 +18,6 @@ jobs:
       - name: Run webhook
         run: |
           PAYLOAD='{"ref":"refs/heads/main"}'
-          SIGNATURE=$(printf '%s' "$PAYLOAD" | openssl dgst -sha256 -hmac "${{ secrets.WEBHOOK_PASSWORD }}" | awk '{print $2}')
           curl -f -X POST https://komodo.holmlab.org/listener/gitlab/repo/compose_test/pull \
             -H "Content-Type: application/json" \
             -H "X-Gitlab-Token: ${{ secrets.WEBHOOK_PASSWORD }}" \
