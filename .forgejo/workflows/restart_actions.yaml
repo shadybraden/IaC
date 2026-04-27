@@ -17,11 +17,10 @@ jobs:
 
       - name: Run webhook
         run: |
-          PAYLOAD='{"ref":"refs/heads/main"}'
           curl -f -X POST https://komodo.holmlab.org/listener/gitlab/repo/compose_test/pull \
             -H "Content-Type: application/json" \
             -H "X-Gitlab-Token: ${{ secrets.WEBHOOK_PASSWORD }}" \
-            -d "$PAYLOAD"
+            -d "{"ref":"refs/heads/main"}"
 
       - name: Notify failure
         if: failure()
