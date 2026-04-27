@@ -1,5 +1,5 @@
 [[repo]]
-name = "compose-holmie"
+name = "compose_main"
 [repo.config]
 server = "holmie"
 git_provider = "git.holmlab.org"
