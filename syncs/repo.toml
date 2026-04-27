@@ -6,7 +6,7 @@ git_provider = "git.holmlab.org"
 git_account = "komodo"
 repo = "shady/compose"
 branch = "main"
-path = "/etc/komodo/repos/compose"
+path = "/etc/komodo/repos/compose_main"
 
 ## 
 
