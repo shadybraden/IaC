@@ -18,10 +18,10 @@ jobs:
 
       - name: Run webhook
         run: |
-          curl -f -X POST https://komodo.holmlab.org/listener/gitlab/repo/compose_test/pull \
+          curl -f -X POST https://komodo.holmlab.org/listener/gitlab/procedure/restart-forgejo-actions/main  \
             -H "Content-Type: application/json" \
-            -H "X-Gitlab-Token: ${{ secrets.WEBHOOK_PASSWORD }}" \
-            -d "{"ref":"refs/heads/main"}"
+             -H "X-Gitlab-Token:  ${{ secrets.WEBHOOK_PASSWORD }}" \
+             -d '{"ref":"refs/heads/main"}'
 
       - name: Notify failure
         if: failure()
