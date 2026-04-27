@@ -20,7 +20,8 @@ jobs:
       - name: Run Grype
         id: version
         run: |
-          echo "${{ github.event.inputs.image }}"
+          echo "Running Grype on: ${{ github.event.inputs.image }}"
+          echo "---"
           grype "${{ github.event.inputs.image }}"
 
       - name: Notify failure
