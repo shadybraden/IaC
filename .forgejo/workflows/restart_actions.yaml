@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'runner-config.yml'
+      - '.forgejo/workflows/restart_actions.yaml'
   workflow_dispatch:
 
 jobs:
