@@ -38,13 +38,9 @@ jobs:
             echo "Fetching latest tag from registry..."
 
             # Fetch tags from Forgejo container registry API
-            RESPONSE=$(curl -s \
-              -H "Authorization: token ${{ secrets.REGISTRY_PASSWORD }}" \
+            TAGS=$(curl -s \
               "https://git.holmlab.org/api/v1/packages/shady?type=container&limit=50" \
-              | jq -r '.tags[]? // empty')
-
-          TAGS=$(echo "$RESPONSE" \
-            | jq -r '.[] | select(.name == "tools_container") | .version')
+              | jq -r '.[] | select(.name == "tools_container") | .version')
 
             if [ -z "$TAGS" ]; then
               echo "No existing tags found, starting at 0.0.1"
