@@ -67,8 +67,8 @@ jobs:
 
       - name: Start Docker daemon
         run: |
-          dockerd &
-          sleep 3
+          dockerd --storage-driver=vfs &>/tmp/dockerd.log &
+          timeout 15 sh -c 'until docker info >/dev/null 2>&1; do sleep 1; done'
 
       - name: Build and push image
         uses: docker/build-push-action@v7
