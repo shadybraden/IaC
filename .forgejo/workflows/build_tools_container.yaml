@@ -65,6 +65,11 @@ jobs:
             echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
           fi
 
+      - name: Start Docker daemon
+        run: |
+          dockerd &
+          sleep 3
+
       - name: Build and push image
         uses: docker/build-push-action@v7
         with:
