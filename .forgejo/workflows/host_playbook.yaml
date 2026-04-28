@@ -6,10 +6,9 @@ on:
       target:
         description: "Target:"
         required: true
-        default: "all"
+        default: ""
         type: choice
         options:
-          - all
           - mck
           - snow
           - turret
