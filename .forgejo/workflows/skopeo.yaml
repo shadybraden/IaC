@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - 'containers/Dockerfile.tools_container'
-      - '.forgejo/workflows/build_tools_container.yaml'
+      - '.forgejo/workflows/skopeo.yaml'
   workflow_dispatch:
     inputs:
       version:
