@@ -20,4 +20,6 @@ jobs:
       - name: print todo
         id: version
         run: |
+          skopeo --version
+          buildah --version
           echo "Version: ${{ github.event.inputs.version }}"
