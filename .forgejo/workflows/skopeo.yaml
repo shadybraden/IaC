@@ -18,7 +18,6 @@ jobs:
     runs-on: skopeo
 
     steps:
-
       - name: podman yeet
         run: |
           podman --version
