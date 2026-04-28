@@ -1,5 +1,6 @@
 ---
 - name: Set directory ownership recursively to uid/gid 1408
+  become: true
   ansible.builtin.file:
     path: "/data/config_storage/chronoframe"
     owner: 1408
