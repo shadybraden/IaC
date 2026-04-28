@@ -32,7 +32,7 @@ jobs:
 
       - name: Run Ansible
         run: |
-          ansible-playbook playbooks/${{ github.event.inputs.target }}".yaml
+          ansible-playbook playbooks/${{ github.event.inputs.target }}.yaml
         env:
           ANSIBLE_HOST_KEY_CHECKING: "False"  # alternative to known_hosts
           ANSIBLE_BECOME_PASS: ${{ secrets.SUDO_PASSWORD }}
