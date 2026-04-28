@@ -1,9 +1,6 @@
 name: Build tools_container
 
 on:
-  push:
-    paths:
-      - 'containers/Dockerfile.tools_container'
   workflow_dispatch:
     inputs:
       version:

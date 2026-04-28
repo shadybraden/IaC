@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - '.forgejo/workflows/buildah.yaml'
+      - 'containers/Dockerfile.tools_container'
   workflow_dispatch:
     inputs:
       version:
@@ -77,3 +78,11 @@ jobs:
             --creds "${{ secrets.REGISTRY_USERNAME }}:${{ secrets.REGISTRY_PASSWORD }}" \
             tools_container:${{ steps.version.outputs.version }} \
             docker://git.holmlab.org/shady/tools_container:latest
+
+      - name: Notify failure
+        if: failure()
+        run: |
+          curl -X POST https://ntfy.holmlab.org/${{ secrets.NTFY_TOPIC }} \
+            -H "Title: ‼️ Actions failed" \
+            -H "Priority: low" \
+            -d "Workflow '${{ github.workflow }}' failed"
