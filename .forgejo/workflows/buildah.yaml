@@ -17,6 +17,9 @@ jobs:
     runs-on: tools_container
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
       - name: Determine version
         id: version
         run: |
