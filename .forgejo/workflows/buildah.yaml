@@ -60,6 +60,8 @@ jobs:
           fi
 
       - name: Build image
+        env:
+          BUILDAH_ISOLATION: chroot
         run: |
           buildah --version
           buildah --storage-driver vfs build  --isolation chroot -f containers/Dockerfile.tools_container -t tools_container:${{ steps.version.outputs.version }} .
