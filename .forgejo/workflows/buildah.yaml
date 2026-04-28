@@ -69,11 +69,11 @@ jobs:
           buildah --storage-driver vfs push \
             --creds "${{ secrets.REGISTRY_USERNAME }}:${{ secrets.REGISTRY_PASSWORD }}" \
             tools_container:${{ steps.version.outputs.version }} \
-            docker://git.holmlab.org/tools_container:${{ steps.version.outputs.version }}
+            docker://git.holmlab.org/shady/tools_container:${{ steps.version.outputs.version }}
 
       - name: Push image :latest
         run: |
           buildah --storage-driver vfs push \
             --creds "${{ secrets.REGISTRY_USERNAME }}:${{ secrets.REGISTRY_PASSWORD }}" \
             tools_container:${{ steps.version.outputs.version }} \
-            docker://git.holmlab.org/tools_container:latest
+            docker://git.holmlab.org/shady/tools_container:latest
