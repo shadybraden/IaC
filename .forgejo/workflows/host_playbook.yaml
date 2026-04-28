@@ -10,9 +10,9 @@ on:
         type: choice
         options:
           - all
-          - pi3
           - mck
           - snow
+          - turret
           - holmie
           - holmgarage
 
