@@ -64,7 +64,6 @@ runner:
     - debian:docker://docker.io/library/debian:latest
     - ansible:docker://catthehacker/ubuntu:full-latest # https://nektosact.com/usage/runners.html
     - tools_container:docker://git.holmlab.org/shady/tools_container:0.1.3
-    - skopeo:docker://quay.io/skopeo/stable:v1.22.2
 
 cache:
   #
