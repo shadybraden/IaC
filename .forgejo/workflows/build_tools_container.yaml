@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'containers/Dockerfile.tools_container'
+      - '.forgejo/workflows/build_tools_container.yaml'
   workflow_dispatch:
     inputs:
       version:
@@ -19,13 +20,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-
-      - name: Log in to container registry
-        uses: docker/login-action@v4
-        with:
-          registry: git.holmlab.org
-          username: ${{ secrets.REGISTRY_USERNAME }}
-          password: ${{ secrets.REGISTRY_PASSWORD }}
 
       - name: Determine version
         id: version
@@ -68,18 +62,9 @@ jobs:
 
       - name: Start Docker daemon
         run: |
-          dockerd --storage-driver=vfs &>/tmp/dockerd.log &
-          timeout 15 sh -c 'until docker info >/dev/null 2>&1; do sleep 1; done'
+          podman --version
+          podman --help
 
-      - name: Build and push image
-        uses: docker/build-push-action@v7
-        with:
-          context: .
-          file: containers/Dockerfile.tools_container
-          push: true
-          tags: |
-            git.holmlab.org/shady/tools_container:${{ steps.version.outputs.version }}
-            git.holmlab.org/shady/tools_container:latest
 
       - name: Notify failure
         if: failure()
