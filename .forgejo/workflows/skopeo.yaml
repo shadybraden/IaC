@@ -20,4 +20,4 @@ jobs:
       - name: print todo
         id: version
         run: |
-          echo "Version: ${{ github.event.inputs.version }}
+          echo "Version: ${{ github.event.inputs.version }}"
