@@ -32,6 +32,7 @@ jobs:
 
       - name: Run Ansible
         run: |
+          echo "Running Ansible playbook on ${{ github.event.inputs.target }}"
           ansible-playbook playbooks/${{ github.event.inputs.target }}.yaml
         env:
           ANSIBLE_HOST_KEY_CHECKING: "False"  # alternative to known_hosts
