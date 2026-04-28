@@ -1,0 +1,47 @@
+name: Deploy any Host's Ansible Playbook
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: "Target:"
+        required: true
+        default: "all"
+        type: choice
+        options:
+          - all
+          - pi3
+          - mck
+          - snow
+          - holmie
+          - holmgarage
+
+jobs:
+  deploy:
+    runs-on: tools_container
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+
+      - name: Run Ansible
+        run: |
+          ansible-playbook playbooks/${{ github.event.inputs.target }}".yaml
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: "False"  # alternative to known_hosts
+          ANSIBLE_BECOME_PASS: ${{ secrets.SUDO_PASSWORD }}
+          ANSIBLE_FORCE_COLOR: "1"
+
+      - name: Notify failure
+        if: failure()
+        run: |
+          curl -X POST https://ntfy.holmlab.org/${{ secrets.NTFY_TOPIC }} \
+            -H "Title: ‼️ Actions failed" \
+            -H "Priority: low" \
+            -d "Workflow '${{ github.workflow }}' failed"
