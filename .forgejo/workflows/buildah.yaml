@@ -59,18 +59,18 @@ jobs:
       - name: Build image
         run: |
           buildah --version
-          buildah build -f Dockerfile.tools_container -t tools_container:${{ steps.version.outputs.version }} .
+          buildah --storage-driver vfs build -f Dockerfile.tools_container -t tools_container:${{ steps.version.outputs.version }} .
 
       - name: Push image version
         run: |
-          buildah push \
+          buildah --storage-driver vfs push \
             --creds "${{ secrets.REGISTRY_USERNAME }}:${{ secrets.REGISTRY_PASSWORD }}" \
             tools_container:${{ steps.version.outputs.version }} \
             docker://git.holmlab.org/tools_container:${{ steps.version.outputs.version }}
 
       - name: Push image :latest
         run: |
-          buildah push \
+          buildah --storage-driver vfs push \
             --creds "${{ secrets.REGISTRY_USERNAME }}:${{ secrets.REGISTRY_PASSWORD }}" \
             tools_container:${{ steps.version.outputs.version }} \
             docker://git.holmlab.org/tools_container:latest
