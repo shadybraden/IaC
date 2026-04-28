@@ -58,6 +58,7 @@ jobs:
 
       - name: Build image
         run: |
+          buildah --version
           buildah build -f Dockerfile.tools_container -t tools_container:${{ steps.version.outputs.version }} .
 
       - name: Push image version
