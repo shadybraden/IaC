@@ -7,7 +7,20 @@
     group: 1000
     recurse: true
     state: directory
-- name: Set file ownership recursively to uid/gid 1000
+
+- name: Detect if file is actually a folder
+  become: true
+  ansible.builtin.stat:
+    path: "/data/config_storage/example_service/file.md"
+  register: filenotfolder
+
+- name: Remove un-needed directory
+  become: true
+  ansible.builtin.command:
+    cmd: rmdir /data/config_storage/example_service/file.md
+  when: filenotfolder.stat.exists and filenotfolder.stat.isdir
+
+- name: Set file ownership to uid/gid 1000
   become: true
   ansible.builtin.file:
     path: "/data/config_storage/example_service/file.md"
