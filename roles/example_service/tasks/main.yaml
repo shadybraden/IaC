@@ -12,13 +12,13 @@
   become: true
   ansible.builtin.stat:
     path: "/data/config_storage/example_service/file.md"
-  register: filenotfolder
+  register: filemd_stat
 
 - name: Remove un-needed directory
   become: true
   ansible.builtin.command:
     cmd: rmdir /data/config_storage/example_service/file.md
-  when: filenotfolder.stat.exists and filenotfolder.stat.isdir
+  when: filemd_stat.stat.exists and filemd_stat.stat.isdir
 
 - name: Set file ownership to uid/gid 1000
   become: true
