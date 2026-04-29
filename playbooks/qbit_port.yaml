@@ -1,0 +1,17 @@
+---
+- name: Update the port for Qbittorrent
+  hosts: holmie@192.168.50.65
+  become: false
+
+  tasks:
+    - name: Input port into port file /data/config_storage/komodo/etc_komodo/qbit_port.env
+      ansible.builtin.copy:
+        content: "TORRENTING_PORT={{ extra_var }}"
+        dest: /data/config_storage/komodo/etc_komodo/qbit_port.env
+        owner: 1000
+        group: 1000
+        mode: "0644"
+
+    - name: Webhook to restart vpn'd stuff
+      ansible.builtin.shell: |
+        curl -f -X POST https://komodo.holmlab.org/listener/gitlab/procedure/restart_gluetun'd%20-%20holmie/main  -H "Content-Type: application/json" -H "X-Gitlab-Token:  ${{ secrets.WEBHOOK_PASSWORD }}" -d '{"ref":"refs/heads/main"}'

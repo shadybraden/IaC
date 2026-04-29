@@ -14,6 +14,7 @@ on:
           - turret
           - holmie
           - holmgarage
+          - qbit_port
       extra_var:
         description: "extra_var:"
         required: false
