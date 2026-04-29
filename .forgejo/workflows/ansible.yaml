@@ -3,7 +3,7 @@ name: Deploy with Ansible
 on:
   push:
     branches: [main]
-    paths-ignore: [runner-config.yml]
+    paths-ignore: [runner-config.yml, .forgejo/workflows/restart_actions.yaml]
   workflow_dispatch:
 
 jobs:
