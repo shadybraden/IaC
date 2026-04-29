@@ -14,7 +14,7 @@ on:
         default: ''
 
 jobs:
-  Build-skopeo:
+  Build-tools_container:
     runs-on: tools_container
 
     steps:
