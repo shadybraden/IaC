@@ -6,7 +6,7 @@
   tasks:
     - name: Input port into port file /data/config_storage/komodo/etc_komodo/qbit_port.env
       ansible.builtin.copy:
-        content: "TORRENTING_PORT={{ extra_var }}"
+        content: "TORRENTING_PORT={{ extra_var }}\n"
         dest: /data/config_storage/komodo/etc_komodo/qbit_port.env
         owner: 1000
         group: 1000
