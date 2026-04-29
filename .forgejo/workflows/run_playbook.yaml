@@ -14,6 +14,11 @@ on:
           - turret
           - holmie
           - holmgarage
+      extra_var:
+        description: "extra_var:"
+        required: false
+        default: ""
+        type: string
 
 jobs:
   deploy:
@@ -31,8 +36,8 @@ jobs:
 
       - name: Run Ansible
         run: |
-          echo "Running Ansible playbook on ${{ github.event.inputs.target }}"
-          ansible-playbook playbooks/${{ github.event.inputs.target }}.yaml
+          echo "Running Ansible playbook on ${{ github.event.inputs.target }} with var ${{ github.event.inputs.extra_var }}"
+          ansible-playbook playbooks/${{ github.event.inputs.target }}.yaml -e "extra_var='${{ github.event.inputs.extra_var }}'"
         env:
           ANSIBLE_HOST_KEY_CHECKING: "False"  # alternative to known_hosts
           ANSIBLE_BECOME_PASS: ${{ secrets.SUDO_PASSWORD }}
