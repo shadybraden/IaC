@@ -26,4 +26,3 @@
     path: "/data/config_storage/example_service/file.md"
     owner: 1000
     group: 1000
-    recurse: true
