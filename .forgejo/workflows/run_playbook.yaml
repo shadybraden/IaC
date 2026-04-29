@@ -1,4 +1,4 @@
-name: Deploy any Host's Ansible Playbook
+name: Deploy any Ansible Playbook
 
 on:
   workflow_dispatch:
