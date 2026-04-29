@@ -25,7 +25,7 @@ jobs:
         run: |
           echo "Running Syft on: ${{ github.event.inputs.image }}"
           echo "---"
-          syft "${{ github.event.inputs.image }}"  --color
+          syft "${{ github.event.inputs.image }}"
           echo "---"
 
       - name: Run Grype
@@ -36,7 +36,7 @@ jobs:
         run: |
           echo "Running Grype on: ${{ github.event.inputs.image }}"
           echo "---"
-          grype "${{ github.event.inputs.image }}"  --color
+          grype "${{ github.event.inputs.image }}"
           echo "---"
 
       - name: Notify failure
