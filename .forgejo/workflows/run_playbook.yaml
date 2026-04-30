@@ -37,7 +37,7 @@ jobs:
 
       - name: Run Ansible
         run: |
-          echo "Running Ansible playbook on ${{ github.event.inputs.playbook }} with var ${{ github.event.inputs.extra_var }}"
+          echo "Running Ansible playbook ${{ github.event.inputs.playbook }} with var ${{ github.event.inputs.extra_var }}"
           ansible-playbook playbooks/${{ github.event.inputs.playbook }}.yaml \
             -e "extra_var='${{ github.event.inputs.extra_var }}'"
         env:
