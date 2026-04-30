@@ -278,3 +278,15 @@ executions = [
   { execution.type = "RestartStack", execution.params.stack = "forgejo_actions-holmie", execution.params.services = [], enabled = true },
   { execution.type = "RestartStack", execution.params.stack = "forgejo_actions-shady", execution.params.services = [], enabled = true }
 ]
+
+##
+
+[[procedure]]
+name = "restart_qbittorrent"
+
+[[procedure.config.stage]]
+name = "restart"
+enabled = true
+executions = [
+  { execution.type = "RestartContainer", execution.params.server = "holmie", execution.params.container = "qbittorrent", enabled = true }
+]
