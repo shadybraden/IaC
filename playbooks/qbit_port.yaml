@@ -15,4 +15,5 @@
     - name: Webhook to restart vpn'd stuff
       ansible.builtin.debug:
         msg:
-        - "Provisioning based on WEBHOOK_PASSWORD which is: {{ lookup('ansible.builtin.env', 'WEBHOOK_PASSWORD') }}
+        - "Provisioning based on WEBHOOK_PASSWORD which is: {{ lookup('ansible.builtin.env', 'WEBHOOK_PASSWORD') }}"
+"
