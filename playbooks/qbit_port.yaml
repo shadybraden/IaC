@@ -14,4 +14,4 @@
 
     - name: Webhook to restart vpn'd stuff
       ansible.builtin.shell: |
-        curl -f -X POST "https://komodo.holmlab.org/listener/gitlab/procedure/restart_gluetun'd%20-%20holmie/main" -H "Content-Type: application/json" -H "X-Gitlab-Token: WEBHOOK_PASSWORD" -d '{"ref":"refs/heads/main"}'
+        echo $WEBHOOK_PASSWORD
