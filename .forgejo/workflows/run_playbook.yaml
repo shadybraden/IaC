@@ -3,7 +3,7 @@ name: Deploy any Ansible Playbook
 on:
   workflow_dispatch:
     inputs:
-      target:
+      Playbook:
         description: "Target:"
         required: true
         default: ""
