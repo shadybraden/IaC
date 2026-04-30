@@ -39,12 +39,12 @@ jobs:
         run: |
           echo "Running Ansible playbook on ${{ github.event.inputs.playbook }} with var ${{ github.event.inputs.extra_var }}"
           ansible-playbook playbooks/${{ github.event.inputs.playbook }}.yaml \
-            -e "extra_var='${{ github.event.inputs.extra_var }}'" \
-            -e 'WEBHOOK_PASSWORD=${{ secrets.WEBHOOK_PASSWORD }}'
+            -e "extra_var='${{ github.event.inputs.extra_var }}'"
         env:
           ANSIBLE_HOST_KEY_CHECKING: "False"  # alternative to known_hosts
           ANSIBLE_BECOME_PASS: ${{ secrets.SUDO_PASSWORD }}
           ANSIBLE_FORCE_COLOR: "1"
+          WEBHOOK_PASSWORD: ${{ secrets.WEBHOOK_PASSWORD }}
 
       - name: Notify failure
         if: failure()
