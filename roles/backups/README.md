@@ -14,3 +14,5 @@ secret_access_key = <secret_access_key>
 region = us-east-1
 storage_class = DEEP_ARCHIVE
 ```
+
+## Set resticPassword.txt
