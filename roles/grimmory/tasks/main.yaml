@@ -1,0 +1,19 @@
+---
+- name: Setup folders for grimmory
+  block:
+    - name: Set /data/config_storage/grimmory ownership recursively to uid/gid 1000
+      become: true
+      ansible.builtin.file:
+        path: "/data/config_storage/grimmory"
+        owner: 1000
+        group: 1000
+        recurse: true
+        state: directory
+    - name: Set /data/ebooks ownership recursively to uid/gid 1000
+      become: true
+      ansible.builtin.file:
+        path: "/data/ebooks"
+        owner: 1000
+        group: 1000
+        recurse: true
+        state: directory
