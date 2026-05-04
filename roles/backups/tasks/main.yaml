@@ -49,6 +49,11 @@
     path: /data/resticPassword.txt
     mode: '0600'
 
+- name: Ensure backups dir exists
+  file:
+    path: /data/backups
+    state: directory
+
 - name: Git pull latest changes
   ansible.builtin.shell:
     cmd: git pull
