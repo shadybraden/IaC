@@ -2,6 +2,8 @@
 
 ## Configure AWS config:
 
+Use `rclone config` as root to setup. naming as `aws` not `DEFAULT`
+
 ```shell
 sudo nano /root/.config/rclone/rclone.conf
 ```
