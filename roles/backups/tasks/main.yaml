@@ -1,17 +1,47 @@
 ---
-- name: Check AWS CLI version
-  ansible.builtin.command: aws --version
-  register: aws_version
-  changed_when: false
-  failed_when: false
+- name: Verify packages installed
+  block:
+  - name: Check AWS CLI version
+    ansible.builtin.command: aws --version
+    register: aws_version
+    changed_when: false
+    failed_when: false
 
-- name: Exit role if AWS CLI is not installed
-  ansible.builtin.meta: end_host
-  when: aws_version.rc != 0
+  - name: Exit role if AWS CLI is not installed
+    ansible.builtin.meta: end_host
+    when: aws_version.rc != 0
 
-- name: Display AWS CLI version
-  ansible.builtin.debug:
-    msg: "{{ aws_version.stdout }}"
+  - name: Display AWS CLI version
+    ansible.builtin.debug:
+      msg: "{{ aws_version.stdout }}"
+
+  - name: Check rclone version
+    ansible.builtin.command: rclone --version
+    register: rclone_version
+    changed_when: false
+    failed_when: false
+
+  - name: Exit role if rclone is not installed
+    ansible.builtin.meta: end_host
+    when: rclone_version.rc != 0
+
+  - name: Display rclone version
+    ansible.builtin.debug:
+      msg: "{{ rclone_version.stdout }}"
+
+  - name: Check restic version
+    ansible.builtin.command: restic --version
+    register: restic_version
+    changed_when: false
+    failed_when: false
+
+  - name: Exit role if restic is not installed
+    ansible.builtin.meta: end_host
+    when: restic_version.rc != 0
+
+  - name: Display restic version
+    ansible.builtin.debug:
+      msg: "{{ restic_version.stdout }}"
 
 - name: Set file permissions for resticPassword
   become: true
