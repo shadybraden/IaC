@@ -21,6 +21,7 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
 
       - name: Run Holmie Ansible
+        continue-on-error: true
         run: |
           ansible-playbook playbooks/holmie.yaml
         env:
@@ -29,6 +30,7 @@ jobs:
           ANSIBLE_FORCE_COLOR: "1"
 
       - name: Run HolmGarage Ansible
+        continue-on-error: true
         run: |
           ansible-playbook playbooks/holmgarage.yaml
         env:
@@ -37,6 +39,7 @@ jobs:
           ANSIBLE_FORCE_COLOR: "1"
 
       - name: Run Snow Ansible
+        continue-on-error: true
         run: |
           ansible-playbook playbooks/snow.yaml
         env:
