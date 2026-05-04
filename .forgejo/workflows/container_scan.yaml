@@ -1,22 +1,22 @@
 name: Scan an image
 
 on:
+  push:
+    paths:
+      - '.forgejo/workflows/container_scan.yaml'
   workflow_dispatch:
     inputs:
       image:
         description: 'image to scan'
         required: true
         type: string
-        default: 'git.holmlab.org/shady/tools_container:0.1.2'
+        default: 'git.holmlab.org/shady/tools_container:0.1.14'
 
 jobs:
   scan-tools_container:
     runs-on: tools_container
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-
       - name: Run Grype
         id: version
         env:
