@@ -30,7 +30,7 @@
       msg: "{{ rclone_version.stdout }}"
 
   - name: Check restic version
-    ansible.builtin.command: restic --version
+    ansible.builtin.command: restic version
     register: restic_version
     changed_when: false
     failed_when: false
