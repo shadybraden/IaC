@@ -36,6 +36,14 @@ jobs:
           ANSIBLE_BECOME_PASS: ${{ secrets.SUDO_PASSWORD }}
           ANSIBLE_FORCE_COLOR: "1"
 
+      - name: Run Snow Ansible
+        run: |
+          ansible-playbook playbooks/snow.yaml
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: "False"  # alternative to known_hosts
+          ANSIBLE_BECOME_PASS: ${{ secrets.SUDO_PASSWORD }}
+          ANSIBLE_FORCE_COLOR: "1"
+
       - name: Notify failure
         if: failure()
         run: |
