@@ -1,0 +1,11 @@
+---
+- name: Setup folders for netalertx
+  block:
+    - name: Set directory ownership recursively to uid/gid 20211
+      become: true
+      ansible.builtin.file:
+        path: "/data/config_storage/netalertx"
+        owner: 20211
+        group: 20211
+        recurse: true
+        state: directory
