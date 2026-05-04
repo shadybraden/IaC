@@ -615,19 +615,6 @@ env_file_path = "/etc/komodo/env/planka-holmie.env"
 ##
 
 [[stack]]
-name = "jenkins-holmie"
-tags = ["holmie", "criticality: 5"]
-[stack.config]
-server = "holmie"
-project_name = "jenkins-holmie"
-linked_repo = "compose_main"
-run_directory = "jenkins"
-additional_env_files = ["/etc/komodo/domain.env"]
-env_file_path = "/etc/komodo/env/jenkins-holmie.env"
-
-##
-
-[[stack]]
 name = "gluetun-holmie"
 tags = ["holmie", "criticality: 2"]
 [stack.config]
