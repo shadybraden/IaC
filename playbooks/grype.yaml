@@ -5,5 +5,5 @@
 
   tasks:
     - name: Grype
-      ansible.builtin.shell:
+      ansible.builtin.command:
         cmd: grype {{ lookup('ansible.builtin.env', 'IMAGE') }}
