@@ -1,6 +1,9 @@
 name: Scan an image inside Holmie via ansible
 
 on:
+  push:
+    paths:
+      - 'playbooks/grype.yaml'
   workflow_dispatch:
     inputs:
       image:

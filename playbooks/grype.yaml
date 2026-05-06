@@ -4,6 +4,12 @@
   become: false
 
   tasks:
-    - name: Grype
+    - name: grype {{ lookup('ansible.builtin.env', 'IMAGE') }}
       ansible.builtin.command:
         cmd: /home/linuxbrew/.linuxbrew/bin/grype {{ lookup('ansible.builtin.env', 'IMAGE') }}
+      register: grype_result
+      changed_when: false
+
+    - name: Show grype scan results
+      ansible.builtin.debug:
+        msg: "{{ grype_result.stdout_lines }}"
