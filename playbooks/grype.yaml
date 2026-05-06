@@ -9,6 +9,8 @@
         cmd: /home/linuxbrew/.linuxbrew/bin/grype {{ lookup('ansible.builtin.env', 'IMAGE') }}
       register: grype_result
       changed_when: false
+      environment:
+        GRYPE_COLOR: "always"
 
     - name: Show grype scan results
       ansible.builtin.debug:
