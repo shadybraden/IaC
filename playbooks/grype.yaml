@@ -5,6 +5,5 @@
 
   tasks:
     - name: Run grype scan on {{ lookup('ansible.builtin.env', 'IMAGE') }}
-      ansible.builtin.shell:
-        cmd: /home/linuxbrew/.linuxbrew/bin/grype {{ lookup('ansible.builtin.env', 'IMAGE') }} > /dev/tty
+      ansible.builtin.raw: /home/linuxbrew/.linuxbrew/bin/grype {{ lookup('ansible.builtin.env', 'IMAGE') }}
       changed_when: false
