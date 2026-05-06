@@ -6,4 +6,4 @@
   tasks:
     - name: Grype
       ansible.builtin.command:
-        cmd: grype {{ lookup('ansible.builtin.env', 'IMAGE') }}
+        cmd: /home/linuxbrew/.linuxbrew/bin/grype {{ lookup('ansible.builtin.env', 'IMAGE') }}
