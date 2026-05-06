@@ -24,12 +24,9 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
 
       - name: Run Grype Ansible
-        continue-on-error: true
         run: |
           echo "Running Grype on: ${{ github.event.inputs.image }}"
-          echo "---"
           ansible-playbook playbooks/grype.yaml
-          echo "---"
         env:
           ANSIBLE_HOST_KEY_CHECKING: "False"  # alternative to known_hosts
           ANSIBLE_FORCE_COLOR: "1"
