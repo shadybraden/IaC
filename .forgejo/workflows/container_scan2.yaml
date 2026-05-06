@@ -29,7 +29,6 @@ jobs:
           ansible-playbook playbooks/grype.yaml
         env:
           ANSIBLE_HOST_KEY_CHECKING: "False"  # alternative to known_hosts
-          ANSIBLE_FORCE_COLOR: "1"
           IMAGE: ${{ github.event.inputs.image }}
 
       - name: Notify failure
