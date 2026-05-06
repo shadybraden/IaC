@@ -4,7 +4,7 @@
   become: false
 
   tasks:
-    - name: grype {{ lookup('ansible.builtin.env', 'IMAGE') }}
+    - name: Grype
       ansible.builtin.command:
         cmd: /home/linuxbrew/.linuxbrew/bin/grype {{ lookup('ansible.builtin.env', 'IMAGE') }}
       register: grype_result
