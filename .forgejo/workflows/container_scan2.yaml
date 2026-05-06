@@ -1,0 +1,36 @@
+name: Scan an image inside Holmie via ansible
+
+on:
+  workflow_dispatch:
+    inputs:
+      image:
+        description: 'image to scan'
+        required: true
+        type: string
+        default: 'git.holmlab.org/shady/tools_container:0.1.14'
+
+jobs:
+  scan-tools_container:
+    runs-on: tools_container
+
+    steps:
+
+      - name: Run Grype Ansible
+        continue-on-error: true
+        run: |
+          echo "Running Grype on: ${{ github.event.inputs.image }}"
+          echo "---"
+          ansible-playbook playbooks/grype.yaml
+          echo "---"
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: "False"  # alternative to known_hosts
+          ANSIBLE_FORCE_COLOR: "1"
+          IMAGE: ${{ github.event.inputs.image }}
+
+      - name: Notify failure
+        if: failure()
+        run: |
+          curl -X POST https://ntfy.holmlab.org/${{ secrets.NTFY_TOPIC }} \
+            -H "Title: ‼️ Actions failed" \
+            -H "Priority: low" \
+            -d "Workflow '${{ github.workflow }}' failed"

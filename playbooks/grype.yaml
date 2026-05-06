@@ -1,0 +1,9 @@
+---
+- name: Run Grype
+  hosts: holmie@192.168.50.65
+  become: false
+
+  tasks:
+    - name: Grype
+      ansible.builtin.shell:
+        cmd: grype {{ lookup('ansible.builtin.env', 'IMAGE') }}
