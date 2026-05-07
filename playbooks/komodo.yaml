@@ -8,26 +8,6 @@
   
   vars:
     compose_dir: ansible_facts["home"]/compose/komodo
-
-  tasks:
-    - name: Git pull latest changes
-      ansible.builtin.shell:
-        cmd: git pull
-        chdir: "{{ compose_dir }}"
-
-    - name: docker compose up -d
-      community.docker.docker_compose_v2:
-        project_src: "{{ compose_dir }}"
-        state: present
-        pull: missing
-      become: true
-
-- name: Deploy periphery services
-  hosts: periphery
-  become: false
-
-  vars:
-    compose_dir: ansible_facts["home"]/compose/periphery
   tasks:
     - name: Git pull latest changes
       ansible.builtin.shell:
