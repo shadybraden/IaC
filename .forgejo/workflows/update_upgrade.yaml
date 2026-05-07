@@ -34,7 +34,7 @@ jobs:
 
       - name: Run update_upgrade Role
         env:
-          ANSIBLE_HOST_KEY_CHECKING: "False"  # alternative to known_hosts
+          ANSIBLE_HOST_KEY_CHECKING: "False"
           ANSIBLE_BECOME_PASS: ${{ secrets.SUDO_PASSWORD }}
           ANSIBLE_FORCE_COLOR: "1"
         run: |
