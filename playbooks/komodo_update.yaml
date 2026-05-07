@@ -7,7 +7,7 @@
   become: false
   
   vars:
-    compose_dir: "{{ ansible_env.HOME }}/compose/komodo"
+    compose_dir: ansible_facts["home"]/compose/komodo
 
   tasks:
     - name: Git pull latest changes
@@ -27,7 +27,7 @@
   become: false
 
   vars:
-    compose_dir: "{{ ansible_env.HOME }}/compose/periphery"
+    compose_dir: ansible_facts["home"]/compose/periphery
   tasks:
     - name: Git pull latest changes
       ansible.builtin.shell:
