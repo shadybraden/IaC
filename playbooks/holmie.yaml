@@ -8,3 +8,4 @@
     - roles/zot
     - roles/grimmory
     - roles/netalertx
+    - roles/docmost
