@@ -1,4 +1,4 @@
 - name: mck
   hosts: mck@100.117.173.46
   roles:
-    - roles/ntfy_hostname
+    - roles/docmost
