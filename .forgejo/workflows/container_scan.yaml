@@ -58,8 +58,8 @@ jobs:
 
           echo "+ docker export:"
           docker export "$container" | tar -x -C "$TMPDIR"
-          echo "+ docker rm:"
-          docker rm "$container"
+          #echo "+ docker rm:"
+          #docker rm "$container"
 
           echo "+ configure clamav"
           freshclam
