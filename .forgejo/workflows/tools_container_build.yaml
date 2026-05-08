@@ -3,7 +3,7 @@ name: Use buildah to make tools_container
 on:
   push:
     paths:
-      - '.forgejo/workflows/buildah.yaml'
+      - '.forgejo/workflows/tools_container_build.yaml'
       - 'containers/Dockerfile.tools_container'
   workflow_dispatch:
     inputs:
