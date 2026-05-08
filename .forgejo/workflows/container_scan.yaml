@@ -45,10 +45,11 @@ jobs:
         run: |
           echo "Running ClamScan on: ${{ github.event.inputs.image }}"
           echo "---"
-          
+
           # export image for scanning
           IMAGE="${{ github.event.inputs.image }}"
           TMPDIR=$(mktemp -d)
+          dockerd &
           docker create --name tmp_scan "$IMAGE"
           docker export tmp_scan | tar -x -C "$TMPDIR"
           docker rm tmp_scan
