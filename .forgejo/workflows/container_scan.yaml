@@ -10,7 +10,7 @@ on:
         default: 'git.holmlab.org/shady/tools_container:0.1.14'
 
 jobs:
-  scan-tools_container:
+  Grype:
     runs-on: tools_container
 
     steps:
@@ -23,6 +23,42 @@ jobs:
           echo "Running Grype on: ${{ github.event.inputs.image }}"
           echo "---"
           grype "${{ github.event.inputs.image }}"
+          echo "---"
+
+      - name: Notify failure
+        if: failure()
+        run: |
+          curl -X POST https://ntfy.holmlab.org/${{ secrets.NTFY_TOPIC }} \
+            -H "Title: ‼️ Actions failed" \
+            -H "Priority: low" \
+            -d "Workflow '${{ github.workflow }}' failed"
+
+  ClamAV:
+    runs-on: tools_container
+
+    steps:
+      - name: Run ClamAV
+        id: version
+        env:
+          CLICOLOR_FORCE: "1"
+          TERM: xterm-256color
+        run: |
+          echo "Running ClamScan on: ${{ github.event.inputs.image }}"
+          echo "---"
+          
+          # export image for scanning
+          IMAGE="${{ github.event.inputs.image }}"
+          TMPDIR=$(mktemp -d)
+          docker create --name tmp_scan "$IMAGE"
+          docker export tmp_scan | tar -x -C "$TMPDIR"
+          docker rm tmp_scan
+
+          # scan image
+          clamscan -r "$TMPDIR"
+
+          # clean up
+          rm -rf "$TMPDIR"
+
           echo "---"
 
       - name: Notify failure
