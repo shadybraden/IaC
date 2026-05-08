@@ -46,7 +46,7 @@ jobs:
           echo "Running ClamScan on: ${{ github.event.inputs.image }}"
           echo "---"
 
-          echo "---export image for scanning"
+          echo "--- export image for scanning"
           IMAGE="${{ github.event.inputs.image }}"
           TMPDIR=$(mktemp -d)
           dockerd &
