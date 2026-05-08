@@ -51,8 +51,11 @@ jobs:
           TMPDIR=$(mktemp -d)
           dockerd &
           sleep 10
+          echo "--- docker create:"
           docker create --name tmp_scan "$IMAGE"
+          echo "--- docker export:"
           docker export tmp_scan | tar -x -C "$TMPDIR"
+          echo "--- docker rm:"
           docker rm tmp_scan
 
           echo "--- scan image"
