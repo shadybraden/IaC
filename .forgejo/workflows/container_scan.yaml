@@ -55,13 +55,16 @@ jobs:
           dockerd --storage-driver=vfs &>/var/log/dockerd.log &
           until docker info &>/dev/null; do sleep 1; done
           sleep 10
-          
+
           echo "--- docker create:"
           docker create --name tmp_scan "$IMAGE"
           echo "--- docker export:"
           docker export tmp_scan | tar -x -C "$TMPDIR"
           echo "--- docker rm:"
           docker rm tmp_scan
+
+          echo "--- configure clamav"
+          mkdir -p /var/lib/clamav
 
           echo "--- scan image"
           clamscan -r "$TMPDIR"
