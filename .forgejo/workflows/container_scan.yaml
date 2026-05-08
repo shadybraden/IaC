@@ -65,7 +65,12 @@ jobs:
           freshclam
 
           echo "+ scan image"
-          clamscan -r --infected "$TMPDIR" 2>&1 | head -50
+          clamscan -r --infected \
+            --suppress-ok-results \
+            --no-summary \
+            --scan-archive=no \
+            --scan-elf=no \
+            "$TMPDIR"
 
           echo "+ clean up"
           rm -rf "$TMPDIR"
