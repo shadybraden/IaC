@@ -49,6 +49,7 @@ jobs:
           TMPDIR=$(mktemp -d)
 
           echo "+ start docker"
+          mkdir -p /var/lib/docker
           dockerd &
 
           echo "+ docker create"
