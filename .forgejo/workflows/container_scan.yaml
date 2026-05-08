@@ -50,7 +50,8 @@ jobs:
 
           echo "+ start docker"
           mkdir -p /var/lib/docker
-          dockerd &
+          dockerd --storage-driver=vfs &>/var/log/dockerd.log &
+          until docker info &>/dev/null; do sleep 1; done
 
           echo "+ docker create"
           container=$(docker create ${{ github.event.inputs.image }})
