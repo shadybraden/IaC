@@ -45,20 +45,16 @@ jobs:
         run: |
           echo "Running ClamScan on: ${{ github.event.inputs.image }}"
 
-          echo "+ export image for scanning"
-          IMAGE="${{ github.event.inputs.image }}"
+          echo "+ export image for scanning
           TMPDIR=$(mktemp -d)
 
-          echo "+ configure and start docker"
-          mkdir -p /var/lib/docker
-          dockerd --storage-driver=vfs &>/var/log/dockerd.log &
-          until docker info &>/dev/null; do sleep 1; done
-          sleep 10
+          echo "+ docker create"
+          container=$(docker create ${{ github.event.inputs.image }})
 
           echo "+ docker export:"
-          docker export "$IMAGE" | tar -x -C "$TMPDIR"
+          docker export "$container" | tar -x -C "$TMPDIR"
           echo "+ docker rm:"
-          docker rm "$IMAGE"
+          docker rm "$container"
 
           echo "+ configure clamav"
           freshclam
