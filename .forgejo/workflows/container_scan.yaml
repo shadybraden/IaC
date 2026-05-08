@@ -21,9 +21,9 @@ jobs:
           TERM: xterm-256color
         run: |
           echo "Running Grype on: ${{ github.event.inputs.image }}"
-          echo "---"
+          echo "+"
           grype "${{ github.event.inputs.image }}"
-          echo "---"
+          echo "+"
 
       - name: Notify failure
         if: failure()
@@ -44,35 +44,32 @@ jobs:
           TERM: xterm-256color
         run: |
           echo "Running ClamScan on: ${{ github.event.inputs.image }}"
-          echo "---"
 
-          echo "--- export image for scanning"
+          echo "+ export image for scanning"
           IMAGE="${{ github.event.inputs.image }}"
           TMPDIR=$(mktemp -d)
 
-          echo "--- configure and start docker"
+          echo "+ configure and start docker"
           mkdir -p /var/lib/docker
           dockerd --storage-driver=vfs &>/var/log/dockerd.log &
           until docker info &>/dev/null; do sleep 1; done
           sleep 10
 
-          echo "--- docker create:"
+          echo "+ docker create:"
           docker create --name tmp_scan "$IMAGE"
-          echo "--- docker export:"
+          echo "+ docker export:"
           docker export tmp_scan | tar -x -C "$TMPDIR"
-          echo "--- docker rm:"
+          echo "+ docker rm:"
           docker rm tmp_scan
 
-          echo "--- configure clamav"
+          echo "+ configure clamav"
           mkdir -p /var/lib/clamav
 
-          echo "--- scan image"
+          echo "+ scan image"
           clamscan -r "$TMPDIR"
 
-          echo "--- clean up"
+          echo "+ clean up"
           rm -rf "$TMPDIR"
-
-          echo "---"
 
       - name: Notify failure
         if: failure()
