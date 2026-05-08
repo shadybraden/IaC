@@ -50,6 +50,7 @@ jobs:
           IMAGE="${{ github.event.inputs.image }}"
           TMPDIR=$(mktemp -d)
           dockerd &
+          sleep 10
           docker create --name tmp_scan "$IMAGE"
           docker export tmp_scan | tar -x -C "$TMPDIR"
           docker rm tmp_scan
