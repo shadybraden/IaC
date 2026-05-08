@@ -67,7 +67,6 @@ jobs:
           echo "+ scan image"
           clamscan -r --infected \
             --suppress-ok-results \
-            --no-summary \
             --scan-archive=no \
             --scan-elf=no \
             "$TMPDIR"
