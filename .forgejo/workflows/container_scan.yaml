@@ -48,6 +48,9 @@ jobs:
           echo "+ export image for scanning"
           TMPDIR=$(mktemp -d)
 
+          echo "+ start docker"
+          dockerd &
+
           echo "+ docker create"
           container=$(docker create ${{ github.event.inputs.image }})
 
