@@ -55,18 +55,16 @@ jobs:
           until docker info &>/dev/null; do sleep 1; done
           sleep 10
 
-          echo "+ docker create:"
-          docker create --name tmp_scan "$IMAGE"
           echo "+ docker export:"
-          docker export tmp_scan | tar -x -C "$TMPDIR"
+          docker export "$IMAGE" | tar -x -C "$TMPDIR"
           echo "+ docker rm:"
-          docker rm tmp_scan
+          docker rm "$IMAGE"
 
           echo "+ configure clamav"
           freshclam
 
           echo "+ scan image"
-          clamscan -r "$TMPDIR"
+          clamscan -r --infected "$TMPDIR"
 
           echo "+ clean up"
           rm -rf "$TMPDIR"
