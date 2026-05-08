@@ -63,7 +63,7 @@ jobs:
           docker rm tmp_scan
 
           echo "+ configure clamav"
-          mkdir -p /var/lib/clamav
+          freshclam
 
           echo "+ scan image"
           clamscan -r "$TMPDIR"
