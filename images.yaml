@@ -1,2 +1,4 @@
 ---
-image: rclone/rclone:1.74.0
+services:
+  rclone:
+    image: rclone/rclone:1.74.0
