@@ -1,1 +1,4 @@
-image: rclone/rclone:1.74.0
+---
+services:
+  freshrss:
+    image: rclone/rclone:1.74.0
