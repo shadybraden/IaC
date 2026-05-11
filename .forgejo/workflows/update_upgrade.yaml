@@ -6,7 +6,7 @@ on:
       target:
         description: "Target:"
         required: true
-        default: "all"
+        default: ""
         type: choice
         options:
           - all
@@ -16,6 +16,8 @@ on:
           - mck@100.117.173.46
           - holmie@192.168.50.65
           - shady@192.168.50.16
+      update_docker:
+        type: boolean
 
 jobs:
   ansible-update-upgrade:
