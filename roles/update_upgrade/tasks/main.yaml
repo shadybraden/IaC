@@ -112,3 +112,5 @@
     ansible.builtin.shell: |
       apt-mark unhold docker-ce docker-ce-cli docker-ce-rootless-extras docker-compose-plugin
     when: lookup('env', 'ANSIBLE_DO_DOCKER_UPDATE') | lower == 'false'
+
+  when: ansible_facts["os_family"] == "Debian"
