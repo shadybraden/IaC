@@ -41,7 +41,7 @@
     changed_when: false
     failed_when: false
 
-# enable docker updates if desired
+  # enable docker updates if desired
   - name: Re-enable docker updates (RedHat)
     become: true
     ansible.builtin.shell: |
@@ -71,6 +71,7 @@
 - name: Debian
   block:
 
+  # disable docker updates if desired
   - name: Temp disable docker updates (Debian)
     become: true
     ansible.builtin.shell: |
@@ -93,10 +94,10 @@
   
   # Display what was updated
   - name: Show updated packages (Debian)
-  become: true
-  ansible.builtin.debug:
-    msg: "Packages updated on {{ inventory_hostname }}"
-  when: apt_result is changed
+    become: true
+    ansible.builtin.debug:
+      msg: "Packages updated on {{ inventory_hostname }}"
+    when: apt_result is changed
 
   # Check if a reboot is required
   - name: Check if reboot is needed (Debian)
@@ -105,6 +106,7 @@
       path: /var/run/reboot-required
     register: reboot_file
 
+  # enable docker updates if desired
   - name: Re-enable docker updates (Debian)
     become: true
     ansible.builtin.shell: |
