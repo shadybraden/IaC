@@ -119,6 +119,17 @@
       path: /var/run/reboot-required
     register: reboot_file
 
+  # NTFY servers that need reboot
+  - name: NTFY reboot requirement
+    ansible.builtin.uri:
+      url: "https://ntfy.holmlab.org/updates1Q7Mjean"
+      method: POST
+      body: "Reboots needed:"
+      headers:
+        Title: "REBOOT REQUIRED on {{ inventory_hostname }}"
+        Priority: "min"
+    when: reboot_file.stat.exists
+
   # enable docker updates if desired
   - name: Re-enable docker updates (Debian)
     become: true
