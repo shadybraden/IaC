@@ -41,7 +41,7 @@
     failed_when: needs_restarting_result.rc not in [0, 1]
 
   # Flag servers that need reboot
-  - name: Report reboot requirement
+  - name: Report reboot requirement (RedHat)
     ansible.builtin.debug:
       msg: "REBOOT REQUIRED on {{ inventory_hostname }}"
     when:
@@ -49,7 +49,7 @@
       - not (reboot_check_fail_on_reboot | bool)
 
   # NTFY servers that need reboot
-  - name: NTFY reboot requirement
+  - name: NTFY reboot requirement (RedHat)
     ansible.builtin.uri:
       url: "https://ntfy.holmlab.org/updates1Q7Mjean"
       method: POST
@@ -100,7 +100,7 @@
     when: apt_result is changed
 
   # install reboot-notifier if needed
-  - name: Install reboot-notifier
+  - name: Install reboot-notifier (Debian)
     ansible.builtin.apt:
       name: reboot-notifier
       state: present
@@ -120,7 +120,7 @@
     register: reboot_file
 
   # NTFY servers that need reboot
-  - name: NTFY reboot requirement
+  - name: NTFY reboot requirement (Debian)
     ansible.builtin.uri:
       url: "https://ntfy.holmlab.org/updates1Q7Mjean"
       method: POST
