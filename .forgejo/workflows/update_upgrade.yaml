@@ -35,10 +35,19 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
 
+      - name: Select sudo password
+        id: resolve_pass
+        run: |
+          if [ "${{ github.event.inputs.target }}" = "shady@192.168.50.16" ]; then
+            echo "sudo_pass=${{ secrets.SHADY_SUDO_PASSWORD }}" >> $GITHUB_OUTPUT
+          else
+            echo "sudo_pass=${{ secrets.SUDO_PASSWORD }}" >> $GITHUB_OUTPUT
+          fi
+
       - name: Run update_upgrade Role
         env:
           ANSIBLE_HOST_KEY_CHECKING: "False"
-          ANSIBLE_BECOME_PASS: ${{ secrets.SUDO_PASSWORD }}
+          ANSIBLE_BECOME_PASS: ${{ steps.resolve_pass.outputs.sudo_pass }}
           ANSIBLE_FORCE_COLOR: "1"
           ANSIBLE_DO_DOCKER_UPDATE: ${{ github.event.inputs.update_docker }}
         run: |
