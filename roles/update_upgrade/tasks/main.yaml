@@ -8,7 +8,7 @@
     become: true
     ansible.builtin.shell: |
       dnf versionlock add docker-ce docker-ce-cli docker-ce-rootless-extras docker-compose-plugin
-    when: lookup('env', 'ANSIBLE_DO_DOCKER_UPDATE') | lower == 'false
+    when: lookup('env', 'ANSIBLE_DO_DOCKER_UPDATE') | lower == 'false'
 
   # Update the package cache first
   - name: Update package cache (RedHat)
@@ -50,7 +50,7 @@
 
   # NTFY servers that need reboot
   - name: NTFY reboot requirement
-    uri:
+    ansible.builtin.uri:
       url: "https://ntfy.holmlab.org/updates1Q7Mjean"
       method: POST
       body: "Reboots needed:"
