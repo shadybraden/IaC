@@ -16,7 +16,7 @@ on:
           - mck@100.117.173.46
           - holmie@192.168.50.65
           - shady@192.168.50.16
-      my_box:
+      update_docker:
         type: boolean
         default: true
 
