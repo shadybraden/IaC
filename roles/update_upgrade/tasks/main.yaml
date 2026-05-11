@@ -16,7 +16,7 @@
       apt-mark hold docker-ce docker-ce-cli docker-ce-rootless-extras docker-compose-plugin
     when: ansible_facts["os_family"] == "Debian"
 
-  when: lookup('env', 'ANSIBLE_DO_DOCKER_UPDATE') | lower == 'true'
+  when: lookup('env', 'ANSIBLE_DO_DOCKER_UPDATE') | lower == 'false'
 
 # Update the package cache first
 - name: Update package cache (RedHat)
@@ -116,4 +116,4 @@
       apt-mark unhold docker-ce docker-ce-cli docker-ce-rootless-extras docker-compose-plugin
     when: ansible_facts["os_family"] == "Debian"
 
-  when: lookup('env', 'ANSIBLE_DO_DOCKER_UPDATE') | lower == 'true'
+  when: lookup('env', 'ANSIBLE_DO_DOCKER_UPDATE') | lower == 'false'
