@@ -16,8 +16,9 @@ on:
           - mck@100.117.173.46
           - holmie@192.168.50.65
           - shady@192.168.50.16
-      update_docker:
+      my_box:
         type: boolean
+        default: true
 
 jobs:
   ansible-update-upgrade:
