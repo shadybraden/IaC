@@ -1,5 +1,23 @@
 # https://oneuptime.com/blog/post/2026-02-21-ansible-patch-linux-servers/view#basic-patching-playbook
 ---
+# disable docker updates if desired
+- name: Temp disable docker updates
+  block:
+   
+  - name: Temp disable docker updates (RedHat)
+    become: true
+    ansible.builtin.shell: |
+      dnf versionlock add docker-ce docker-ce-cli docker-ce-rootless-extras docker-compose-plugin
+    when: ansible_facts["os_family"] == "RedHat"
+
+  - name: Temp disable docker updates (Debian)
+    become: true
+    ansible.builtin.shell: |
+      apt-mark hold docker-ce docker-ce-cli docker-ce-rootless-extras docker-compose-plugin
+    when: ansible_facts["os_family"] == "Debian"
+
+  when: lookup('env', 'ANSIBLE_DO_DOCKER_UPDATE') | lower == 'true'
+
 # Update the package cache first
 - name: Update package cache (RedHat)
   become: true
@@ -81,3 +99,21 @@
   when: >
     (ansible_facts["os_family"] == "RedHat" and reboot_check.rc | default(0) == 1) or
     (ansible_facts["os_family"] == "Debian" and reboot_file.stat.exists | default(false))
+
+# enable docker updates if desired
+- name: Re-enable docker updates
+  block:
+   
+  - name: Re-enable docker updates (RedHat)
+    become: true
+    ansible.builtin.shell: |
+      dnf versionlock delete docker-ce docker-ce-cli docker-ce-rootless-extras docker-compose-plugin
+    when: ansible_facts["os_family"] == "RedHat"
+
+  - name: Re-enable docker updates (Debian)
+    become: true
+    ansible.builtin.shell: |
+      apt-mark unhold docker-ce docker-ce-cli docker-ce-rootless-extras docker-compose-plugin
+    when: ansible_facts["os_family"] == "Debian"
+
+  when: lookup('env', 'ANSIBLE_DO_DOCKER_UPDATE') | lower == 'true'

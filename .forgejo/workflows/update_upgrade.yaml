@@ -40,6 +40,7 @@ jobs:
           ANSIBLE_HOST_KEY_CHECKING: "False"
           ANSIBLE_BECOME_PASS: ${{ secrets.SUDO_PASSWORD }}
           ANSIBLE_FORCE_COLOR: "1"
+          ANSIBLE_DO_DOCKER_UPDATE: ${{ github.event.inputs.update_docker }}
         run: |
           ansible-playbook \
             -i inventory \
