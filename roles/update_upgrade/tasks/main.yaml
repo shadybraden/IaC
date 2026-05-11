@@ -99,8 +99,21 @@
       msg: "Packages updated on {{ inventory_hostname }}"
     when: apt_result is changed
 
+  # install reboot-notifier if needed
+  - name: Install reboot-notifier
+    ansible.builtin.apt:
+      name: reboot-notifier
+      state: present
+    become: true
+
   # Check if a reboot is required
-  - name: Check if reboot is needed (Debian)
+  - name: Check /var/run/reboot-required to see if reboot is needed (Debian)
+    become: true
+    ansible.builtin.stat:
+      path: /var/run/reboot-required
+    register: reboot_file
+
+  - name: Check /run/reboot-required to see if reboot is needed (Debian)
     become: true
     ansible.builtin.stat:
       path: /var/run/reboot-required
