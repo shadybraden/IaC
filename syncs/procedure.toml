@@ -254,7 +254,7 @@ executions = [
 
 [[procedure]]
 name = "restart-forgejo-actions"
-config.failure_alert = false
+config.failure_alert = true
 
 [[procedure.config.stage]]
 name = "pull"
