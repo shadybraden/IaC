@@ -1087,19 +1087,6 @@ env_file_path = "/etc/komodo/env/forgejo_actions-holmie.env"
 ##
 
 [[stack]]
-name = "sonarqube-holmie"
-tags = ["holmie", "criticality: 1"]
-[stack.config]
-server = "holmie"
-project_name = "sonarqube-holmie"
-linked_repo = "compose_main"
-run_directory = "sonarqube"
-additional_env_files = ["/etc/komodo/domain.env"]
-env_file_path = "/etc/komodo/env/sonarqube-holmie.env"
-
-##
-
-[[stack]]
 name = "chronoframe-holmie"
 tags = ["holmie", "criticality: 1"]
 [stack.config]
