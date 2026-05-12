@@ -244,13 +244,6 @@ executions = [
 ]
 
 [[procedure.config.stage]]
-name = "sleep - 2 mins"
-enabled = true
-executions = [
-  { execution.type = "Sleep", execution.params.duration_ms = 60000, enabled = true }
-]
-
-[[procedure.config.stage]]
 name = "destroy builder"
 enabled = true
 executions = [
