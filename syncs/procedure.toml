@@ -247,7 +247,7 @@ executions = [
 name = "sleep - 2 mins"
 enabled = true
 executions = [
-  { execution.type = "Sleep", execution.params.duration_ms = 120000, enabled = true }
+  { execution.type = "Sleep", execution.params.duration_ms = 60000, enabled = true }
 ]
 
 [[procedure.config.stage]]
