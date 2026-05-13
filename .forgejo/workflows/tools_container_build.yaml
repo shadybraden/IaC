@@ -12,6 +12,8 @@ on:
         required: false
         type: string
         default: ''
+  schedule:
+    - cron: "0 11 * * 3" # At 11:00, only on Wednesday
 
 jobs:
   Build-tools_container:
