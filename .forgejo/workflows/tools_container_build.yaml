@@ -63,7 +63,7 @@ jobs:
       - name: Build image
         run: |
           podman --version
-          podman build -f containers/Dockerfile.tools_container -t tools_container:${{ steps.version.outputs.version }} .
+          podman --storage-driver vfs build -f containers/Dockerfile.tools_container -t tools_container:${{ steps.version.outputs.version }} .
 
       - name: Push image version
         run: |
