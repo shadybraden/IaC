@@ -13,7 +13,7 @@ on:
         type: string
         default: ''
   schedule:
-    - cron: '10 11 * * *' # At 11:00, only on Wednesday
+    - cron: '45 11 * * 3' # At 11:45, only on Wednesday
       timezone: America/New_York
 
 jobs:
