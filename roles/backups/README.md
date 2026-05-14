@@ -20,3 +20,7 @@ storage_class = DEEP_ARCHIVE
 ## Set resticPassword.txt
 
 `/data/resticPassword.txt`
+
+## Clone the compose repo
+
+clone to `/data/config_storage/compose`
