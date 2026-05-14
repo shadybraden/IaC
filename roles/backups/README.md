@@ -18,3 +18,5 @@ storage_class = DEEP_ARCHIVE
 ```
 
 ## Set resticPassword.txt
+
+`/data/resticPassword.txt`
