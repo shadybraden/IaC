@@ -90,6 +90,7 @@ jobs:
             --exclude-dir="$TMPDIR/var/lib/apt" \
             --exclude-dir="$TMPDIR/usr/share/locale" \
             --exclude-dir="$TMPDIR/usr/share/man" \
+            --allowlist=/etc/clamav/local/fp.ign2 \
             "$TMPDIR"
 
           echo "+ clean up"
