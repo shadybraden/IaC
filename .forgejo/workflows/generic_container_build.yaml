@@ -7,17 +7,17 @@ on:
         description: 'version to publish'
         required: true
         type: string
-        default: ''
+        default: '0.0.1'
       source_code:
         description: '.git link'
         required: true
         type: string
-        default: ''
+        default: 'https://github.com/wg-easy/wg-easy.git'
       name_to_publish:
         description: 'name to publish - should match name cuz well cd there in a sec'
         required: true
         type: string
-        default: ''
+        default: 'wg-easy'
 
 jobs:
   Build-generic-image:
