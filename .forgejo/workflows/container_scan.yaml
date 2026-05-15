@@ -8,6 +8,9 @@ on:
         required: true
         type: string
         default: 'git.holmlab.org/shady/tools_container:0.1.14'
+      show-only-fixed:
+        type: boolean
+        default: false
 
 jobs:
   Grype:
@@ -22,7 +25,7 @@ jobs:
         run: |
           echo "Running Grype on: ${{ github.event.inputs.image }}"
           echo "+"
-          grype "${{ github.event.inputs.image }}"
+          grype "${{ github.event.inputs.image }}" ${{ github.event.inputs.show-only-fixed && '--only-fixed' || '' }}
           echo "+"
 
       - name: Notify failure
