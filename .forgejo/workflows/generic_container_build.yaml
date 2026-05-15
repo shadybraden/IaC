@@ -18,6 +18,11 @@ on:
         required: true
         type: string
         default: 'wg-easy'
+      dockerfile:
+        description: 'Dockerfile name'
+        required: true
+        type: string
+        default: 'Dockerfile'
 
 jobs:
   Build-generic-image:
@@ -35,7 +40,7 @@ jobs:
         run: |
           podman --version
           cd ${{ github.event.inputs.name_to_publish }}
-          podman --storage-driver vfs build -f Dockerfile -t ${{ github.event.inputs.name_to_publish }}:${{ github.event.inputs.version }} .
+          podman --storage-driver vfs build -f ${{ github.event.inputs.dockerfile }} -t ${{ github.event.inputs.name_to_publish }}:${{ github.event.inputs.version }} .
 
       - name: Push image version
         run: |
