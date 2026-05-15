@@ -34,7 +34,8 @@ jobs:
       - name: Build image
         run: |
           podman --version
-          podman --storage-driver vfs build -f ${{ github.event.inputs.name_to_publish }}/Dockerfile -t ${{ github.event.inputs.name_to_publish }}:${{ github.event.inputs.version }} .
+          cd ${{ github.event.inputs.name_to_publish }}
+          podman --storage-driver vfs build -f Dockerfile -t ${{ github.event.inputs.name_to_publish }}:${{ github.event.inputs.version }} .
 
       - name: Push image version
         run: |
