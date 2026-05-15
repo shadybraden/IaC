@@ -1,0 +1,44 @@
+name: Build and publish generic image
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: ''
+        required: true
+        type: string
+        default: ''
+      source_code:
+        description: '.git link'
+        required: true
+        type: string
+        default: ''
+      name_to_publish:
+        description: '.git link'
+        required: true
+        type: string
+        default: ''
+
+jobs:
+  Build-tools_container:
+    runs-on: tools_container
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6.0.2
+
+      - name: Clone code
+        run: |
+          git clone ${{ steps.source_code.outputs.source_code }} .
+
+      - name: Build image
+        run: |
+          podman --version
+          podman --storage-driver vfs build -f Dockerfile -t ${{ steps.name_to_publish.outputs.name_to_publish }}:${{ steps.version.outputs.version }} .
+
+      - name: Push image version
+        run: |
+          buildah --storage-driver vfs push \
+            --creds "${{ secrets.REGISTRY_USERNAME }}:${{ secrets.REGISTRY_PASSWORD }}" \
+            ${{ steps.name_to_publish.outputs.name_to_publish }}:${{ steps.version.outputs.version }} \
+            docker://git.holmlab.org/shady/${{ steps.name_to_publish.outputs.name_to_publish }}:${{ steps.version.outputs.version }}
