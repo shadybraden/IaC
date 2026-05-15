@@ -30,12 +30,11 @@ jobs:
       - name: Clone code
         run: |
           git clone ${{ github.event.inputs.source_code }}
-          cd ${{ github.event.inputs.name_to_publish }}
 
       - name: Build image
         run: |
           podman --version
-          podman --storage-driver vfs build -f Dockerfile -t ${{ github.event.inputs.name_to_publish }}:${{ github.event.inputs.version }} .
+          podman --storage-driver vfs build -f ${{ github.event.inputs.name_to_publish }}/Dockerfile -t ${{ github.event.inputs.name_to_publish }}:${{ github.event.inputs.version }} .
 
       - name: Push image version
         run: |
