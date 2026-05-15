@@ -29,17 +29,17 @@ jobs:
 
       - name: Clone code
         run: |
-          git clone ${{ steps.source_code.outputs.source_code }}
-          cd ${{ steps.name_to_publish.outputs.name_to_publish }}
+          git clone ${{ github.event.inputs.source_code }}
+          cd ${{ github.event.inputs.name_to_publish }}
 
       - name: Build image
         run: |
           podman --version
-          podman --storage-driver vfs build -f Dockerfile -t ${{ steps.name_to_publish.outputs.name_to_publish }}:${{ steps.version.outputs.version }} .
+          podman --storage-driver vfs build -f Dockerfile -t ${{ github.event.inputs.name_to_publish }}:${{ github.event.inputs.version }} .
 
       - name: Push image version
         run: |
           buildah --storage-driver vfs push \
             --creds "${{ secrets.REGISTRY_USERNAME }}:${{ secrets.REGISTRY_PASSWORD }}" \
-            ${{ steps.name_to_publish.outputs.name_to_publish }}:${{ steps.version.outputs.version }} \
-            docker://git.holmlab.org/shady/${{ steps.name_to_publish.outputs.name_to_publish }}:${{ steps.version.outputs.version }}
+            ${{ github.event.inputs.name_to_publish }}:${{ github.event.inputs.version }} \
+            docker://git.holmlab.org/shady/${{ github.event.inputs.name_to_publish }}:${{ github.event.inputs.version }}
