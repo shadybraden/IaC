@@ -14,13 +14,13 @@ on:
         type: string
         default: ''
       name_to_publish:
-        description: 'name_to_publish'
+        description: 'name to publish - should match name cuz well cd there in a sec'
         required: true
         type: string
         default: ''
 
 jobs:
-  Build-tools_container:
+  Build-generic-image:
     runs-on: tools_container
 
     steps:
@@ -29,7 +29,8 @@ jobs:
 
       - name: Clone code
         run: |
-          git clone ${{ steps.source_code.outputs.source_code }} .
+          git clone ${{ steps.source_code.outputs.source_code }}
+          cd ${{ steps.name_to_publish.outputs.name_to_publish }}
 
       - name: Build image
         run: |
