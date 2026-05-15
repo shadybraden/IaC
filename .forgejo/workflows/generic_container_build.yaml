@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: ''
+        description: 'version to publish'
         required: true
         type: string
         default: ''
@@ -14,7 +14,7 @@ on:
         type: string
         default: ''
       name_to_publish:
-        description: '.git link'
+        description: 'name_to_publish'
         required: true
         type: string
         default: ''
