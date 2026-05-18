@@ -1,0 +1,51 @@
+name: Build and publish wg-easy
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'version to publish'
+        required: true
+        type: string
+        default: '0.0.1'
+      git_hash:
+        description: 'Optional git commit hash'
+        required: false
+        type: string
+        default: ''
+
+jobs:
+  Build-generic-image:
+    runs-on: tools_container
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6.0.2
+
+      - name: Clone code
+        run: |
+          git clone https://github.com/wg-easy/wg-easy.git
+
+      - name: Checkout git hash?
+        run: |
+          if [ -z "${{ github.event.inputs.git_hash }}" ]; then
+            echo "No hash provided - skipping checkout."
+            exit 0
+          else
+            echo "Checking out..."
+            cd wg-easy
+            git checkout "${{ github.event.inputs.git_hash }}"
+          fi
+
+      - name: Build image
+        run: |
+          podman --version
+          cd wg-easy
+          podman --storage-driver vfs build -f Dockerfile -t wg-easy:${{ github.event.inputs.version }} .
+
+      - name: Push image version
+        run: |
+          buildah --storage-driver vfs push \
+            --creds "${{ secrets.REGISTRY_USERNAME }}:${{ secrets.REGISTRY_PASSWORD }}" \
+            wg-easy:${{ github.event.inputs.version }} \
+            docker://git.holmlab.org/shady/wg-easy:${{ github.event.inputs.version }}
