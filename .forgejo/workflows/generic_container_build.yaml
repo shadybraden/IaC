@@ -44,7 +44,7 @@ jobs:
       - name: Checkout git hash?
         run: |
           if [ -z "${{ github.event.inputs.git_hash }}" ]; then
-            echo "No hash provided — skipping checkout."
+            echo "No hash provided - skipping checkout."
             exit 0
           else
             echo "Checking out ${ { github.event.inputs.git_hash } }"
