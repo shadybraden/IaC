@@ -1126,12 +1126,12 @@ env_file_path = "/etc/komodo/env/docmost-holmie.env"
 ##
 
 [[stack]]
-name = "infiscal-holmie"
+name = "infisical-holmie"
 tags = ["holmie", "criticality: 1"]
 [stack.config]
 server = "holmie"
-project_name = "infiscal-holmie"
+project_name = "infisical-holmie"
 linked_repo = "compose_main"
-run_directory = "infiscal"
+run_directory = "infisical"
 additional_env_files = ["/etc/komodo/domain.env"]
-env_file_path = "/etc/komodo/env/infiscal-holmie.env"
+env_file_path = "/etc/komodo/env/infisical-holmie.env"
