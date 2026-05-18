@@ -47,7 +47,7 @@ jobs:
             echo "No hash provided - skipping checkout."
             exit 0
           else
-            echo "Checking out ${ { github.event.inputs.git_hash } }"
+            echo "Checking out..."
             cd ${{ github.event.inputs.name_to_publish }}
             git checkout "${{ github.event.inputs.git_hash }}"
           fi
