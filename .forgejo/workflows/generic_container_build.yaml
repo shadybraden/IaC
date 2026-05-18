@@ -26,6 +26,7 @@ on:
       git_hash:
         description: 'Optional git commit hash'
         required: false
+        type: string
         default: ''
 
 jobs:
