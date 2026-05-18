@@ -23,6 +23,10 @@ on:
         required: true
         type: string
         default: 'Dockerfile'
+      git_hash:
+        description: 'Optional: git commit hash'
+        required: false
+        default: ''
 
 jobs:
   Build-generic-image:
@@ -35,6 +39,17 @@ jobs:
       - name: Clone code
         run: |
           git clone ${{ github.event.inputs.source_code }}
+
+      - name: Checkout git hash?
+        run: |
+          if [ -z "${{ github.event.inputs.git_hash }}" ]; then
+            echo "No hash provided — skipping checkout."
+            exit 0
+          else
+            echo "Checking out ${ { github.event.inputs.git_hash } }"
+            cd ${{ github.event.inputs.name_to_publish }}
+            git checkout "${{ github.event.inputs.git_hash }}"
+          fi
 
       - name: Build image
         run: |
