@@ -24,7 +24,7 @@ on:
         type: string
         default: 'Dockerfile'
       git_hash:
-        description: 'Optional: git commit hash'
+        description: 'Optional git commit hash'
         required: false
         default: ''
 
