@@ -1033,6 +1033,15 @@ env_file_path = "/etc/komodo/env/hugo-runner-holmie.env"
 additional_env_files = [
   { path = "/etc/komodo/domain.env", track = true }
 ]
+compose_cmd_wrapper = """
+eval "$(TOKEN=$(curl -s --request POST \
+  --url https://infisical.holmlab.org/api/v1/auth/universal-auth/login \
+  --header 'Content-Type: application/json' \
+  --data "{\"clientId\":\"[[INFISICAL_CLIENTID]]\",\"clientSecret\":\"[[INFISICAL_CLIENTSECRET]]\"}" \
+  | perl -ne 'print $1 if /"accessToken":"([^"]+)"/')  && \
+  curl -s "https://infisical.holmlab.org/api/v3/secrets/raw?workspaceId=[[INFISICAL_WORKSPACE]]&environment=prod&secretPath=/" \
+  -H "Authorization: Bearer $TOKEN" \
+  | perl -ne 'while (/"secretKey":"([^"]+)","secretValue":"([^"]*?)"/g) { print "export $1=\x27$2\x27\n" }')" && env | grep TZ && [[COMPOSE_COMMAND]]"""
 
 ##
 
