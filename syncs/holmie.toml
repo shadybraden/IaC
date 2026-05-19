@@ -1029,8 +1029,11 @@ server = "holmie"
 project_name = "hugo-runner-holmie"
 linked_repo = "compose_main"
 run_directory = "hugo-runner"
-additional_env_files = ["/etc/komodo/domain.env"]
 env_file_path = "/etc/komodo/env/hugo-runner-holmie.env"
+additional_env_files = [
+  { path = "/etc/komodo/domain.env", track = true }
+]
+compose_cmd_wrapper = "infisical run --env=prod --path=/ --"
 
 ##
 
