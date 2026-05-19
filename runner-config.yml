@@ -260,4 +260,4 @@ server:
       url: https://git.holmlab.org/
       uuid: b274e2bc-c156-4c11-bbc6-e79cc9f7ba70
       token_url: file:/forgejo_actions_token.txt
-      fetch_interval: 10s
+      fetch_interval: 1s
