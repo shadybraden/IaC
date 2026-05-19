@@ -1042,7 +1042,6 @@ server = "holmie"
 project_name = "hugo-runner-holmie"
 linked_repo = "compose_main"
 run_directory = "hugo-runner"
-env_file_path = "/etc/komodo/env/hugo-runner-holmie.env"
 additional_env_files = [
   { path = "/etc/komodo/domain.env", track = true }
 ]
