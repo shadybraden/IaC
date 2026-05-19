@@ -15,6 +15,7 @@ on:
           - holmie
           - holmgarage
           - qbit_port
+          - infisical
       extra_var:
         description: "extra_var:"
         required: false
@@ -45,6 +46,8 @@ jobs:
           ANSIBLE_BECOME_PASS: ${{ secrets.SUDO_PASSWORD }}
           ANSIBLE_FORCE_COLOR: "1"
           WEBHOOK_PASSWORD: ${{ secrets.WEBHOOK_PASSWORD }}
+          INFISICAL_CLIENTID: ${{ secrets.INFISICAL_CLIENTID }}
+          INFISICAL_CLIENTSECRET: ${{ secrets.INFISICAL_CLIENTSECRET }}
 
       - name: Notify failure
         if: failure()

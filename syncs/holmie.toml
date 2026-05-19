@@ -1033,7 +1033,7 @@ env_file_path = "/etc/komodo/env/hugo-runner-holmie.env"
 additional_env_files = [
   { path = "/etc/komodo/domain.env", track = true }
 ]
-compose_cmd_wrapper = "infisical run --env=prod --path=/ -- [[COMPOSE_COMMAND]]"
+compose_cmd_wrapper = "infisical run --env=prod --path=/ --token=$INFISICAL_TOKEN -- [[COMPOSE_COMMAND]]"
 
 ##
 
