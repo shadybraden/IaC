@@ -182,6 +182,20 @@ env_file_path = "/etc/komodo/env/loggifly.env"
 ##
 
 [[stack]]
+name = "loggifly-errors-holmgarage"
+tags = ["holmgarage", "env", "criticality: 2"]
+[stack.config]
+server = "holmgarage"
+project_name = "loggifly-errors-holmgarage"
+auto_pull = false
+linked_repo = "compose_main"
+run_directory = "loggifly-errors"
+additional_env_files = ["/etc/komodo/domain.env"]
+env_file_path = "/etc/komodo/env/loggifly.env"
+
+##
+
+[[stack]]
 name = "lubelogger-holmgarage"
 tags = ["holmgarage", "criticality: 4"]
 [stack.config]
