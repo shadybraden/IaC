@@ -1053,7 +1053,8 @@ eval "$(TOKEN=$(curl -s --request POST \
   | perl -ne 'print $1 if /"accessToken":"([^"]+)"/')  && \
   curl -s "https://infisical.holmlab.org/api/v3/secrets/raw?workspaceId=[[INFISICAL_WORKSPACE]]&environment=prod&secretPath=/" \
   -H "Authorization: Bearer $TOKEN" \
-  | perl -ne 'while (/"secretKey":"([^"]+)","secretValue":"([^"]*?)"/g) { print "export $1=\x27$2\x27\n" }')" && [[COMPOSE_COMMAND]]"""
+  | perl -ne 'while (/"secretKey":"([^"]+)","secretValue":"([^"]*?)"/g) { print "export $1=\x27$2\x27\n" }')" && [[COMPOSE_COMMAND]]
+"""
 
 ##
 
