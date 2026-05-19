@@ -1045,6 +1045,7 @@ run_directory = "hugo-runner"
 additional_env_files = [
   { path = "/etc/komodo/domain.env", track = true }
 ]
+# messy until https://github.com/moghtech/komodo/issues/677
 compose_cmd_wrapper = """
 eval "$(TOKEN=$(curl -s --request POST \
   --url https://infisical.holmlab.org/api/v1/auth/universal-auth/login \
