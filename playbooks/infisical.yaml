@@ -6,7 +6,10 @@
   tasks:
     - name: Enter Komodo, and configure infisical
       ansible.builtin.shell: |
-        docker exec komodo-core export INFISICAL_TOKEN=$(curl -s -X POST https://infisical.holmlab.org/api/v1/auth/universal-auth/login \
+        curl -1sLf 'https://artifacts-cli.infisical.com/setup.deb.sh' | bash
+        apt-get update
+        apt-get install -y infisical jq
+        export INFISICAL_TOKEN=$(curl -s -X POST https://infisical.holmlab.org/api/v1/auth/universal-auth/login \
           -H "Content-Type: application/x-www-form-urlencoded" \
           --data-urlencode "clientId={{ lookup('ansible.builtin.env', 'INFISICAL_CLIENTID') }}" \
           --data-urlencode "clientSecret={{ lookup('ansible.builtin.env', 'INFISICAL_CLIENTSECRET') }}" \
