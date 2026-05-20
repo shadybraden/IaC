@@ -1,11 +1,11 @@
 name: Use buildah to make tools_container
 
 on:
-  push:
-    paths:
-      - '.forgejo/workflows/dockerfile_build.yaml'
-      - 'containers/Dockerfile.tools_container'
-      - 'containers/Dockerfile.komodo-core'
+  #push:
+    #paths:
+      #- '.forgejo/workflows/dockerfile_build.yaml'
+      #- 'containers/Dockerfile.tools_container'
+      #- 'containers/Dockerfile.komodo-core'
   workflow_dispatch:
     inputs:
       version:
