@@ -1,4 +1,4 @@
-name: Use buildah to make tools_container
+name: Use buildah to make an image
 
 on:
   #push:
