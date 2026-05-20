@@ -1,8 +1,7 @@
 FROM ghcr.io/moghtech/komodo-core:2.2.0
 
-# Add Infisical repository
-RUN curl -L 'https://artifacts-cli.infisical.com/setup.deb.sh' | bash
-
 # Install infisical
-RUN apt update
-RUN apt install -y infisical
+RUN curl -L 'https://artifacts-cli.infisical.com/setup.deb.sh' | bash \
+    && apt update \
+    && apt install -y infisical \
+    && cp /usr/bin/infisical /usr/local/bin/infisical
