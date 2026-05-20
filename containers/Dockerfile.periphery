@@ -7,4 +7,3 @@ RUN bash setup.deb.sh
 # Install infisical
 RUN apt update
 RUN apt install -y infisical
-RUN cp /usr/bin/infisical /usr/local/bin/infisical
