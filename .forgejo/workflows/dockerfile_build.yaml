@@ -20,6 +20,7 @@ on:
         options:
           - tools_container
           - komodo-core
+          - periphery
         default: 'tools_container'
 
 jobs:
