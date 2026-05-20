@@ -1045,7 +1045,7 @@ run_directory = "hugo-runner"
 additional_env_files = [
   { path = "/etc/komodo/domain.env", track = true }
 ]
-# works when my pr gets merged: 
+# works when my pr gets merged: https://github.com/moghtech/komodo/pull/1442
 compose_cmd_wrapper = "infisical run --env=prod --path=/ --domain=\"[[INFISICAL_URL]]\" --token=[[INFISICAL_TOKEN]] --projectId=[[INFISICAL_WORKSPACE]] -- [[COMPOSE_COMMAND]]"
 
 ##
