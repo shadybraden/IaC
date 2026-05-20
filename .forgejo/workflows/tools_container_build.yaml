@@ -12,9 +12,6 @@ on:
         required: false
         type: string
         default: ''
-  schedule:
-    - cron: '45 11 * * 3' # At 11:45, only on Wednesday
-      timezone: America/New_York
 
 jobs:
   Build-tools_container:
