@@ -1046,7 +1046,7 @@ additional_env_files = [
   { path = "/etc/komodo/domain.env", track = true }
 ]
 pre_deploy.command = """
-export INFISICAL_TOKEN$(infisical login --domain="[[INFISICAL_URL]]" --method=universal-auth --client-id="[[INFISICAL_ID]]" --client-secret="[[INFISICAL_SECRET]]" --silent --plain)
+export INFISICAL_TOKEN=$(infisical login --domain="[[INFISICAL_URL]]" --method=universal-auth --client-id="[[INFISICAL_ID]]" --client-secret="[[INFISICAL_SECRET]]" --silent --plain)
 """
 pre_deploy.shell_mode = false
 compose_cmd_wrapper = """
