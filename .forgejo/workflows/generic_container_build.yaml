@@ -28,11 +28,6 @@ on:
         required: true
         type: string
         default: 'komodo/bin/periphery/aio.Dockerfile'
-      git_hash:
-        description: 'Optional git commit hash'
-        required: false
-        type: string
-        default: ''
 
 jobs:
   Build-generic-image:
@@ -45,17 +40,6 @@ jobs:
       - name: Clone code
         run: |
           git clone ${{ github.event.inputs.source_code }}
-
-      - name: Checkout git hash?
-        run: |
-          if [ -z "${{ github.event.inputs.git_hash }}" ]; then
-            echo "No hash provided - skipping checkout."
-            exit 0
-          else
-            echo "Checking out..."
-            cd ${{ github.event.inputs.path }}
-            git checkout "${{ github.event.inputs.git_hash }}"
-          fi
 
       - name: Build image
         run: |
