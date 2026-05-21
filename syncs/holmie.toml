@@ -1046,7 +1046,7 @@ additional_env_files = [
   { path = "/etc/komodo/domain.env", track = true }
 ]
 # works when my pr gets merged: https://github.com/moghtech/komodo/pull/1442
-compose_cmd_wrapper = "infisical run --env=prod --path=/ --domain=\"[[INFISICAL_URL]]\" --token=[[INFISICAL_TOKEN]] --projectId=[[INFISICAL_WORKSPACE]] -- [[COMPOSE_COMMAND]]"
+compose_cmd_wrapper = "export INFISICAL_UNIVERSAL_AUTH_CLIENT_SECRET=[[INFISICAL_SECRET]] && infisical run --env=prod --path=/ --domain=\"[[INFISICAL_URL]]\" --projectId=[[INFISICAL_WORKSPACE]] --machine-identity-id=[[INFISICAL_ID]] -- [[COMPOSE_COMMAND]]"
 
 ##
 
