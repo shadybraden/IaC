@@ -27,7 +27,7 @@ on:
         description: 'Dockerfile name'
         required: true
         type: string
-        default: 'bin/periphery/aio.Dockerfile'
+        default: 'bin/periphery/multi-arch.Dockerfile'
 
 jobs:
   Build-generic-image:
