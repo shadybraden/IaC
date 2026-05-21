@@ -27,7 +27,7 @@ on:
         description: 'Dockerfile name'
         required: true
         type: string
-        default: 'komodo/bin/periphery/aio.Dockerfile'
+        default: 'bin/periphery/aio.Dockerfile'
 
 jobs:
   Build-generic-image:
