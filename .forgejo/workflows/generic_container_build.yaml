@@ -12,7 +12,7 @@ on:
         description: '.git link'
         required: true
         type: string
-        default: 'https://github.com/moghtech/komodo.git'
+        default: 'https://github.com/shadybraden/komodo.git'
       name_to_publish:
         description: 'name to publish'
         required: true
