@@ -4,3 +4,5 @@ services:
     image: rclone/rclone:1.73.0
   freshrss:
     image: freshrss/freshrss:1.28.1
+  periphery:
+    image: ghcr.io/moghtech/komodo-periphery:2.2.0
