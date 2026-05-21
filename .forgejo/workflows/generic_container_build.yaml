@@ -7,22 +7,22 @@ on:
         description: 'version to publish'
         required: true
         type: string
-        default: '0.0.1'
+        default: '2.2.0'
       source_code:
         description: '.git link'
         required: true
         type: string
-        default: 'https://github.com/wg-easy/wg-easy.git'
+        default: 'https://github.com/moghtech/komodo.git'
       name_to_publish:
         description: 'name to publish - should match name cuz well cd there in a sec'
         required: true
         type: string
-        default: 'wg-easy'
+        default: 'periphery'
       dockerfile:
         description: 'Dockerfile name'
         required: true
         type: string
-        default: 'Dockerfile'
+        default: 'komodo/bin/periphery/aio.Dockerfile'
       git_hash:
         description: 'Optional git commit hash'
         required: false
