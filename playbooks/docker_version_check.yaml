@@ -1,6 +1,6 @@
 ---
 - name: Check installed docker versions
-  hosts: no-shady
+  hosts: no_shady
   become: true
 
   tasks:
