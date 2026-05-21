@@ -7,3 +7,7 @@
     - name: docker --version
       ansible.builtin.shell:
         cmd: docker --version
+        register: docker_version
+    - name: Print version
+      ansible.builtin.debug:
+        msg: "Docker on {{ inventory_hostname }}: {{ docker_version.stdout }}"
