@@ -1,0 +1,9 @@
+---
+- name: Check installed docker versions
+  hosts: all
+  become: true
+
+  tasks:
+    - name: docker --version
+      ansible.builtin.shell:
+        cmd: docker --version
