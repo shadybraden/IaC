@@ -1050,7 +1050,7 @@ export INFISICAL_TOKEN$(infisical login --domain="https://infisical.holmlab.org/
 """
 pre_deploy.shell_mode = false
 compose_cmd_wrapper = """
-infisical run --env=prod --path=/ --domain=\"[[INFISICAL_URL]]\" --token=$INFISICAL_TOKEN --projectId=[[INFISICAL_WORKSPACE]] -- [[COMPOSE_COMMAND]]
+infisical run --env=prod --path=/ --domain="[[INFISICAL_URL]]" --token=$INFISICAL_TOKEN --projectId=[[INFISICAL_WORKSPACE]] -- [[COMPOSE_COMMAND]]
 """
 
 ##
