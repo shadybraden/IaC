@@ -1,7 +1,7 @@
 ---
 services:
   rclone:
-    image: rclone/rclone:1.73.0
+    image: rclone/rclone:1.74.2
   freshrss:
     image: freshrss/freshrss:1.28.1
   periphery:
