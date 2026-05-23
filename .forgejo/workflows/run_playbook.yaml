@@ -15,7 +15,7 @@ on:
           - holmie
           - holmgarage
           - qbit_port
-          - docker_version_check
+          - version_check
       extra_var:
         description: "extra_var:"
         required: false
