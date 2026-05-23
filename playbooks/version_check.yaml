@@ -6,7 +6,7 @@
   tasks:
     - name: --version
       ansible.builtin.shell:
-        cmd: {{ extra_var }} --version
+        cmd: "{{ extra_var }} --version"
       register: software_version
 
     - name: Print version
