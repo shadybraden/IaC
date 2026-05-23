@@ -1,0 +1,14 @@
+---
+- name: Check installed version
+  hosts: no_shady
+  become: true
+
+  tasks:
+    - name: --version
+      ansible.builtin.shell:
+        cmd: {{ extra_var }} --version
+      register: software_version
+
+    - name: Print version
+      ansible.builtin.debug:
+        msg: "{{ extra_var }} on {{ inventory_hostname }}: {{ software_version.stdout }}"
