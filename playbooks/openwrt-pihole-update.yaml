@@ -18,4 +18,3 @@
         project_src: "{{ compose_dir }}"
         state: present
         pull: missing
-      become: true
