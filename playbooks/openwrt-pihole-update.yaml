@@ -4,7 +4,6 @@
 # init with `ansible-galaxy collection install community.docker`
 - name: Deploy Pi-hole on openwrt
   hosts: router
-  gather_facts: false
   
   vars:
     compose_dir: /opt/config_storage/compose
