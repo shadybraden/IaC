@@ -1,0 +1,17 @@
+[[stack]]
+name = "pihole-openwrt"
+tags = ["openwrt", "env", "criticality: 5"]
+[stack.config]
+server = "openwrt"
+linked_repo = "compose-openwrt"
+run_directory = "openwrt/pihole"
+env_file_path = "/etc/komodo/env/pihole-openwrt.env"
+
+##
+
+[[stack]]
+name = "openwrt-openwrt"
+[stack.config]
+server = "openwrt"
+linked_repo = "compose-openwrt"
+run_directory = "openwrt/dnscrypt"
