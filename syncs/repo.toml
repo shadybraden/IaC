@@ -28,7 +28,7 @@ name = "compose-openwrt"
 server = "openwrt"
 git_provider = "git.holmlab.org"
 git_account = "komodo"
-repo = "openwrt/compose"
+repo = "shady/compose"
 branch = "main"
 path = "/etc/komodo/repos/compose"
 
