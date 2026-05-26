@@ -1,0 +1,21 @@
+---
+# merge the pr made by renovate first
+# updates komodo and periphery on all hosts
+# init with `ansible-galaxy collection install community.docker`
+- name: Deploy Pi-hole on openwrt
+  hosts: router
+  
+  vars:
+    compose_dir: /opt/config_storage/compose
+  tasks:
+    - name: Git pull latest changes
+      ansible.builtin.shell:
+        cmd: git pull
+        chdir: "{{ compose_dir }}"
+
+    - name: docker compose up -d
+      community.docker.docker_compose_v2:
+        project_src: "{{ compose_dir }}"
+        state: present
+        pull: missing
+      become: true
