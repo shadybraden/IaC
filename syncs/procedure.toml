@@ -116,7 +116,8 @@ executions = [
   { execution.type = "RunSync", execution.params.sync = "shady", enabled = true },
   { execution.type = "RunSync", execution.params.sync = "mck", enabled = true },
   { execution.type = "RunSync", execution.params.sync = "snow", enabled = true },
-  { execution.type = "RunSync", execution.params.sync = "turret", enabled = true }
+  { execution.type = "RunSync", execution.params.sync = "turret", enabled = true },
+  { execution.type = "RunSync", execution.params.sync = "openwrt", enabled = true }
 ]
 
 ##
