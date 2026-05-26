@@ -10,7 +10,7 @@ env_file_path = "/etc/komodo/env/pihole-openwrt.env"
 ##
 
 [[stack]]
-name = "openwrt-openwrt"
+name = "dnscrypt-openwrt"
 tags = ["openwrt", "criticality: 1"]
 [stack.config]
 server = "openwrt"
