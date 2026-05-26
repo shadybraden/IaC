@@ -6,7 +6,7 @@
   hosts: router
   
   vars:
-    compose_dir: /opt/config_storage/compose
+    compose_dir: /opt/config_storage/compose/openwrt/pihole
   tasks:
     - name: Git pull latest changes
       ansible.builtin.shell:
