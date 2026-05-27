@@ -18,7 +18,7 @@ jobs:
           set -euo pipefail
 
           echo "Running Grype on: git.holmlab.org/shady/tools_container:0.1.23"
-          grype git.holmlab.org/shady/tools_container:0.1.23 --only-fixed --output json > grype-results.json
+          grype git.holmlab.org/shady/tools_container:0.1.23 --only-fixed --output json --file grype-results.json
 
           python3 - <<'PYEOF'
           import json, sys, os
