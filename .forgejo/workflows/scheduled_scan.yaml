@@ -1,0 +1,73 @@
+name: Scan an image
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Grype:
+    runs-on: tools_container
+
+    steps:
+      - name: Run Grype on tools_container
+        id: version
+        env:
+          CLICOLOR_FORCE: "1"
+          TERM: xterm-256color
+          RISK_THRESHOLD: 10
+        run: |
+          set -euo pipefail
+
+          echo "Running Grype on: git.holmlab.org/shady/tools_container:0.1.23"
+          grype git.holmlab.org/shady/tools_container:0.1.23 --only-fixed --output json > grype-results.json
+
+          python3 - <<'PYEOF'
+          import json, sys, os
+
+          results   = json.load(open("grype-results.json"))
+          matches   = results.get("matches", [])
+          threshold = float(os.environ["RISK_THRESHOLD"])
+          failures  = []
+
+          for m in matches:
+              vuln  = m.get("vulnerability", {})
+              cve   = vuln.get("id", "UNKNOWN")
+              risk  = vuln.get("risk", 0.0) or 0.0
+              kev   = vuln.get("knownExploited", False)
+              pkg   = m.get("artifact", {}).get("name", "?")
+              ver   = m.get("artifact", {}).get("version", "?")
+              fixed = (vuln.get("fix") or {}).get("versions", [])
+              fix_s = ", ".join(fixed) if fixed else "no fix available"
+              epss  = (vuln.get("epss") or [{}])[0].get("score", 0.0) if vuln.get("epss") else 0.0
+
+              reasons = []
+              if kev:
+                  reasons.append("KNOWN EXPLOITED (CISA KEV)")
+              if risk > threshold:
+                  reasons.append(f"risk={risk:.1f} > threshold {threshold:.1f}")
+
+              if reasons:
+                  failures.append({
+                      "cve": cve, "pkg": pkg, "ver": ver, "fix": fix_s,
+                      "risk": risk, "epss": epss, "kev": kev, "reasons": reasons,
+                  })
+
+          if not failures:
+              print(f"✅  No CVEs breached the configured thresholds (risk > {threshold}).")
+              sys.exit(0)
+
+          print(f"\n{'━'*70}")
+          print(f"  ❌  SCAN FAILED — {len(failures)} CVE(s) breached policy")
+          print(f"{'━'*70}\n")
+
+          for f in sorted(failures, key=lambda x: (not x["kev"], -x["risk"])):
+              kev_tag = "  🚨 KEV" if f["kev"] else ""
+              print(f"  {f['cve']}{kev_tag}")
+              print(f"    Package  : {f['pkg']} {f['ver']}")
+              print(f"    Risk     : {f['risk']:.1f} / 100  (EPSS {f['epss']:.3f})")
+              print(f"    Fix      : {f['fix']}")
+              print(f"    Reason(s): {' | '.join(f['reasons'])}")
+              print()
+
+          print(f"{'━'*70}")
+          sys.exit(1)
+          PYEOF
