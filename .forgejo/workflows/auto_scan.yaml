@@ -24,7 +24,7 @@ jobs:
         run: |
           IMAGE=$(grep -m 1 'image:' compose.yaml | awk '{print $2}')
           echo "Running Grype on: $IMAGE"
-          grype $IMAGE --only-fixed
+          #grype $IMAGE --only-fixed --output json > grype-results.json
 
   Grype-skywatch:
     runs-on: tools_container
@@ -41,7 +41,7 @@ jobs:
         run: |
           IMAGE=$(grep -m 2 'image:' compose.yaml | tail -1 | awk '{print $2}')
           echo "Running Grype on: $IMAGE"
-          grype $IMAGE --only-fixed
+          #grype $IMAGE --only-fixed --output json > grype-results.json
 
   Grype-storageview:
     runs-on: tools_container
@@ -58,4 +58,5 @@ jobs:
         run: |
           IMAGE=$(grep -m 3 'image:' compose.yaml | tail -1 | awk '{print $2}')
           echo "Running Grype on: $IMAGE"
-          grype $IMAGE --only-fixed
+          grype $IMAGE --only-fixed --output json > grype-results.json
+          cat grype-results.json
