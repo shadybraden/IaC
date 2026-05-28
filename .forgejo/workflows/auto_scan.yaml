@@ -31,5 +31,13 @@ jobs:
             grype $IMAGE --only-fixed | grep -vF -e '< 0.1' -e 'N/A' > $SHORT_IMAGE.output.txt
             echo "---"
             cat $SHORT_IMAGE.output.txt
+            export 
             echo "---"
           done
+
+      - name: Notify results
+        run: |
+          curl -X POST https://ntfy.holmlab.org/${{ secrets.NTFY_TOPIC }} \
+            -H "Title: CVE results" \
+            -H "Priority: low" \
+             --data-binary @skywatch.output.txt
