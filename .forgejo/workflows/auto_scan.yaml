@@ -1,0 +1,23 @@
+name: Scan images
+
+on:
+  push:
+    paths:
+      - 'compose.yaml'
+  workflow_dispatch:
+
+jobs:
+  Grype-tools_container:
+    runs-on: tools_container
+
+    steps:
+      - name: Run Grype on tools_container
+        id: version
+        env:
+          CLICOLOR_FORCE: "1"
+          TERM: xterm-256color
+        run: |
+          IMAGE=$(grep -m 1 'image:' compose.yaml | awk '{print $2}')
+
+          echo "Running Grype on: $IMAGE"
+          #grype $IMAGE
