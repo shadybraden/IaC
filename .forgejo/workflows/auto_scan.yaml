@@ -24,7 +24,7 @@ jobs:
         run: |
           images=$(grep 'image:' compose.yaml | awk '{print $2}')
           for IMAGE in $images; do
-            echo "Running Grype on: $IMAGE"
+            echo "+Running Grype on: $IMAGE"
             grype $IMAGE --only-fixed | grep -vF -e '< 0.1' -e 'N/A'
             echo "---"
           done
