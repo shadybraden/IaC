@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'compose.yaml'
+      - '.forgejo/workflows/auto_scan.yaml'
   workflow_dispatch:
 
 jobs:
