@@ -34,6 +34,6 @@ jobs:
             [[ $(wc -l < $SHORT_IMAGE.output.txt) -ne 1 ]] && sed -i '1d' $SHORT_IMAGE.output.txt && curl -X POST https://ntfy.holmlab.org/${{ secrets.NTFY_TOPIC }} \
               -H "Title: $SHORT_IMAGE CVE results" \
               -H "Priority: low" \
-              --data-binary @$SHORT_IMAGE.output.txt
+              --data-binary @$SHORT_IMAGE.output.txt | sed 's/\x1b\[[0-9;]*m//g'
             echo "---"
           done
