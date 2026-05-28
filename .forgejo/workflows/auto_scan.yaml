@@ -1,3 +1,4 @@
+# the idea here is to auto-scan all the images inside compose.yaml and report via ntfy if any have bad CVE's
 name: Scan images
 
 on:
@@ -12,7 +13,6 @@ jobs:
     runs-on: tools_container
 
     steps:
-
       - name: Checkout
         uses: actions/checkout@v6.0.2
 
@@ -30,7 +30,6 @@ jobs:
     runs-on: tools_container
 
     steps:
-
       - name: Checkout
         uses: actions/checkout@v6.0.2
 
@@ -41,5 +40,22 @@ jobs:
           TERM: xterm-256color
         run: |
           IMAGE=$(grep -m 2 'image:' compose.yaml | tail -1 | awk '{print $2}')
+          echo "Running Grype on: $IMAGE"
+          grype $IMAGE --only-fixed
+
+  Grype-storageview:
+    runs-on: tools_container
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6.0.2
+
+      - name: Run Grype on storageview
+        id: version
+        env:
+          CLICOLOR_FORCE: "1"
+          TERM: xterm-256color
+        run: |
+          IMAGE=$(grep -m 3 'image:' compose.yaml | tail -1 | awk '{print $2}')
           echo "Running Grype on: $IMAGE"
           grype $IMAGE --only-fixed
