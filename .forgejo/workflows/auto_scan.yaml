@@ -25,3 +25,22 @@ jobs:
 
           echo "Running Grype on: $IMAGE"
           #grype $IMAGE
+
+  Grype-skywatch:
+    runs-on: tools_container
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v6.0.2
+
+      - name: Run Grype on skywatch
+        id: version
+        env:
+          CLICOLOR_FORCE: "1"
+          TERM: xterm-256color
+        run: |
+          IMAGE=$(grep -m 2 'image:' compose.yaml | tail -1 | awk '{print $2}')
+
+          echo "Running Grype on: $IMAGE"
+          #grype $IMAGE
