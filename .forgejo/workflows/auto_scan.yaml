@@ -31,7 +31,6 @@ jobs:
             grype $IMAGE --only-fixed | grep -vF -e '< 0.1' -e 'N/A' > $SHORT_IMAGE.output.txt
             echo "---"
             cat $SHORT_IMAGE.output.txt
-            export 
             echo "---"
           done
 
