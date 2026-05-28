@@ -31,6 +31,11 @@ jobs:
             grype $IMAGE --only-fixed | grep -vF -e '< 0.1' -e 'N/A' > $SHORT_IMAGE.output.txt
             echo "---"
             cat $SHORT_IMAGE.output.txt
+            sed 's/\x1b\[[0-9;]*m//g' $SHORT_IMAGE.output.txt | awk '{
+                for(i=1;i<=NF;i++) if($i~/^(Critical|High|Medium|Low|Negligible|Unknown)$/) sev=$i
+                print sev, $NF
+            }' > tmp && mv tmp $SHORT_IMAGE.output.txt
+            cat $SHORT_IMAGE.output.txt
             [[ $(wc -l < $SHORT_IMAGE.output.txt) -ne 1 ]] && sed -i '1d' $SHORT_IMAGE.output.txt && curl -X POST https://ntfy.holmlab.org/${{ secrets.NTFY_TOPIC }} \
               -H "Title: $SHORT_IMAGE CVE results" \
               -H "Priority: low" \
