@@ -9,53 +9,21 @@ on:
   workflow_dispatch:
 
 jobs:
-  Grype-tools_container:
+  Grype:
     runs-on: tools_container
 
     steps:
       - name: Checkout
         uses: actions/checkout@v6.0.2
 
-      - name: Run Grype on tools_container
+      - name: Run Grype on all images
         id: version
         env:
           CLICOLOR_FORCE: "1"
           TERM: xterm-256color
         run: |
-          IMAGE=$(grep -m 1 'image:' compose.yaml | awk '{print $2}')
-          echo "Running Grype on: $IMAGE"
-          grype $IMAGE --only-fixed | grep -vF -e '< 0.1' -e 'N/A'
-
-  Grype-skywatch:
-    runs-on: tools_container
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6.0.2
-
-      - name: Run Grype on skywatch
-        id: version
-        env:
-          CLICOLOR_FORCE: "1"
-          TERM: xterm-256color
-        run: |
-          IMAGE=$(grep -m 2 'image:' compose.yaml | tail -1 | awk '{print $2}')
-          echo "Running Grype on: $IMAGE"
-          grype $IMAGE --only-fixed | grep -vF -e '< 0.1' -e 'N/A'
-
-  Grype-storageview:
-    runs-on: tools_container
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6.0.2
-
-      - name: Run Grype on storageview
-        id: version
-        env:
-          CLICOLOR_FORCE: "1"
-          TERM: xterm-256color
-        run: |
-          IMAGE=$(grep -m 3 'image:' compose.yaml | tail -1 | awk '{print $2}')
-          echo "Running Grype on: $IMAGE"
-          grype $IMAGE --only-fixed | grep -vF -e '< 0.1' -e 'N/A'
+          images=$(grep 'image:' compose.yaml | awk '{print $2}')
+          for IMAGE in $images; do
+            echo "Running Grype on: $IMAGE"
+            grype $IMAGE
+          done --only-fixed | grep -vF -e '< 0.1' -e 'N/A'
