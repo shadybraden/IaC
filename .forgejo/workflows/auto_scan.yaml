@@ -25,8 +25,10 @@ jobs:
           images=$(grep 'image:' compose.yaml | awk '{print $2}')
           for IMAGE in $images; do
             echo "+Running Grype on: $IMAGE"
-            grype $IMAGE --only-fixed | grep -vF -e '< 0.1' -e 'N/A' > $IMAGE.output.txt
+            SHORT_IMAGE=${IMAGE#*/}
+            SHORT_IMAGE=${SHORT_IMAGE%%:*}
+            grype $IMAGE --only-fixed | grep -vF -e '< 0.1' -e 'N/A' > $SHORT_IMAGE.output.txt
             echo "---"
-            cat $IMAGE.output.txt
+            cat $SHORT_IMAGE.output.txt
             echo "---"
           done
