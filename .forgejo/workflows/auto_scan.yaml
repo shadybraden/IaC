@@ -32,7 +32,7 @@ jobs:
             echo "---"
             cat $SHORT_IMAGE.output.txt
             curl -X POST https://ntfy.holmlab.org/${{ secrets.NTFY_TOPIC }} \
-              -H "Title: CVE results" \
+              -H "Title: $SHORT_IMAGE CVE results" \
               -H "Priority: low" \
               --data-binary @$SHORT_IMAGE.output.txt
             echo "---"
