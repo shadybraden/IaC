@@ -17,6 +17,7 @@ jobs:
         uses: actions/checkout@v6.0.2
 
       - name: Run Grype on all images
+        id: version
         env:
           CLICOLOR_FORCE: "1"
           TERM: xterm-256color
