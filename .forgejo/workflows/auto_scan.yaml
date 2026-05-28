@@ -23,7 +23,7 @@ jobs:
         run: |
           IMAGE=$(grep -m 1 'image:' compose.yaml | awk '{print $2}')
           echo "Running Grype on: $IMAGE"
-          grype $IMAGE
+          grype $IMAGE --only-fixed
 
   Grype-skywatch:
     runs-on: tools_container
@@ -41,4 +41,4 @@ jobs:
         run: |
           IMAGE=$(grep -m 2 'image:' compose.yaml | tail -1 | awk '{print $2}')
           echo "Running Grype on: $IMAGE"
-          grype $IMAGE
+          grype $IMAGE --only-fixed
