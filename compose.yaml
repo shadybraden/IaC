@@ -1,8 +1,6 @@
 ---
 services:
-  rclone:
-    image: rclone/rclone:1.74.2
-  freshrss:
-    image: freshrss/freshrss:1.28.1
-  periphery:
-    image: ghcr.io/moghtech/komodo-periphery:2.2.0
+  tools_container:
+    image: git.holmlab.org/shady/tools_container:0.1.19
+  skywatch:
+    image: git.holmlab.org/shady/skywatch:1.4.6
