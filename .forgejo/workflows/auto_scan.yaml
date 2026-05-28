@@ -58,5 +58,5 @@ jobs:
         run: |
           IMAGE=$(grep -m 3 'image:' compose.yaml | tail -1 | awk '{print $2}')
           echo "Running Grype on: $IMAGE"
-          grype $IMAGE --only-fixed --output json > grype-results.json
+          grype $IMAGE --only-fixed #--output json > grype-results.json
           cat grype-results.json
