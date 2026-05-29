@@ -25,9 +25,7 @@ jobs:
           images=$(grep 'image:' compose.yaml | awk '{print $2}')
           for IMAGE in $images; do
             echo "🗨️ - Running Grype on: $IMAGE"
-            SHORT_IMAGE=${IMAGE#*/}
-            SHORT_IMAGE=${SHORT_IMAGE##*/}
-            SHORT_IMAGE=${SHORT_IMAGE%%:*}
+            SHORT_IMAGE=${IMAGE#*/} ; SHORT_IMAGE=${SHORT_IMAGE##*/} ; SHORT_IMAGE=${SHORT_IMAGE%%:*} # trim full image name down
             grype $IMAGE --only-fixed > $SHORT_IMAGE.output.txt
             echo "🟡🟡🟡"
             cat $SHORT_IMAGE.output.txt
