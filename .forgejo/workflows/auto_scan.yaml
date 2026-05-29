@@ -27,9 +27,9 @@ jobs:
             echo "🗨️ - Running Grype on: $IMAGE"
             SHORT_IMAGE=${IMAGE#*/} ; SHORT_IMAGE=${SHORT_IMAGE##*/} ; SHORT_IMAGE=${SHORT_IMAGE%%:*} # trim full image name down
             grype $IMAGE --only-fixed > $SHORT_IMAGE.output.txt
-            echo "🟡🟡🟡"
+            echo "🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤"
             cat $SHORT_IMAGE.output.txt
-            echo "🟡🟡🟡"
+            echo "🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤"
             cat $SHORT_IMAGE.output.txt | grep -vF -e '< 0.1' -e 'N/A' > tmp.output.txt
             echo "↪️"
             cat tmp.output.txt
