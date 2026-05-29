@@ -3,6 +3,9 @@ name = "skywatch"
 [build.config]
 builder = "holmie"
 image_name = "skywatch"
+include_latest_tag = false
+include_version_tags = false
+include_commit_tag = false
 linked_repo = "compose_main"
 build_path = "skywatch"
 image_registry = [
