@@ -1154,19 +1154,3 @@ linked_repo = "compose_main"
 run_directory = "infisical"
 additional_env_files = ["/etc/komodo/domain.env"]
 env_file_path = "/etc/komodo/env/infisical-holmie.env"
-
-##
-
-[[stack]]
-name = "keeper-holmie"
-tags = ["holmie", "criticality: 1"]
-[stack.config]
-server = "holmie"
-project_name = "keeper-holmie"
-linked_repo = "compose_main"
-run_directory = "keeper"
-additional_env_files = ["/etc/komodo/domain.env"]
-compose_cmd_wrapper = """
-export INFISICAL_TOKEN=$(infisical login --domain="[[INFISICAL_URL]]" --method=universal-auth --client-id="[[INFISICAL_ID]]" --client-secret="[[INFISICAL_SECRET]]" --silent --plain) && \
-infisical run --env=prod --path=/keeper --domain=[[INFISICAL_URL]] --token=$INFISICAL_TOKEN --projectId=[[INFISICAL_WORKSPACE]] -- [[COMPOSE_COMMAND]]
-"""
