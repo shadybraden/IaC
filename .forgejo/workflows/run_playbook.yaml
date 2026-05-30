@@ -9,11 +9,7 @@ on:
         default: ""
         type: choice
         options:
-          - mck
-          - snow
           - turret
-          - holmie
-          - holmgarage
           - qbit_port
           - version_check
           - openwrt-pihole-update
