@@ -29,6 +29,8 @@ jobs:
           ANSIBLE_FORCE_COLOR: "1"
           INFISICAL_CLIENTID: ${{ secrets.INFISICAL_CLIENTID }}
           INFISICAL_CLIENTSECRET: ${{ secrets.INFISICAL_CLIENTSECRET }}
+          INFISICAL_URL: ${{ secrets.INFISICAL_URL }}
+          INFISICAL_WORKSPACE: ${{ secrets.INFISICAL_WORKSPACE }}
 
       - name: Notify failure
         if: failure()
