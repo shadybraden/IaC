@@ -2,3 +2,4 @@
   hosts: snow@100.71.213.75
   roles:
     - roles/backups
+    - roles/netalertx
