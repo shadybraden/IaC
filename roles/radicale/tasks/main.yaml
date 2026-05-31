@@ -51,3 +51,36 @@
         owner: 1000
         group: 1000
         state: touch
+
+- name: Template Radicale config file
+  ansible.builtin.template:
+    src: config.j2
+    dest: "/data/config_storage/radicale/config/config"
+
+- name: Get radicale user secret from Infisical
+  ansible.builtin.command: >
+    infisical secrets get shady
+    --projectId="{{ lookup('env', 'INFISICAL_WORKSPACE') }}"
+    --env=prod
+    --path=/radicale
+    --plain
+  environment:
+    INFISICAL_CLIENT_ID: "{{ lookup('env', 'INFISICAL_CLIENTID') }}"
+    INFISICAL_CLIENT_SECRET: "{{ lookup('env', 'INFISICAL_CLIENTSECRET') }}"
+  register: radicale_secret_raw
+  no_log: true
+
+- name: Set radicale credentials
+  ansible.builtin.set_fact:
+    radicale_user: "shady"
+    radicale_password_hash: "{{ radicale_secret_raw.stdout | password_hash('bcrypt') }}"
+  no_log: true
+
+- name: Template radicale users file
+  ansible.builtin.template:
+    src: users.j2
+    dest: /data/config_storage/radicale/config/users
+    owner: 1000
+    group: 1000
+    mode: '0600'
+  no_log: true
