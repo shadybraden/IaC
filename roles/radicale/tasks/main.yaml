@@ -69,7 +69,7 @@
     INFISICAL_CLIENT_ID: "{{ lookup('env', 'INFISICAL_CLIENTID') }}"
     INFISICAL_CLIENT_SECRET: "{{ lookup('env', 'INFISICAL_CLIENTSECRET') }}"
   register: radicale_secret_raw
-  no_log: true
+  no_log: false
 
 - name: Set radicale credentials
   ansible.builtin.set_fact:
