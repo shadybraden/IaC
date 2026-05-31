@@ -79,7 +79,7 @@ env_file_path = "/etc/komodo/env/loggifly-snow.env"
 ##
 
 [[stack]]
-name = "netalertx"
+name = "netalertx-snow"
 tags = ["snow", "criticality: 3"]
 [stack.config]
 server = "snow"
