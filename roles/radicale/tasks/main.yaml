@@ -63,6 +63,7 @@
     --projectId="{{ lookup('env', 'INFISICAL_WORKSPACE') }}"
     --env=prod
     --path=/radicale
+    --domain="{{ lookup('env', 'INFISICAL_URL') }}"
     --plain
   environment:
     INFISICAL_CLIENT_ID: "{{ lookup('env', 'INFISICAL_CLIENTID') }}"
