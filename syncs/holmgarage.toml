@@ -431,3 +431,20 @@ linked_repo = "compose_main"
 run_directory = "traccar"
 additional_env_files = ["/etc/komodo/domain.env"]
 env_file_path = "/etc/komodo/env/traccar-holmgarage.env"
+
+##
+
+[[stack]]
+name = "trek-holmgarage"
+tags = ["holmgarage", "criticality: 1"]
+[stack.config]
+server = "holmgarage"
+project_name = "trek-holmgarage"
+linked_repo = "compose_main"
+run_directory = "trek"
+additional_env_files = ["/etc/komodo/domain.env"]
+env_file_path = "/etc/komodo/env/trek-holmgarage.env"
+compose_cmd_wrapper = """
+export INFISICAL_TOKEN=$(infisical login --domain="[[INFISICAL_URL]]" --method=universal-auth --client-id="[[INFISICAL_ID]]" --client-secret="[[INFISICAL_SECRET]]" --silent --plain) && \
+infisical run --env=prod --path=/trek --domain=[[INFISICAL_URL]] --token=$INFISICAL_TOKEN --projectId=[[INFISICAL_WORKSPACE]] -- [[COMPOSE_COMMAND]]
+"""

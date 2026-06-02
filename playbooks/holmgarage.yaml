@@ -3,3 +3,4 @@
   roles:
     - roles/backups
     - roles/navidrome
+    - roles/trek
