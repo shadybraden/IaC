@@ -12,3 +12,4 @@
     - roles/infisical
     #- roles/radicale
     - roles/trek
+    - roles/immich_drop
