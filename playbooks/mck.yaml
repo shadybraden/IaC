@@ -2,3 +2,4 @@
   hosts: mck@100.117.173.46
   roles:
     - roles/docmost
+    - roles/filebrowser
