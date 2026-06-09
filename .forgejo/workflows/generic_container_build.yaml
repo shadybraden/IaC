@@ -22,12 +22,12 @@ on:
         description: 'path - should match name cuz well cd there in a sec'
         required: true
         type: string
-        default: 'monochrome/docker'
+        default: 'monochrome'
       dockerfile:
         description: 'Dockerfile name'
         required: true
         type: string
-        default: 'Dockerfile'
+        default: 'docker/Dockerfile'
 
 jobs:
   Build-generic-image:
