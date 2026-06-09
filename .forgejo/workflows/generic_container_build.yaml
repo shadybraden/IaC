@@ -7,27 +7,27 @@ on:
         description: 'version to publish'
         required: true
         type: string
-        default: '2.2.0'
+        default: '0.0.1'
       source_code:
         description: '.git link'
         required: true
         type: string
-        default: 'https://github.com/shadybraden/komodo.git'
+        default: 'https://github.com/monochrome-music/monochrome.git'
       name_to_publish:
         description: 'name to publish'
         required: true
         type: string
-        default: 'periphery'
+        default: 'monochrome'
       path:
         description: 'path - should match name cuz well cd there in a sec'
         required: true
         type: string
-        default: 'komodo'
+        default: 'monochrome/docker'
       dockerfile:
         description: 'Dockerfile name'
         required: true
         type: string
-        default: 'bin/periphery/multi-arch.Dockerfile'
+        default: 'Dockerfile'
 
 jobs:
   Build-generic-image:
