@@ -126,3 +126,10 @@ jobs:
             -H "Title: ‼️ Actions failed" \
             -H "Priority: low" \
             -d "Workflow '${{ github.workflow }}' failed"
+
+  TALOS:
+    runs-on:  tools_container
+
+    steps:
+      - name: tmp
+        run: pwd
