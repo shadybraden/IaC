@@ -1242,3 +1242,4 @@ server = "holmie"
 project_name = "mullvad_browser-holmie"
 linked_repo = "compose_main"
 run_directory = "mullvad_browser"
+additional_env_files = ["/etc/komodo/domain.env"]
