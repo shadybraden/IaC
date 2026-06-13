@@ -524,7 +524,7 @@ env_file_path = "/etc/komodo/env/pinchflat-holmie.env"
 
 [[stack]]
 name = "factorio-holmie"
-description = "192.168.50.65:34197 | 100.106.23.87:34197"
+description = "10.1.1.65:34197 | 100.106.23.87:34197"
 tags = ["holmie", "criticality: 4"]
 [stack.config]
 server = "holmie"

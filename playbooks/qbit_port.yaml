@@ -1,6 +1,6 @@
 ---
 - name: Update the port for Qbittorrent
-  hosts: holmie@192.168.50.65
+  hosts: holmie@10.1.1.65
   become: false
 
   tasks:

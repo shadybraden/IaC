@@ -35,7 +35,7 @@ env_file_path = "/etc/komodo/env/beszelagent-shady.env"
 
 [[stack]]
 name = "factorio-shady"
-description = "192.168.50.16:34197 | 100.75.125.61:34197"
+description = "10.1.1.16:34197 | 100.75.125.61:34197"
 tags = ["shady", "criticality: 2"]
 [stack.config]
 server = "shady"

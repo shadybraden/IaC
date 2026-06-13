@@ -1,5 +1,5 @@
 - name: shady
-  hosts: shady@192.168.50.16
+  hosts: shady@10.1.1.16
   roles:
     - roles/backups
     - roles/navidrome

@@ -70,7 +70,7 @@ tags = ["mck", "criticality: 1"]
 server = "mck"
 links = [
   "http://100.117.173.46/",
-  "http://192.168.1.24/"
+  "http://10.2.1.65/"
 ]
 project_name = "mck_hugo-mck"
 linked_repo = "compose_main"

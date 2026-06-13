@@ -10,12 +10,12 @@ on:
         type: choice
         options:
           - all
-          - pi3@192.168.50.66
+          - pi3@10.1.1.66
           - snow@100.71.213.75
           - holmgarage@100.91.217.107
           - mck@100.117.173.46
-          - holmie@192.168.50.65
-          - shady@192.168.50.16
+          - holmie@10.1.1.65
+          - shady@10.1.1.16
       update_docker:
         type: boolean
         default: true
@@ -38,7 +38,7 @@ jobs:
       - name: Select sudo password
         id: resolve_pass
         run: |
-          if [ "${{ github.event.inputs.target }}" = "shady@192.168.50.16" ]; then
+          if [ "${{ github.event.inputs.target }}" = "shady@10.1.1.16" ]; then
             echo "sudo_pass=${{ secrets.SHADY_SUDO_PASSWORD }}" >> $GITHUB_OUTPUT
           else
             echo "sudo_pass=${{ secrets.SUDO_PASSWORD }}" >> $GITHUB_OUTPUT

@@ -1,5 +1,5 @@
 - name: holmie
-  hosts: holmie@192.168.50.65
+  hosts: holmie@10.1.1.65
   roles:
     - roles/backups
     - roles/navidrome
