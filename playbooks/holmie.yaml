@@ -5,7 +5,6 @@
     - roles/navidrome
     - roles/forgejo_actions
     - roles/chronoframe
-    - roles/zot
     - roles/grimmory
     - roles/netalertx
     - roles/docmost
