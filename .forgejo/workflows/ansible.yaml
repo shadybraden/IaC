@@ -31,6 +31,7 @@ jobs:
           INFISICAL_CLIENTSECRET: ${{ secrets.INFISICAL_CLIENTSECRET }}
           INFISICAL_URL: ${{ secrets.INFISICAL_URL }}
           INFISICAL_WORKSPACE: ${{ secrets.INFISICAL_WORKSPACE }}
+          NUT_PASSWORD: ${{ secrets.NUT_PASSWORD }}
 
       - name: Notify failure
         if: failure()
