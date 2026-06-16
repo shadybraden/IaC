@@ -24,3 +24,13 @@ holmie@10.1.1.65
 
 [router]
 root@10.1.1.1
+
+[nut_critical]
+root@10.1.1.1
+holmie@10.1.1.65
+
+[nut_observer]
+pi3@10.1.1.66
+
+[nut_observer_power_hungry]
+shady@10.1.1.16
