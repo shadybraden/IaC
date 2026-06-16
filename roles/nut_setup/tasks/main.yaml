@@ -15,3 +15,43 @@
       fail:
         msg: "Package 'nut' is not installed."
       when: nut_check is failed or (nut_check is defined and (nut_check.msg is defined or nut_check.rc is defined and nut_check.rc != 0))
+
+- name: Template files
+  become: true
+
+  block:
+    - name: Template ups.conf
+      ansible.builtin.template:
+        src: ups.conf
+        dest: /etc/nut/ups.conf
+      register: ups_conf
+
+    - name: Template upsd.conf
+      ansible.builtin.template:
+        src: upsd.conf
+        dest: /etc/nut/upsd.conf
+      register: upsd_conf
+
+    - name: Template upsd.users
+      ansible.builtin.template:
+        src: upsd.users
+        dest: /etc/nut/upsd.users
+      register: upsd_users
+
+    - name: Template upsmon.conf
+      ansible.builtin.template:
+        src: upsmon.conf
+        dest: /etc/nut/upsmon.conf
+      register: upsman_conf
+
+    - name: Template nut.conf
+      ansible.builtin.template:
+        src: nut.conf
+        dest: /etc/nut/nut.conf
+      register: nut_conf
+
+- name: Restart nut if changes
+  become: true
+  ansible.builtin.shell:
+    cmd: systemctl restart nut-server && systemctl enable nut-server && systemctl restart nut-monitor && systemctl enable nut-monitor
+  when: ups_conf.changed or upsd_conf.changed or upsd_users.changed or upsman_conf.changed or nut_conf.changed

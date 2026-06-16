@@ -74,11 +74,11 @@
 # See comments in the upsmon.conf(.sample) file for details about this
 # keyword and the difference of NUT secondary and primary systems.
 [admin]
-    password = password
+    password = {{ lookup('env', 'NUT_PASSWORD') }}
     actions = set
     actions = fsd
     instcmds = all
 
 [observer]
-    password = password
+    password = {{ lookup('env', 'NUT_PASSWORD') }}
     upsmon secondary
