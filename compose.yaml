@@ -1,7 +1,7 @@
 ---
 services:
   tools_container:
-    image: git.holmlab.org/shady/tools_container:0.1.27
+    image: git.holmlab.org/shady/tools_container:0.1.28
   skywatch:
     image: git.holmlab.org/shady/skywatch:1.5.2
   storageview:
