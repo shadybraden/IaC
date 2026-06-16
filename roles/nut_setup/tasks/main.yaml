@@ -11,10 +11,11 @@
       register: nut_check
       changed_when: false
 
-    - name: Fail if nut is not installed
-      ansible.builtin.fail:
-        msg: "Package 'nut' is not installed."
-      when: nut_check is failed or (nut_check is defined and (nut_check.msg is defined or nut_check.rc is defined and nut_check.rc != 0))
+    - name: Install nut package if not present
+      ansible.builtin.package:
+        name: nut
+        state: present
+      when: nut_check.changed
 
 - name: Template files
   become: true
