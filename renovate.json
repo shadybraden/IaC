@@ -11,6 +11,11 @@
     {
       "updateTypes": ["major"],
       "commitMessagePrefix": ":boom:"
+    },
+    {
+      "matchPackageNames": ["alpine"],
+      "matchDatasources": ["docker"],
+      "sourceUrl": "https://alpinelinux.org/releases/"
     }
   ],
   "customManagers": [
