@@ -134,3 +134,24 @@ jobs:
     steps:
       - name: tmp
         run: pwd
+
+  openwrt:
+    runs-on: tools_container
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6.0.3
+
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+
+      - name: Run openwrt Ansible
+        run: |
+          ansible-playbook playbooks/openwrt.yaml
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: "False"
+          ANSIBLE_FORCE_COLOR: "1"
+          NUT_PASSWORD: ${{ secrets.NUT_PASSWORD }}
