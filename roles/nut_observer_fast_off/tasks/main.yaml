@@ -1,0 +1,40 @@
+---
+- name: Is nut-client installed?
+  become: true
+
+  block:
+    - name: Check for nut-client package installation
+      ansible.builtin.package:
+        name: nut-client
+        state: present
+      check_mode: yes
+      register: nut_check
+
+    - name: Install nut-client package if not present
+      ansible.builtin.package:
+        name: nut-client
+        state: present
+      when: nut_check.changed
+
+- name: Configure nut script
+
+  block:
+    - name: Clone IaC repo
+      ansible.builtin.git:
+        repo: "https://git.holmlab.org/shady/IaC"
+        dest: "/data/config_storage/IaC"
+        version: "main"
+        force: yes
+        update: yes
+    - name: Setup cron for 75% script
+      become: true
+      ansible.builtin.cron:
+        name: "Every 5 minutes, every hour, every day - NUT"
+        minute: "*/5"
+        hour: "*"
+        day: "*"
+        month: "*"
+        weekday: "*"
+        job: "/data/config_storage/IaC/roles/nut_observer/files/nut.sh"
+        user: "root"
+        state: present
