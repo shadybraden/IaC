@@ -9,7 +9,6 @@
         state: present
       check_mode: yes
       register: nut_check
-      changed_when: false
 
     - name: Install nut-client package if not present
       ansible.builtin.package:
