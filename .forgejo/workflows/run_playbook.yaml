@@ -45,6 +45,7 @@ jobs:
           WEBHOOK_PASSWORD: ${{ secrets.WEBHOOK_PASSWORD }}
           INFISICAL_CLIENTID: ${{ secrets.INFISICAL_CLIENTID }}
           INFISICAL_CLIENTSECRET: ${{ secrets.INFISICAL_CLIENTSECRET }}
+          NUT_PASSWORD: ${{ secrets.NUT_PASSWORD }}
 
       - name: Notify failure
         if: failure()
