@@ -9,4 +9,3 @@ To configure shutdown rules on other servers, see `nut_critical`, `nut_observer`
 ## config
 
 There is minimal dynamic configuration here. To fetch settings, run `nut-scanner` and edit the templates
-
