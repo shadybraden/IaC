@@ -4,7 +4,7 @@
 
   block:
     - name: Check for nut-client package installation
-      ansible.builtin.package:
+      ansible.builtin.apk:
         name: nut-client
         state: present
       check_mode: yes
