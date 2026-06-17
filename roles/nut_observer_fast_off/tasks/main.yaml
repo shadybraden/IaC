@@ -26,7 +26,7 @@
         version: "main"
         force: yes
         update: yes
-    - name: Setup cron for 75% script
+    - name: Setup cron for 90% script
       become: true
       ansible.builtin.cron:
         name: "Every 5 minutes, every hour, every day - NUT"
@@ -35,6 +35,6 @@
         day: "*"
         month: "*"
         weekday: "*"
-        job: "/data/config_storage/IaC/roles/nut_observer/files/nut.sh"
+        job: "/data/config_storage/IaC/roles/nut_observer_fast_off/files/nut.sh"
         user: "root"
         state: present
