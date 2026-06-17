@@ -1,5 +1,4 @@
 - name: turret
   hosts: pi3@10.1.1.66
   roles:
-    - roles/ntfy_hostname
     - roles/nut_critical
