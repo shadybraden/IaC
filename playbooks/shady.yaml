@@ -5,3 +5,4 @@
     - roles/navidrome
     - roles/forgejo_actions
     - roles/example_service
+    - roles/nut_observer
