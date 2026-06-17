@@ -1,0 +1,4 @@
+- name: openwrt
+  hosts: root@10.1.1.1
+  roles:
+    - roles/nut_critical
