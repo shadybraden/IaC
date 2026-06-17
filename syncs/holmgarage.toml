@@ -129,19 +129,6 @@ env_file_path = "/etc/komodo/env/audiobookshelf-holmgarage.env"
 ##
 
 [[stack]]
-name = "dumbassets-holmgarage"
-tags = ["holmgarage", "env", "criticality: 5"]
-[stack.config]
-server = "holmgarage"
-project_name = "dumbassets-holmgarage"
-linked_repo = "compose_main"
-run_directory = "dumbassets"
-additional_env_files = ["/etc/komodo/domain.env"]
-env_file_path = "/etc/komodo/env/dumbassets.env"
-
-##
-
-[[stack]]
 name = "homeassistant-holmgarage"
 tags = ["holmgarage", "criticality: 1"]
 [stack.config]
