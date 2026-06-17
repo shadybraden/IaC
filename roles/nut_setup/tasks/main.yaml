@@ -55,3 +55,26 @@
   ansible.builtin.shell:
     cmd: systemctl restart nut-server && systemctl enable nut-server && systemctl restart nut-monitor && systemctl enable nut-monitor
   when: ups_conf.changed or upsd_conf.changed or upsd_users.changed or upsman_conf.changed or nut_conf.changed
+
+- name: Configure nut ntfy
+
+  block:
+    - name: Clone IaC repo
+      ansible.builtin.git:
+        repo: "https://git.holmlab.org/shady/IaC"
+        dest: "/data/config_storage/IaC"
+        version: "main"
+        force: yes
+        update: yes
+    - name: Setup cron for 75% script
+      become: true
+      ansible.builtin.cron:
+        name: "Every 5 minutes, every hour, every day - NUT"
+        minute: "*/5"
+        hour: "*"
+        day: "*"
+        month: "*"
+        weekday: "*"
+        job: "/data/config_storage/IaC/roles/nut_setup/files/nut.sh"
+        user: "root"
+        state: present
