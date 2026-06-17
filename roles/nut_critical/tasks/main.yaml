@@ -1,0 +1,40 @@
+---
+- name: Is nut-client installed?
+  become: true
+
+  block:
+    - name: Check for nut-client package installation
+      ansible.builtin.package:
+        name: nut-client
+        state: present
+      check_mode: yes
+      register: nut_check
+      changed_when: false
+
+    - name: Install nut-client package if not present
+      ansible.builtin.package:
+        name: nut-client
+        state: present
+      when: nut_check.changed
+
+- name: Template files
+  become: true
+
+  block:
+    - name: Template upsmon.conf
+      ansible.builtin.template:
+        src: upsmon.conf
+        dest: /etc/nut/upsmon.conf
+      register: upsman_conf
+
+    - name: Template nut.conf
+      ansible.builtin.template:
+        src: nut.conf
+        dest: /etc/nut/nut.conf
+      register: nut_conf
+
+- name: Restart nut if changes
+  become: true
+  ansible.builtin.shell:
+    cmd: systemctl restart nut-client && systemctl enable nut-client
+  when:  upsman_conf.changed or nut_conf.changed
