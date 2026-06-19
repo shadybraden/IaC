@@ -7,7 +7,7 @@ on:
         description: 'image to scan'
         required: true
         type: string
-        default: 'git.holmlab.org/shady/tools_container:0.1.14'
+        default: 'git.holmlab.org/shady/tools_container:0.1.28'
       show-only-fixed:
         type: boolean
         default: false
