@@ -47,3 +47,39 @@ jobs:
           TERM: xterm-256color
         run: |
           clamscan --version
+          echo "Running clamscan on: ${{ github.event.inputs.image }}"
+          IMAGE="${{ github.event.inputs.image }}"
+          NTFY_URL="https://ntfy.holmlab.org/transfer"
+          CONTAINER_NAME="clamscan_tmp_$$"
+          echo "Pulling image: $IMAGE"
+          podman pull "$IMAGE"
+
+          echo "Creating temporary container..."
+          podman create --name "$CONTAINER_NAME" "$IMAGE" > /dev/null
+
+          TMPDIR=$(mktemp -d)
+          echo "Exporting filesystem to $TMPDIR..."
+          podman export "$CONTAINER_NAME" | tar -xf - -C "$TMPDIR" 2>/dev/null
+
+          echo "Running clamscan..."
+          SCAN_OUTPUT=$(clamscan -r --no-summary "$TMPDIR" 2>&1)
+
+          echo "$SCAN_OUTPUT"
+          echo ""
+
+          INFECTED=$(echo "$SCAN_OUTPUT" | grep "FOUND" | wc -l | tr -d ' ')
+          echo "Infected files found: $INFECTED"
+
+          if [ "$INFECTED" -gt 0 ]; then
+            echo "Sending ntfy alert..."
+            curl -s -X POST "$NTFY_URL" \
+              -H "Title: Virus Detected in Docker Image" \
+              -H "Priority: urgent" \
+              -H "Tags: warning,docker" \
+              -d "Image: $IMAGE - $INFECTED infected file(s) found by ClamAV."
+            echo "Alert sent to $NTFY_URL"
+          fi
+
+          # Cleanup
+          podman rm "$CONTAINER_NAME" > /dev/null
+          rm -rf "$TMPDIR"
