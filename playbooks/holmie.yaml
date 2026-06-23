@@ -12,3 +12,4 @@
     #- roles/radicale
     - roles/trek
     - roles/nut_setup
+    - roles/hedgedoc
