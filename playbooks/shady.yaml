@@ -2,7 +2,6 @@
   hosts: shady@10.1.1.16
   roles:
     - roles/backups
-    - roles/navidrome
     - roles/forgejo_actions
-    - roles/example_service
     - roles/nut_observer_fast_off
+    - roles/tv

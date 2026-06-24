@@ -1,0 +1,10 @@
+[Unit]
+Description=xremap key remapper
+After=systemd-udev-settle.service
+
+[Service]
+ExecStart=/usr/bin/xremap /etc/xremap/config.yml
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

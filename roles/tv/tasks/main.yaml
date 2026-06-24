@@ -1,0 +1,38 @@
+---
+- name: Enable COPR repo and install xremap
+  become: true
+  block:
+
+    - name: Enable blakegardner/xremap COPR
+      ansible.builtin.command: dnf copr enable -y blakegardner/xremap
+      args:
+        creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:blakegardner:xremap.repo
+
+    - name: Install xremap
+      ansible.builtin.dnf:
+        name: xremap
+        state: present
+
+- name: Template config.yml
+  ansible.builtin.template:
+    become: true
+    src: config.yml
+    dest: /etc/xremap/config.yml
+
+- name: Template systemd service xremap.service
+  ansible.builtin.template:
+    become: true
+    src: xremap.service
+    dest: /etc/systemd/system/xremap.service
+
+
+- name: Reload systemd units
+  become: true
+  ansible.builtin.command: systemctl daemon-reload
+
+- name: Enable and start xremap
+  become: true
+  ansible.builtin.service:
+    name: xremap
+    enabled: true
+    state: started
