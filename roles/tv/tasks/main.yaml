@@ -15,7 +15,6 @@
 
 - name: Template config.yml
   ansible.builtin.template:
-    become: true
     src: config.yml
     dest: /etc/xremap/config.yml
 
