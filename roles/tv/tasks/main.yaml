@@ -2,7 +2,6 @@
 - name: Enable COPR repo and install xremap
   become: true
   block:
-
     - name: Enable blakegardner/xremap COPR
       ansible.builtin.command: dnf copr enable -y blakegardner/xremap
       args:
@@ -13,16 +12,18 @@
         name: xremap
         state: present
 
-- name: Template config.yml
-  ansible.builtin.template:
-    src: config.yml
-    dest: /etc/xremap/config.yml
+- name: Template files
+  become: true
+  block:
+    - name: Template config.yml
+      ansible.builtin.template:
+        src: config.yml
+        dest: /etc/xremap/config.yml
 
-- name: Template systemd service xremap.service
-  ansible.builtin.template:
-    become: true
-    src: xremap.service
-    dest: /etc/systemd/system/xremap.service
+    - name: Template systemd service xremap.service
+      ansible.builtin.template:
+        src: xremap.service
+        dest: /etc/systemd/system/xremap.service
 
 
 - name: Reload systemd units
