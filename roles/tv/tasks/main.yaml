@@ -14,6 +14,12 @@
         state: present
         remote: flathub
 
+    - name: Install Plex htpc flatpack
+      community.general.flatpak:
+        name: tv.plex.PlexHTPC
+        state: present
+        remote: flathub
+
     - name: Enable blakegardner/xremap COPR
       ansible.builtin.command: dnf copr enable -y blakegardner/xremap
       args:
