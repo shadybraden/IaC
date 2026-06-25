@@ -20,6 +20,12 @@
         state: present
         remote: flathub
 
+    - name: Install FCast flatpack
+      community.general.flatpak:
+        name: org.fcast.Receiver
+        state: present
+        remote: flathub
+
     - name: Enable blakegardner/xremap COPR
       ansible.builtin.command: dnf copr enable -y blakegardner/xremap
       args:
