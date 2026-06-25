@@ -67,3 +67,24 @@
   ansible.builtin.template:
     src: autostart.conf
     dest: /home/tv/.config/autostart/plasma-bigscreen-swap-session.desktop
+
+- name: Others
+  block:
+
+    - name: Disable KDE Wallet subsystem
+      ansible.builtin.ini_file:
+        path: "{{ ansible_env.HOME }}/.config/kwalletrc"
+        section: Wallet
+        option: Enabled
+        value: "false"
+        create: yes
+        mode: "0600"
+
+    - name: Disable KDE Wallet first run prompt
+      ansible.builtin.ini_file:
+        path: "{{ ansible_env.HOME }}/.config/kwalletrc"
+        section: Wallet
+        option: First Use
+        value: "false"
+        create: yes
+        mode: "0600"
