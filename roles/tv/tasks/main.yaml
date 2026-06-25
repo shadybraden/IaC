@@ -35,21 +35,24 @@
         path: "/etc/xremap"
         recurse: true
         state: directory
+      register: xremap_dir
 
     - name: Template config.yml
       ansible.builtin.template:
         src: config.yml
         dest: /etc/xremap/config.yml
+      register: xremap_config
 
     - name: Template systemd service xremap.service
       ansible.builtin.template:
         src: xremap.service
         dest: /etc/systemd/system/xremap.service
+      register: xremap_service
 
-
-- name: Reload systemd units
-  become: true
-  ansible.builtin.command: systemctl daemon-reload
+    - name: Reload systemd units if needed
+      become: true
+      ansible.builtin.command: systemctl daemon-reload
+      when:  xremap_dir.changed or xremap_config.changed or xremap_service.changed
 
 - name: Enable and start xremap
   become: true
