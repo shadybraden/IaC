@@ -102,3 +102,13 @@
         section: Wallet
         option: First Use
         value: "false"
+
+    - name: Template kwinrc for auto hiding mouse
+      ansible.builtin.template:
+        src: kwinrc
+        dest: /home/tv/.config/kwinrc
+      register: kwinrc_template
+
+    - name: Reload kwinrc if needed
+      ansible.builtin.command: qdbus6 org.kde.KWin /KWin reconfigure
+      when:  kwinrc_template.changed
