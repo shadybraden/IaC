@@ -59,10 +59,10 @@
         state: directory
       register: xremap_dir
 
-    - name: Template config.yml
+    - name: Template config.yaml
       ansible.builtin.template:
-        src: config.yml
-        dest: /etc/xremap/config.yml
+        src: config.yaml
+        dest: /etc/xremap/config.yaml
       register: xremap_config
 
     - name: Template systemd service xremap.service
