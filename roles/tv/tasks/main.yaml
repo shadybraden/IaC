@@ -61,4 +61,3 @@
   ansible.builtin.template:
     src: autostart.conf
     dest: /home/tv/.config/autostart/plasma-bigscreen-swap-session.desktop
-  register: xremap_config
