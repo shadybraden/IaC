@@ -56,3 +56,30 @@
         name: xremap
         enabled: true
         state: started
+
+- name: Set plasma-bigscreen as default session
+  become: true
+  block:
+
+    - name: Ensure SDDM drop-in config directory exists
+      ansible.builtin.file:
+        path: /etc/sddm.conf.d
+        state: directory
+        owner: root
+        group: root
+        mode: "0755"
+
+    - name: Check current systemd default target
+      ansible.builtin.command: systemctl get-default
+      register: current_default_target
+      changed_when: false
+
+    - name: Set systemd default target to graphical
+      ansible.builtin.command: systemctl set-default graphical.target
+      when: current_default_target.stdout != "graphical.target"
+      changed_when: true
+
+    - name: Ensure SDDM service is enabled
+      ansible.builtin.systemd:
+        name: sddm
+        enabled: true
