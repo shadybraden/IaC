@@ -120,5 +120,9 @@
       register: kwinrc_plugin_hidecursor
 
     - name: Reload kwinrc if needed
-      ansible.builtin.command: qdbus6 org.kde.KWin /KWin reconfigure
+      ansible.builtin.dbus:
+        bus: session
+        dest: org.kde.KWin
+        path: /KWin
+        message: org.kde.KWin.reconfigure
       when: kwinrc_plugins.changed or kwinrc_plugin_hidecursor.changed
