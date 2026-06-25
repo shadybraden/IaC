@@ -8,6 +8,11 @@
         name: plasma-bigscreen
         state: present
 
+    - name: Install unclutter-xfixes to auto hide the mouse
+      ansible.builtin.dnf:
+        name: unclutter-xfixes
+        state: present
+
     - name: Install Jellyfin desktop flatpack
       community.general.flatpak:
         name: org.jellyfin.JellyfinDesktop
