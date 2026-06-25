@@ -26,6 +26,12 @@
         state: present
         remote: flathub
 
+    - name: Install Feishin flatpack
+      community.general.flatpak:
+        name: org.jeffvli.feishin
+        state: present
+        remote: flathub
+
     - name: Enable blakegardner/xremap COPR
       ansible.builtin.command: dnf copr enable -y blakegardner/xremap
       args:
