@@ -8,6 +8,11 @@
         name: plasma-bigscreen
         state: present
 
+    - name: Install qt
+      ansible.builtin.dnf:
+        name: qt
+        state: present
+
     - name: Install Jellyfin desktop flatpack
       community.general.flatpak:
         name: org.jellyfin.JellyfinDesktop
