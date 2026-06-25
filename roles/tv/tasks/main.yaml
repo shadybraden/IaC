@@ -28,6 +28,14 @@
 - name: Template files
   become: true
   block:
+
+    - name: create directory
+      become: true
+      ansible.builtin.file:
+        path: "/etc/xremap"
+        recurse: true
+        state: directory
+
     - name: Template config.yml
       ansible.builtin.template:
         src: config.yml
