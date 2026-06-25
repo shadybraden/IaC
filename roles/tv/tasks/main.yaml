@@ -1,5 +1,6 @@
 ---
 - name: Install plasma-bigscreen
+  become: true
   ansible.builtin.dnf:
     name: plasma-bigscreen
     state: present
