@@ -61,6 +61,11 @@
   become: true
   block:
 
+    - name: SDDM is installed
+      ansible.builtin.dnf:
+        name: sddm
+        state: present
+
     - name: Ensure SDDM drop-in config directory exists
       ansible.builtin.file:
         path: /etc/sddm.conf.d
