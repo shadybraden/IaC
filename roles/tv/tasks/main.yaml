@@ -89,10 +89,10 @@
         name: plasmalogin
         enabled: true
 
-    - name: Configure SDDM default session
+    - name: Configure plasmalogin default session
       ansible.builtin.template:
-        src: sddm-session.conf
-        dest: /etc/sddm.conf.d/session.conf
+        src: plasmalogin.conf
+        dest: /etc/plasmalogin.conf.d/bigscreen.conf
         owner: root
         group: root
         mode: "0644"
