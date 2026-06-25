@@ -107,23 +107,3 @@
         section: Wallet
         option: First Use
         value: "false"
-
-    - name: Configure kwinrc - hidecursor plugin enabled
-      ansible.builtin.ini_file:
-        path: /home/tv/.config/kwinrc
-        section: Plugins
-        option: hidecursorEnabled
-        value: "true"
-      register: kwinrc_plugins
-
-    - name: Configure kwinrc - hidecursor idle time
-      ansible.builtin.ini_file:
-        path: /home/tv/.config/kwinrc
-        section: Plugin-hidecursor
-        option: idleTime
-        value: "3000"
-      register: kwinrc_plugin_hidecursor
-
-    - name: Reload kwinrc if needed
-      ansible.builtin.shell: qdbus org.kde.KWin /KWin reconfigure
-      when: kwinrc_plugins.changed or kwinrc_plugin_hidecursor.changed
