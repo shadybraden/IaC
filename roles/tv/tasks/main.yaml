@@ -6,6 +6,7 @@
     state: present
 
 - name: Install Jellyfin desktop flatpack
+  become: true
   community.general.flatpak:
     name: org.jellyfin.JellyfinDesktop
     state: present
