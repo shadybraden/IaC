@@ -88,3 +88,11 @@
       ansible.builtin.systemd:
         name: plasmalogin
         enabled: true
+
+    - name: Configure SDDM default session
+      ansible.builtin.template:
+        src: sddm-session.conf
+        dest: /etc/sddm.conf.d/session.conf
+        owner: root
+        group: root
+        mode: "0644"
