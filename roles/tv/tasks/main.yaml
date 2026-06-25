@@ -32,6 +32,12 @@
         state: present
         remote: flathub
 
+    - name: Install Spotify flatpack
+      community.general.flatpak:
+        name: com.spotify.Client
+        state: present
+        remote: flathub
+
     - name: Enable blakegardner/xremap COPR
       ansible.builtin.command: dnf copr enable -y blakegardner/xremap
       args:
