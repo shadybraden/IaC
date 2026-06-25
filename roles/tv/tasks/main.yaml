@@ -1,20 +1,19 @@
 ---
-- name: Install plasma-bigscreen
-  become: true
-  ansible.builtin.dnf:
-    name: plasma-bigscreen
-    state: present
-
-- name: Install Jellyfin desktop flatpack
-  become: true
-  community.general.flatpak:
-    name: org.jellyfin.JellyfinDesktop
-    state: present
-    remote: flathub
-
-- name: Enable COPR repo and install xremap
+- name: Install packages
   become: true
   block:
+
+    - name: Install plasma-bigscreen
+      ansible.builtin.dnf:
+        name: plasma-bigscreen
+        state: present
+
+    - name: Install Jellyfin desktop flatpack
+      community.general.flatpak:
+        name: org.jellyfin.JellyfinDesktop
+        state: present
+        remote: flathub
+
     - name: Enable blakegardner/xremap COPR
       ansible.builtin.command: dnf copr enable -y blakegardner/xremap
       args:
@@ -25,12 +24,11 @@
         name: xremap
         state: present
 
-- name: Template files
+- name: Configure xremap
   become: true
   block:
 
     - name: create directory
-      become: true
       ansible.builtin.file:
         path: "/etc/xremap"
         recurse: true
@@ -50,13 +48,11 @@
       register: xremap_service
 
     - name: Reload systemd units if needed
-      become: true
       ansible.builtin.command: systemctl daemon-reload
       when:  xremap_dir.changed or xremap_config.changed or xremap_service.changed
 
-- name: Enable and start xremap
-  become: true
-  ansible.builtin.service:
-    name: xremap
-    enabled: true
-    state: started
+    - name: Enable and start xremap
+      ansible.builtin.service:
+        name: xremap
+        enabled: true
+        state: started
