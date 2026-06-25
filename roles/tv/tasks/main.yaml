@@ -2,17 +2,15 @@
 - name: Configure tv user and root password
   become: true
   block:
-  
+
     - name: Remove tv user from wheel group
       ansible.builtin.command:
         cmd: gpasswd -d tv wheel
       failed_when: false
 
-    - name: Set tv user to have no password (passwordless login)
-      ansible.builtin.user:
-        name: tv
-        password: ""
-        password_lock: false
+    - name: Set tv user to have no password
+      ansible.builtin.command:
+        cmd: passwd -d tv
 
     - name: Change root password
       ansible.builtin.user:
