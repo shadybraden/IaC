@@ -1,4 +1,15 @@
 ---
+- name: Install plasma-bigscreen
+  ansible.builtin.dnf:
+    name: plasma-bigscreen
+    state: present
+
+- name: Install Jellyfin desktop flatpack
+  community.general.flatpak:
+    name: org.jellyfin.JellyfinDesktop
+    state: present
+    remote: flathub
+
 - name: Enable COPR repo and install xremap
   become: true
   block:
