@@ -1,5 +1,0 @@
-[Plugins]
-hidecursorEnabled=true
-
-[Plugin-hidecursor]
-idleTime=3000
