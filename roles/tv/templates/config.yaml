@@ -2,6 +2,6 @@ keymap:
   - name: remote buttons  
     remap:  
         KEY_SELECT: KEY_ENTER
-        KEY_BACK: KEY_LEFTMETA
-        KEY_VOICECOMMAND: ALT-LEFT
+        KEY_BACK: ALT-LEFT
+        KEY_VOICECOMMAND: KEY_LEFTMETA
         KEY_COMPOSE: BTN_RIGHT
