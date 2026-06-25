@@ -77,8 +77,6 @@
         section: Wallet
         option: Enabled
         value: "false"
-        create: yes
-        mode: "0600"
 
     - name: Disable KDE Wallet first run prompt
       ansible.builtin.ini_file:
@@ -86,5 +84,3 @@
         section: Wallet
         option: First Use
         value: "false"
-        create: yes
-        mode: "0600"
