@@ -1,4 +1,4 @@
-- name: shady
-  hosts: shady@10.1.1.16
+- name: tv
+  hosts: tv@10.1.1.64
   roles:
     - roles/tv
