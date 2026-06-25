@@ -2,10 +2,10 @@
 - name: Configure tv user and root password
   become: true
   block:
-    - name: Remove tv user from sudoers / wheel group
+    - name: Remove tv user from wheel group
       ansible.builtin.user:
         name: tv
-        groups: ""
+        groups: []
         append: false
 
     - name: Set tv user to have no password (passwordless login)
