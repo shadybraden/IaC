@@ -123,3 +123,7 @@
         option: idleTime
         value: "3000"
       register: kwinrc_plugin_hidecursor
+
+    - name: Reload kwinrc if needed
+      ansible.builtin.shell: qdbus org.kde.KWin /KWin reconfigure
+      when: kwinrc_plugins.changed or kwinrc_plugin_hidecursor.changed
