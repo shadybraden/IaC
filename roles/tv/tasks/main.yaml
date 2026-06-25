@@ -84,7 +84,7 @@
       when: current_default_target.stdout != "graphical.target"
       changed_when: true
 
-    - name: Ensure SDDM service is enabled
+    - name: Ensure plasmalogin service is enabled
       ansible.builtin.systemd:
-        name: sddm
+        name: plasmalogin
         enabled: true
