@@ -89,7 +89,7 @@
 - name: autostart bigscreen
   ansible.builtin.template:
     src: autostart.conf
-    dest: "{{ ansible_env.HOME }}/.config/autostart/plasma-bigscreen-swap-session.desktop"
+    dest: "{{ ansible_facts['HOME'] }}/.config/autostart/plasma-bigscreen-swap-session.desktop"
 
 - name: Others
   block:
