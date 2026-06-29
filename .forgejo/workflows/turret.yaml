@@ -20,7 +20,6 @@ jobs:
       - name: Checkout turret repo
         run: |
           git clone https://git.holmlab.org/shady/turret.git
-          cd turret/
 
       - name: Determine version
         id: version
@@ -63,6 +62,7 @@ jobs:
 
       - name: Build image
         run: |
+          cd turret/
           podman --storage-driver vfs build -f Dockerfile -t ${{ github.event.inputs.Dockerfile }}:${{ steps.version.outputs.version }} .
 
       - name: Push image version
