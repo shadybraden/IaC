@@ -20,6 +20,7 @@ jobs:
       - name: Checkout turret repo
         run: |
           git clone https://git.holmlab.org/shady/turret.git
+          cd turret/
 
       - name: Determine version
         id: version
