@@ -78,11 +78,3 @@ jobs:
             --creds "${{ secrets.REGISTRY_USERNAME }}:${{ secrets.REGISTRY_PASSWORD }}" \
             ${{ github.event.inputs.Dockerfile }}:${{ steps.version.outputs.version }} \
             docker://git.holmlab.org/shady/${{ github.event.inputs.Dockerfile }}:latest
-
-      - name: Notify failure
-        if: failure()
-        run: |
-          curl -X POST https://ntfy.holmlab.org/${{ secrets.NTFY_TOPIC }} \
-            -H "Title: ‼️ Actions failed" \
-            -H "Priority: low" \
-            -d "Workflow '${{ github.workflow }}' failed"
