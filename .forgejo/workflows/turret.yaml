@@ -63,6 +63,8 @@ jobs:
       - name: Build image
         run: |
           cd turret/
+          pwd
+          ls -Al
           podman --storage-driver vfs build -f Dockerfile -t turret:${{ steps.version.outputs.version }} .
 
       - name: Push image version
