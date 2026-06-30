@@ -88,7 +88,7 @@
 
 - name: autostart bigscreen
   ansible.builtin.template:
-    src: no_autostart.conf
+    src: autostart.conf
     dest: "/home/tv/.config/autostart/plasma-bigscreen-swap-session.desktop"
 
 - name: Others
