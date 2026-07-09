@@ -46,7 +46,7 @@
       msg: "REBOOT REQUIRED on {{ inventory_hostname }}"
     when:
       - needs_restarting_result.rc == 1
-      - not (reboot_check_fail_on_reboot | bool)
+      - not (reboot_check_fail_on_reboot | default(false) | bool)
 
   # NTFY servers that need reboot
   - name: NTFY reboot requirement (RedHat)
