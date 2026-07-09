@@ -16,6 +16,7 @@ on:
           - mck@100.117.173.46
           - holmie@10.1.1.65
           - shady@10.1.1.16
+          - tv@10.1.1.64
       update_docker:
         type: boolean
         default: true
