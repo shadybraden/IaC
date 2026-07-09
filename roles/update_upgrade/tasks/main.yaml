@@ -138,3 +138,17 @@
     when: lookup('env', 'ANSIBLE_DO_DOCKER_UPDATE') | lower == 'false'
 
   when: ansible_facts["os_family"] == "Debian"
+
+- name: Flatpak
+  block:
+
+    - name: Check if flatpak is installed
+      ansible.builtin.command: which flatpak
+      register: flatpak_installed
+      changed_when: false
+      failed_when: false
+
+    - name: Update user flatpaks
+      ansible.builtin.command: flatpak update --noninteractive --user
+      when: flatpak_installed.rc == 0
+      changed_when: true
