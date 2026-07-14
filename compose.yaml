@@ -7,4 +7,4 @@ services:
   storageview:
     image: git.holmlab.org/shady/storageview:0.0.3
   debian:
-    image: debian:13.5
+    image: debian:13.6
