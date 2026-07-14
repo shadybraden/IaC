@@ -6,3 +6,5 @@ services:
     image: git.holmlab.org/shady/skywatch:1.5.2
   storageview:
     image: git.holmlab.org/shady/storageview:0.0.3
+  debian:
+    image: debian:13.5
