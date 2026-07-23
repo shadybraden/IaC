@@ -25,7 +25,7 @@ jobs:
         run: |
           echo "Running Grype on: ${{ github.event.inputs.image }}"
           echo "+"
-          grype "${{ github.event.inputs.image }}" ${{ github.event.inputs.show-only-fixed && '--only-fixed' || '' }}
+          /grype "${{ github.event.inputs.image }}" ${{ github.event.inputs.show-only-fixed && '--only-fixed' || '' }}
           echo "+"
 
       - name: Notify failure
