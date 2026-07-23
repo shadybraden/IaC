@@ -63,7 +63,7 @@ runner:
   labels:
     - debian:docker://docker.io/library/debian:latest
     - ansible:docker://catthehacker/ubuntu:full-latest # https://nektosact.com/usage/runners.html
-    - tools_container:docker://git.holmlab.org/shady/tools_container:0.1.28
+    - tools_container:docker://git.holmlab.org/shady/tools_container:0.1.29
     - grype:docker://docker.io/anchore/grype:v0.116.0-debug
     - clamav:docker://docker.io/clamav/clamav:1.5.3
 
