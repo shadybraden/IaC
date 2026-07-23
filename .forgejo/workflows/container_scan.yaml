@@ -14,7 +14,7 @@ on:
 
 jobs:
   Grype:
-    runs-on: tools_container
+    runs-on: grype
 
     steps:
       - name: Run Grype
