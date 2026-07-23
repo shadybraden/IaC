@@ -37,7 +37,7 @@ jobs:
             -d "Workflow '${{ github.workflow }}' failed"
 
   ClamAV:
-    runs-on: tools_container
+    runs-on: clamav
 
     steps:
       - name: Run ClamAV
