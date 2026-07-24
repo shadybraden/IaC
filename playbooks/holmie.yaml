@@ -13,3 +13,4 @@
     - roles/trek
     - roles/nut_setup
     - roles/hedgedoc
+    - roles/samba
