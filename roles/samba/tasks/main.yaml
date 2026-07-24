@@ -18,3 +18,24 @@
         group: 1000
         recurse: true
         state: directory
+
+- name: Setup files for this service
+  block:
+    - name: Detect if file is actually a folder
+      become: true
+      ansible.builtin.stat:
+        path: "/data/dont_backup/samba/config/smb.conf"
+      register: filemd_stat
+
+    - name: Remove un-needed directory
+      become: true
+      ansible.builtin.command:
+        cmd: rmdir /data/dont_backup/samba/config/smb.conf
+      when: filemd_stat.stat.exists and filemd_stat.stat.isdir
+
+    - name: Template conf file
+      ansible.builtin.template:
+        src: smb.conf
+        dest: /data/dont_backup/samba/config/smb.conf
+        owner: 1000
+        group: 1000
