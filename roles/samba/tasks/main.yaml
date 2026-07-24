@@ -1,10 +1,19 @@
 ---
 - name: Setup folders for samba
   block:
-    - name: Set directory ownership recursively to uid/gid 1000
+    - name: Set storage ownership recursively to uid/gid 1000
       become: true
       ansible.builtin.file:
-        path: "/data/dont_backup/samba"
+        path: "/data/dont_backup/samba/storage"
+        owner: 1000
+        group: 1000
+        recurse: true
+        state: directory
+
+    - name: Set config ownership recursively to uid/gid 1000
+      become: true
+      ansible.builtin.file:
+        path: "/data/dont_backup/samba/config"
         owner: 1000
         group: 1000
         recurse: true
