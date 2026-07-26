@@ -291,8 +291,9 @@ executions = [
 
 [[procedure]]
 name = "obs-schedule"
-config.schedule = "30 9 * * 0"
+config.schedule_timezone = "America/New_York"
 config.schedule_format = "Cron"
+config.schedule = "30 9 * * 0"
 
 [[procedure.config.stage]]
 name = "Start OBS Scraper"
