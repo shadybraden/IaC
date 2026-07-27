@@ -303,6 +303,13 @@ executions = [
 ]
 
 [[procedure.config.stage]]
+name = "Pause for 15 mins to shutdown SigNoz"
+enabled = true
+executions = [
+  { execution.type = "Sleep", execution.params.duration_ms = 900000, enabled = true }
+]
+
+[[procedure.config.stage]]
 name = "Start OBS Scraper"
 enabled = true
 executions = [
