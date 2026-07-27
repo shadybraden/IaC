@@ -306,7 +306,7 @@ executions = [
 name = "Pause for 15 mins to shutdown SigNoz"
 enabled = true
 executions = [
-  { execution.type = "Sleep", execution.params.duration_ms = 90000, enabled = true }
+  { execution.type = "Sleep", execution.params.duration_ms = 900000, enabled = true }
 ]
 
 [[procedure.config.stage]]
@@ -320,7 +320,7 @@ executions = [
 name = "Pause for entirity of Church - 3.5hr"
 enabled = true
 executions = [
-  { execution.type = "Sleep", execution.params.duration_ms = 90000, enabled = true }
+  { execution.type = "Sleep", execution.params.duration_ms = 12600000, enabled = true }
 ]
 
 [[procedure.config.stage]]
@@ -334,7 +334,7 @@ executions = [
 name = "Pause for 15 mins to shutdown SigNoz"
 enabled = true
 executions = [
-  { execution.type = "Sleep", execution.params.duration_ms = 90000, enabled = true }
+  { execution.type = "Sleep", execution.params.duration_ms = 900000, enabled = true }
 ]
 
 [[procedure.config.stage]]
