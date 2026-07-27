@@ -32,6 +32,13 @@
         group: 1000
         state: touch
 
+    - name: Template filebrowser settings file
+      ansible.builtin.template:
+        src: config.yaml
+        dest: /data/config_storage/filebrowserquantum/config.yaml
+        owner: 1000
+        group: 1000
+
 - name: Setup db file for filebrowserquantum
   block:
     - name: Detect if file is actually a folder
