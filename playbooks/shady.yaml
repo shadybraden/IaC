@@ -5,3 +5,4 @@
     - roles/forgejo_actions
     - roles/nut_observer_fast_off
     - roles/tv
+    - roles/filebrowserquantum

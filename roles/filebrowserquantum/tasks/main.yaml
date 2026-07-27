@@ -1,0 +1,55 @@
+---
+- name: Setup folders for filebrowserquantum
+  block:
+    - name: Set directory ownership recursively to uid/gid 1000
+      become: true
+      ansible.builtin.file:
+        path: "/data/config_storage/filebrowserquantum"
+        owner: 1000
+        group: 1000
+        recurse: true
+        state: directory
+
+- name: Setup confg file for filebrowserquantum
+  block:
+    - name: Detect if file is actually a folder
+      become: true
+      ansible.builtin.stat:
+        path: "/data/config_storage/filebrowserquantum/config.yaml"
+      register: filemd_stat
+
+    - name: Remove un-needed directory
+      become: true
+      ansible.builtin.command:
+        cmd: rmdir /data/config_storage/filebrowserquantum/config.yaml
+      when: filemd_stat.stat.exists and filemd_stat.stat.isdir
+
+    - name: Set file ownership to uid/gid 1000
+      become: true
+      ansible.builtin.file:
+        path: "/data/config_storage/filebrowserquantum/config.yaml"
+        owner: 1000
+        group: 1000
+        state: touch
+
+- name: Setup db file for filebrowserquantum
+  block:
+    - name: Detect if file is actually a folder
+      become: true
+      ansible.builtin.stat:
+        path: "/data/config_storage/filebrowserquantum/database.db"
+      register: filemd_stat
+
+    - name: Remove un-needed directory
+      become: true
+      ansible.builtin.command:
+        cmd: rmdir /data/config_storage/filebrowserquantum/database.db
+      when: filemd_stat.stat.exists and filemd_stat.stat.isdir
+
+    - name: Set file ownership to uid/gid 1000
+      become: true
+      ansible.builtin.file:
+        path: "/data/config_storage/filebrowserquantum/database.db"
+        owner: 1000
+        group: 1000
+        state: touch
