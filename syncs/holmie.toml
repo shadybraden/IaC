@@ -1199,6 +1199,7 @@ compose_cmd_wrapper = """
 export INFISICAL_TOKEN=$(infisical login --domain="[[INFISICAL_URL]]" --method=universal-auth --client-id="[[INFISICAL_ID]]" --client-secret="[[INFISICAL_SECRET]]" --silent --plain) && \
 infisical run --env=prod --path=/samba --domain=[[INFISICAL_URL]] --token=$INFISICAL_TOKEN --projectId=[[INFISICAL_WORKSPACE]] -- [[COMPOSE_COMMAND]]
 """
+
 ##
 
 [[stack]]
@@ -1211,3 +1212,7 @@ linked_repo = "compose_main"
 run_directory = "ghost"
 additional_env_files = ["/etc/komodo/domain.env"]
 env_file_path = "/etc/komodo/env/ghost-holmie.env"
+compose_cmd_wrapper = """
+export INFISICAL_TOKEN=$(infisical login --domain="[[INFISICAL_URL]]" --method=universal-auth --client-id="[[INFISICAL_ID]]" --client-secret="[[INFISICAL_SECRET]]" --silent --plain) && \
+infisical run --env=prod --path=/ghost --domain=[[INFISICAL_URL]] --token=$INFISICAL_TOKEN --projectId=[[INFISICAL_WORKSPACE]] -- [[COMPOSE_COMMAND]]
+"""
