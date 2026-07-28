@@ -9,7 +9,7 @@
     - roles/netalertx
     - roles/docmost
     - roles/infisical
-    #- roles/radicale
+    - roles/radicale
     - roles/trek
     - roles/nut_setup
     - roles/hedgedoc

@@ -56,25 +56,14 @@
   ansible.builtin.template:
     src: config.j2
     dest: "/data/config_storage/radicale/config/config"
-
-- name: Get radicale user secret from Infisical
-  ansible.builtin.command: >
-    infisical secrets get shady
-    --projectId="{{ lookup('env', 'INFISICAL_WORKSPACE') }}"
-    --env=prod
-    --path=/radicale
-    --domain="{{ lookup('env', 'INFISICAL_URL') }}"
-    --plain
-  environment:
-    INFISICAL_CLIENT_ID: "{{ lookup('env', 'INFISICAL_CLIENTID') }}"
-    INFISICAL_CLIENT_SECRET: "{{ lookup('env', 'INFISICAL_CLIENTSECRET') }}"
-  register: radicale_secret_raw
-  no_log: false
+    owner: 1000
+    group: 1000
+    mode: '0644'
 
 - name: Set radicale credentials
   ansible.builtin.set_fact:
     radicale_user: "shady"
-    radicale_password_hash: "{{ radicale_secret_raw.stdout | password_hash('bcrypt') }}"
+    radicale_password_hash: "{{ lookup('env', 'RADICALE_PASSWORD_HASH') }}"
   no_log: true
 
 - name: Template radicale users file

@@ -32,6 +32,7 @@ jobs:
           INFISICAL_URL: ${{ secrets.INFISICAL_URL }}
           INFISICAL_WORKSPACE: ${{ secrets.INFISICAL_WORKSPACE }}
           NUT_PASSWORD: ${{ secrets.NUT_PASSWORD }}
+          RADICALE_PASSWORD_HASH: ${{ secrets.RADICALE_PASSWORD_HASH }}
 
       - name: Notify failure
         if: failure()
