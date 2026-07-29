@@ -258,7 +258,7 @@ server:
   # `runner.fetch_interval` is used. Note that Forgejo Runner might enforce a
   # minimum value for certain instances like Codeberg.
   connections:
-    runners:
+    IaC:
       url: https://git.holmlab.org/
       uuid: b274e2bc-c156-4c11-bbc6-e79cc9f7ba70
       token_url: file:/forgejo_actions_token.txt
