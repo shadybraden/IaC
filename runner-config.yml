@@ -261,5 +261,10 @@ server:
     IaC:
       url: https://git.holmlab.org/
       uuid: b274e2bc-c156-4c11-bbc6-e79cc9f7ba70
-      token_url: file:/forgejo_actions_token.txt
+      token_url: file:/tokens/IaC.txt
+      fetch_interval: 1s
+    dev-container:
+      url: https://git.holmlab.org/
+      uuid: e7ce7abb-04b9-494b-9f35-713961df224b
+      token_url: file:/tokens/dev-container.txt
       fetch_interval: 1s
