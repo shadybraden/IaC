@@ -5,7 +5,7 @@ RUN apk add bash sudo wget
 RUN wget -qO- 'https://artifacts-cli.infisical.com/setup.apk.sh' | sudo sh
 
 RUN apk update
-RUN apk add git python3 py3-pip nodejs npm openssh curl docker-cli docker jq openrc grype buildah podman clamav infisical qemu-user-static
+RUN apk add git python3 py3-pip nodejs npm openssh curl docker-cli docker jq openrc grype buildah podman clamav infisical qemu-aarch64
 
 # from: https://www.jeffgeerling.com/blog/2023/how-solve-error-externally-managed-environment-when-installing-pip3/
 RUN rm -rf /usr/lib/python3.14/EXTERNALLY-MANAGED
