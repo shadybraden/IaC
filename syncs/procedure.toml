@@ -293,7 +293,7 @@ executions = [
 name = "obs-schedule"
 config.schedule_timezone = "America/New_York"
 config.schedule_format = "Cron"
-config.schedule = "15 9 * * 0"
+config.schedule = "0 15 9 * * 0"
 
 [[procedure.config.stage]]
 name = "Start OBS SigNoz"
