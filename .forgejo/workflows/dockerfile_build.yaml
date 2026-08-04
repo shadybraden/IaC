@@ -18,7 +18,6 @@ on:
         type: choice
         options:
           - tools_container
-          - periphery
         default: 'tools_container'
 
 jobs:
