@@ -187,3 +187,16 @@ linked_repo = "compose_main"
 run_directory = "traefik"
 additional_env_files = ["/etc/komodo/domain.env"]
 env_file_path = "/etc/komodo/env/traefik.env"
+
+##
+
+[[stack]]
+name = "dozzle-mck"
+tags = ["mck", "criticality: 1"]
+[stack.config]
+server = "mck"
+project_name = "dozzle-mck"
+linked_repo = "compose_main"
+run_directory = "dozzle"
+additional_env_files = ["/etc/komodo/domain.env"]
+env_file_path = "/etc/komodo/env/dozzle-mck.env"
