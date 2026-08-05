@@ -66,6 +66,7 @@ runner:
     - tools_container:docker://git.holmlab.org/shady/tools_container:0.1.30
     - grype:docker://docker.io/anchore/grype:v0.116.1-debug
     - clamav:docker://docker.io/clamav/clamav:1.5.3
+    - dind:docker://docker:29.6.2-dind
 
 cache:
   #
