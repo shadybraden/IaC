@@ -260,10 +260,16 @@ name = "restart-forgejo-actions"
 config.failure_alert = true
 
 [[procedure.config.stage]]
-name = "pull"
+name = "pull1"
 enabled = true
 executions = [
-  { execution.type = "PullRepo", execution.params.repo = "IaC", enabled = true },
+  { execution.type = "PullRepo", execution.params.repo = "IaC", enabled = true }
+]
+
+[[procedure.config.stage]]
+name = "pull2"
+enabled = true
+executions = [
   { execution.type = "PullRepo", execution.params.repo = "IaC-shady", enabled = true }
 ]
 
