@@ -16,6 +16,3 @@ alert_types = [
   "ProcedureFailed",
   "AwsBuilderTerminationFailed"
 ]
-except_resources = [
-  { type = "Stack", id = "685194364df5648a01135113" }
-]
