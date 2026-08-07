@@ -263,14 +263,21 @@ config.failure_alert = true
 name = "pull1"
 enabled = true
 executions = [
-  { execution.type = "PullRepo", execution.params.repo = "IaC", enabled = true }
+  { execution.type = "PullRepo", execution.params.repo = "IaC-shady", enabled = true }
+]
+
+[[procedure.config.stage]]
+name = "sleep"
+enabled = false
+executions = [
+  { execution.type = "Sleep", execution.params.duration_ms = 500, enabled = true }
 ]
 
 [[procedure.config.stage]]
 name = "pull2"
 enabled = true
 executions = [
-  { execution.type = "PullRepo", execution.params.repo = "IaC-shady", enabled = true }
+  { execution.type = "PullRepo", execution.params.repo = "IaC", enabled = true }
 ]
 
 [[procedure.config.stage]]
