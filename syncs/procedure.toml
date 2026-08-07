@@ -286,3 +286,61 @@ enabled = true
 executions = [
   { execution.type = "RestartContainer", execution.params.server = "holmie", execution.params.container = "qbittorrent", enabled = true }
 ]
+
+##
+
+[[procedure]]
+name = "obs-schedule"
+config.schedule_timezone = "America/New_York"
+config.schedule_format = "Cron"
+config.schedule = "0 15 9 * * 0"
+config.schedule_enabled = false
+
+[[procedure.config.stage]]
+name = "Start OBS SigNoz"
+enabled = true
+executions = [
+  { execution.type = "DeployStack", execution.params.stack = "obs-studio-otel-signoz-mck", execution.params.services = [], enabled = true }
+]
+
+[[procedure.config.stage]]
+name = "Pause for 15 mins to shutdown SigNoz"
+enabled = true
+executions = [
+  { execution.type = "Sleep", execution.params.duration_ms = 900000, enabled = true }
+]
+
+[[procedure.config.stage]]
+name = "Start OBS Scraper"
+enabled = true
+executions = [
+  { execution.type = "DeployStack", execution.params.stack = "obs-studio-otel-scraper-mck", execution.params.services = [], enabled = true }
+]
+
+[[procedure.config.stage]]
+name = "Pause for entirity of Church - 3.5hr"
+enabled = true
+executions = [
+  { execution.type = "Sleep", execution.params.duration_ms = 12600000, enabled = true }
+]
+
+[[procedure.config.stage]]
+name = "Destroy OBS Scraper"
+enabled = true
+executions = [
+  { execution.type = "DestroyStack", execution.params.stack = "obs-studio-otel-scraper-mck", execution.params.services = [], execution.params.remove_orphans = false, enabled = true }
+]
+
+[[procedure.config.stage]]
+name = "Pause for 15 mins to shutdown SigNoz"
+enabled = true
+executions = [
+  { execution.type = "Sleep", execution.params.duration_ms = 900000, enabled = true }
+]
+
+[[procedure.config.stage]]
+name = "Destroy OBS SigNoz"
+enabled = true
+executions = [
+  { execution.type = "DestroyStack", execution.params.stack = "obs-studio-otel-signoz-mck", execution.params.services = [], execution.params.remove_orphans = false, enabled = true }
+]
