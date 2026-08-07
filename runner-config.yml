@@ -65,7 +65,7 @@ runner:
     - ansible:docker://catthehacker/ubuntu:full-latest # https://nektosact.com/usage/runners.html
     - tools_container:docker://git.holmlab.org/shady/tools_container:0.1.30
     - grype:docker://docker.io/anchore/grype:v0.116.1-debug
-    - clamav:docker://docker.io/clamav/clamav:1.5.3
+    - clamav:docker://docker.io/clamav/clamav:1.5.4
 
 cache:
   #
