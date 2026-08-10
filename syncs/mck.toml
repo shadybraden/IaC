@@ -166,3 +166,16 @@ linked_repo = "compose_main"
 run_directory = "dozzle"
 additional_env_files = ["/etc/komodo/domain.env"]
 env_file_path = "/etc/komodo/env/dozzle-mck.env"
+
+##
+
+[[stack]]
+name = "tinyauth-mck"
+tags = ["mck", "criticality: 1"]
+[stack.config]
+server = "mck"
+project_name = "tinyauth-mck"
+linked_repo = "compose_main"
+run_directory = "tinyauth"
+additional_env_files = ["/etc/komodo/domain.env"]
+env_file_path = "/etc/komodo/env/tinyauth-mck.env"
