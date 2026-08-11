@@ -121,6 +121,7 @@ tags = ["turret"]
 [resource_sync.config]
 linked_repo = "IaC"
 resource_path = ["syncs/turret.toml"]
+include_resources = false
 
 ##
 
