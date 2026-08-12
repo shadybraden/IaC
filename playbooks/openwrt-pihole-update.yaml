@@ -1,6 +1,6 @@
 ---
 # merge the pr made by renovate first
-# updates komodo and periphery on all hosts
+# updates pihole on openwrt
 # init with `ansible-galaxy collection install community.docker`
 - name: Deploy Pi-hole on openwrt
   hosts: router
