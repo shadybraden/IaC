@@ -457,11 +457,11 @@ infisical run --env=prod --path=/filebrowserquantum-holmgarage --domain=[[INFISI
 
 [[stack]]
 name = "dozzle-agent-garage"
-tags = ["garage", "criticality: 1"]
+tags = ["holmgarage", "criticality: 1"]
 [stack.config]
-server = "garage"
-project_name = "dozzle-agent-garage"
+server = "holmgarage"
+project_name = "dozzle-agent-holmgarage"
 linked_repo = "compose_main"
 run_directory = "dozzle-agent"
 additional_env_files = ["/etc/komodo/domain.env"]
-env_file_path = "/etc/komodo/env/dozzle-agent-garage.env"
+env_file_path = "/etc/komodo/env/dozzle-agent-holmgarage.env"
