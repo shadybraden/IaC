@@ -11,8 +11,8 @@ RUN apk add git python3 py3-pip nodejs npm openssh curl docker-cli docker jq ope
 RUN rm -rf /usr/lib/python3.14/EXTERNALLY-MANAGED
 RUN pip3 install ansible
 
-# install brew
-RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
 # install UDS
-RUN brew trust --formula defenseunicorns/tap/uds && brew tap defenseunicorns/tap && brew install uds
+ARG UDS_VERSION=v0.36.0
+RUN curl -fsS "https://github.com/defenseunicorns/uds-cli/releases/download/${UDS_VERSION}/uds-cli_${UDS_VERSION}_Linux_amd64" -o uds-linux-amd64
+RUN chmod +x uds-linux-amd64
+RUN mv uds-linux-amd64 /usr/local/bin/uds
