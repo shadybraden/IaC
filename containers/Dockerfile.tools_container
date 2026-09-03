@@ -10,3 +10,9 @@ RUN apk add git python3 py3-pip nodejs npm openssh curl docker-cli docker jq ope
 # from: https://www.jeffgeerling.com/blog/2023/how-solve-error-externally-managed-environment-when-installing-pip3/
 RUN rm -rf /usr/lib/python3.14/EXTERNALLY-MANAGED
 RUN pip3 install ansible
+
+# install brew
+RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# install UDS
+RUN brew trust --formula defenseunicorns/tap/uds && brew tap defenseunicorns/tap && brew install uds
