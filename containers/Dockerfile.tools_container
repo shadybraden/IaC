@@ -13,6 +13,6 @@ RUN pip3 install ansible
 
 # install UDS
 ARG UDS_VERSION=v0.36.0
-RUN curl -fsS "https://github.com/defenseunicorns/uds-cli/releases/download/${UDS_VERSION}/uds-cli_${UDS_VERSION}_Linux_amd64" -o uds-linux-amd64
-RUN chmod +x uds-linux-amd64
-RUN mv uds-linux-amd64 /usr/local/bin/uds
+RUN curl -fsSL "https://github.com/defenseunicorns/uds-cli/releases/download/${UDS_VERSION}/uds-cli_${UDS_VERSION}_Linux_amd64" -o /usr/local/bin/uds \
+    && chmod +x /usr/local/bin/uds \
+    && uds version
