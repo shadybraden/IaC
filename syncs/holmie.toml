@@ -25,19 +25,6 @@ env_file_path = "/etc/komodo/env/audiobookshelf.env"
 ##
 
 [[stack]]
-name = "filebrowser"
-tags = ["holmie", "criticality: 5", "media"]
-[stack.config]
-server = "holmie"
-project_name = "filebrowser"
-linked_repo = "compose_main"
-run_directory = "filebrowser"
-additional_env_files = ["/etc/komodo/domain.env"]
-env_file_path = "/etc/komodo/env/filebrowser.env"
-
-##
-
-[[stack]]
 name = "freshrss-holmie"
 tags = ["holmie", "criticality: 2", "media"]
 [stack.config]
