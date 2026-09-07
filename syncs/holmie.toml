@@ -512,7 +512,7 @@ env_file_path = "/etc/komodo/env/actualbudget-holmie.env"
 
 [[stack]]
 name = "grafana-holmie"
-tags = ["holmie", "criticality: 3"]
+tags = ["holmie", "criticality: 5"]
 [stack.config]
 server = "holmie"
 project_name = "grafana-holmie"
@@ -541,7 +541,7 @@ env_file_path = "/etc/komodo/env/gluetun-holmie.env"
 
 [[stack]]
 name = "qbittorrent-holmie"
-tags = ["holmie", "criticality: 2", "arr", "media"]
+tags = ["holmie", "criticality: 3", "arr", "media"]
 [stack.config]
 server = "holmie"
 project_name = "qbittorrent-holmie"
@@ -635,7 +635,7 @@ env_file_path = "/etc/komodo/env/qui-holmie.env"
 
 [[stack]]
 name = "synapse-holmie"
-tags = ["holmie", "criticality: 3"]
+tags = ["holmie", "criticality: 5"]
 [stack.config]
 server = "holmie"
 project_name = "synapse-holmie"
@@ -648,7 +648,7 @@ env_file_path = "/etc/komodo/env/synapse-holmie.env"
 
 [[stack]]
 name = "mautrix-discord-holmie"
-tags = ["holmie", "criticality: 3"]
+tags = ["holmie", "criticality: 5"]
 [stack.config]
 server = "holmie"
 project_name = "mautrix-discord-holmie"
@@ -698,7 +698,7 @@ run_directory = "dnscrypt-proxy"
 
 [[stack]]
 name = "bichon-holmie"
-tags = ["holmie", "criticality: 1"]
+tags = ["holmie", "criticality: 5"]
 [stack.config]
 server = "holmie"
 project_name = "bichon-holmie"
@@ -711,7 +711,7 @@ env_file_path = "/etc/komodo/env/bichon-holmie.env"
 
 [[stack]]
 name = "aircraft-holmie"
-tags = ["holmie", "criticality: 1"]
+tags = ["holmie", "criticality: 5"]
 [stack.config]
 server = "holmie"
 project_name = "aircraft-holmie"
@@ -724,7 +724,7 @@ env_file_path = "/etc/komodo/env/aircraft-holmie.env"
 
 [[stack]]
 name = "openwebui-holmie"
-tags = ["holmie", "criticality: 1"]
+tags = ["holmie", "criticality: 5"]
 [stack.config]
 server = "holmie"
 project_name = "openwebui-holmie"
@@ -737,7 +737,7 @@ env_file_path = "/etc/komodo/env/openwebui-holmie.env"
 
 [[stack]]
 name = "crafty-holmie"
-tags = ["holmie", "criticality: 1"]
+tags = ["holmie", "criticality: 4"]
 [stack.config]
 server = "holmie"
 project_name = "crafty-holmie"
@@ -750,7 +750,7 @@ env_file_path = "/etc/komodo/env/crafty-holmie.env"
 
 [[stack]]
 name = "jetlag-holmie"
-tags = ["holmie", "criticality: 1"]
+tags = ["holmie", "criticality: 5"]
 [stack.config]
 server = "holmie"
 project_name = "jetlag-holmie"
@@ -763,7 +763,7 @@ env_file_path = "/etc/komodo/env/jetlag-holmie.env"
 
 [[stack]]
 name = "dawarich-holmie"
-tags = ["holmie", "criticality: 5"]
+tags = ["holmie", "criticality: 4"]
 [stack.config]
 server = "holmie"
 project_name = "dawarich-holmie"
@@ -776,7 +776,7 @@ env_file_path = "/etc/komodo/env/dawarich-holmie.env"
 
 [[stack]]
 name = "bettershift-holmie"
-tags = ["holmie", "criticality: 1"]
+tags = ["holmie", "criticality: 5"]
 [stack.config]
 server = "holmie"
 project_name = "bettershift-holmie"
@@ -789,7 +789,7 @@ env_file_path = "/etc/komodo/env/bettershift-holmie.env"
 
 [[stack]]
 name = "mqtt-holmie"
-tags = ["holmie", "criticality: 1"]
+tags = ["holmie", "criticality: 4"]
 [stack.config]
 server = "holmie"
 project_name = "mqtt-holmie"
@@ -802,7 +802,7 @@ env_file_path = "/etc/komodo/env/mqtt-holmie.env"
 
 [[stack]]
 name = "frigate-notify-holmie"
-tags = ["holmie", "criticality: 1"]
+tags = ["holmie", "criticality: 4"]
 [stack.config]
 server = "holmie"
 project_name = "frigate-notify-holmie"
@@ -815,7 +815,7 @@ env_file_path = "/etc/komodo/env/frigate-notify-holmie.env"
 
 [[stack]]
 name = "bluehood-holmie"
-tags = ["holmie", "criticality: 1"]
+tags = ["holmie", "criticality: 5"]
 [stack.config]
 server = "holmie"
 project_name = "bluehood-holmie"
@@ -841,7 +841,7 @@ env_file_path = "/etc/komodo/env/seerr-holmie.env"
 
 [[stack]]
 name = "storageview-holmie"
-tags = ["holmie", "criticality: 1"]
+tags = ["holmie", "criticality: 5"]
 [stack.config]
 server = "holmie"
 project_name = "storageview-holmie"
@@ -854,7 +854,7 @@ env_file_path = "/etc/komodo/env/storageview-holmie.env"
 
 [[stack]]
 name = "metube-holmie"
-tags = ["holmie", "criticality: 1"]
+tags = ["holmie", "criticality: 5"]
 [stack.config]
 server = "holmie"
 project_name = "metube-holmie"
@@ -867,7 +867,7 @@ env_file_path = "/etc/komodo/env/metube-holmie.env"
 
 [[stack]]
 name = "dozzle-holmie"
-tags = ["holmie", "criticality: 1"]
+tags = ["holmie", "criticality: 2"]
 [stack.config]
 server = "holmie"
 project_name = "dozzle-holmie"
@@ -884,7 +884,7 @@ infisical run --env=prod --path=/dozzle --domain=[[INFISICAL_URL]] --token=$INFI
 
 [[stack]]
 name = "filebrowserquantum-holmie"
-tags = ["holmie", "criticality: 1"]
+tags = ["holmie", "criticality: 2"]
 [stack.config]
 server = "holmie"
 project_name = "filebrowserquantum-holmie"
@@ -897,7 +897,7 @@ env_file_path = "/etc/komodo/env/filebrowserquantum-holmie.env"
 
 [[stack]]
 name = "umami-holmie"
-tags = ["holmie", "criticality: 1"]
+tags = ["holmie", "criticality: 3"]
 [stack.config]
 server = "holmie"
 project_name = "umami-holmie"
@@ -910,7 +910,7 @@ env_file_path = "/etc/komodo/env/umami-holmie.env"
 
 [[stack]]
 name = "hugo-builder-holmie"
-tags = ["holmie", "criticality: 1"]
+tags = ["holmie", "criticality: 5"]
 [stack.config]
 server = "holmie"
 project_name = "hugo-builder-holmie"
@@ -923,7 +923,7 @@ env_file_path = "/etc/komodo/env/hugo-builder-holmie.env"
 
 [[stack]]
 name = "hugo-runner-holmie"
-tags = ["holmie", "criticality: 1"]
+tags = ["holmie", "criticality: 4"]
 [stack.config]
 server = "holmie"
 project_name = "hugo-runner-holmie"
@@ -938,7 +938,7 @@ pre_deploy.shell_mode = false
 
 [[stack]]
 name = "meerkat-crm-holmie"
-tags = ["holmie", "criticality: 1"]
+tags = ["holmie", "criticality: 5"]
 [stack.config]
 server = "holmie"
 project_name = "meerkat-crm-holmie"
@@ -951,7 +951,7 @@ env_file_path = "/etc/komodo/env/meerkat-crm-holmie.env"
 
 [[stack]]
 name = "pocket-id-holmie"
-tags = ["holmie", "criticality: 1"]
+tags = ["holmie", "criticality: 2"]
 [stack.config]
 server = "holmie"
 project_name = "pocket-id-holmie"
@@ -964,7 +964,7 @@ env_file_path = "/etc/komodo/env/pocket-id-holmie.env"
 
 [[stack]]
 name = "forgejo_actions-holmie"
-tags = ["holmie", "criticality: 1"]
+tags = ["holmie", "criticality: 3"]
 [stack.config]
 server = "holmie"
 project_name = "forgejo_actions-holmie"
@@ -977,7 +977,7 @@ env_file_path = "/etc/komodo/env/forgejo_actions-holmie.env"
 
 [[stack]]
 name = "chronoframe-holmie"
-tags = ["holmie", "criticality: 1"]
+tags = ["holmie", "criticality: 5"]
 [stack.config]
 server = "holmie"
 project_name = "chronoframe-holmie"
@@ -990,7 +990,7 @@ env_file_path = "/etc/komodo/env/chronoframe-holmie.env"
 
 [[stack]]
 name = "grimmory-holmie"
-tags = ["holmie", "criticality: 1"]
+tags = ["holmie", "criticality: 5"]
 [stack.config]
 server = "holmie"
 project_name = "grimmory-holmie"
@@ -1003,7 +1003,7 @@ env_file_path = "/etc/komodo/env/grimmory-holmie.env"
 
 [[stack]]
 name = "docmost-holmie"
-tags = ["holmie", "criticality: 1"]
+tags = ["holmie", "criticality: 5"]
 [stack.config]
 server = "holmie"
 project_name = "docmost-holmie"
@@ -1016,7 +1016,7 @@ env_file_path = "/etc/komodo/env/docmost-holmie.env"
 
 [[stack]]
 name = "infisical-holmie"
-tags = ["holmie", "criticality: 1"]
+tags = ["holmie", "criticality: 2"]
 [stack.config]
 server = "holmie"
 project_name = "infisical-holmie"
@@ -1046,7 +1046,7 @@ infisical run --env=prod --path=/trek --domain=[[INFISICAL_URL]] --token=$INFISI
 
 [[stack]]
 name = "immich_drop-holmie"
-tags = ["holmie", "criticality: 5"]
+tags = ["holmie", "criticality: Delete"]
 [stack.config]
 server = "holmie"
 project_name = "immich_drop-holmie"
@@ -1109,7 +1109,7 @@ infisical run --env=prod --path=/hedgedoc --domain=[[INFISICAL_URL]] --token=$IN
 
 [[stack]]
 name = "samba-holmie"
-tags = ["holmie", "criticality: 1"]
+tags = ["holmie", "criticality: 3"]
 [stack.config]
 server = "holmie"
 project_name = "samba-holmie"
@@ -1126,7 +1126,7 @@ infisical run --env=prod --path=/samba --domain=[[INFISICAL_URL]] --token=$INFIS
 
 [[stack]]
 name = "ghost-holmie"
-tags = ["holmie", "criticality: 1"]
+tags = ["holmie", "criticality: 5"]
 [stack.config]
 server = "holmie"
 project_name = "ghost-holmie"
@@ -1143,7 +1143,7 @@ infisical run --env=prod --path=/ghost --domain=[[INFISICAL_URL]] --token=$INFIS
 
 [[stack]]
 name = "radicale-holmie"
-tags = ["holmie", "criticality: 1"]
+tags = ["holmie", "criticality: 2"]
 [stack.config]
 server = "holmie"
 project_name = "radicale-holmie"
@@ -1151,19 +1151,6 @@ linked_repo = "compose_main"
 run_directory = "radicale"
 additional_env_files = ["/etc/komodo/domain.env"]
 env_file_path = "/etc/komodo/env/radicale-holmie.env"
-
-##
-
-[[stack]]
-name = "immich-public-proxy-holmie"
-tags = ["holmie", "criticality: 1"]
-[stack.config]
-server = "holmie"
-project_name = "immich-public-proxy-holmie"
-linked_repo = "compose_main"
-run_directory = "immich-public-proxy"
-additional_env_files = ["/etc/komodo/domain.env"]
-env_file_path = "/etc/komodo/env/immich-public-proxy-holmie.env"
 
 ##
 
