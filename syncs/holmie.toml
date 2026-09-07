@@ -289,7 +289,7 @@ env_file_path = "/etc/komodo/env/traefik.env"
 
 [[stack]]
 name = "mealie"
-tags = ["holmie", "criticality: 5"]
+tags = ["holmie", "criticality: 4"]
 [stack.config]
 server = "holmie"
 project_name = "mealie"
