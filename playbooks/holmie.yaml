@@ -14,3 +14,4 @@
     - roles/nut_setup
     - roles/hedgedoc
     - roles/samba
+    - roles/chhoto-url
