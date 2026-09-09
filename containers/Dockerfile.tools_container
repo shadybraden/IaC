@@ -11,6 +11,9 @@ RUN apk add git python3 py3-pip nodejs npm openssh curl docker-cli docker jq ope
 RUN rm -rf /usr/lib/python3.14/EXTERNALLY-MANAGED
 RUN pip3 install ansible
 
+# install dclint (docker-compose linter) globally so npx doesn't re-download it every run
+RUN npm install -g dclint@3.1.0
+
 # install UDS
 ARG UDS_VERSION=v0.36.0
 RUN curl -fsSL "https://github.com/defenseunicorns/uds-cli/releases/download/${UDS_VERSION}/uds-cli_${UDS_VERSION}_Linux_amd64" -o /usr/local/bin/uds \
