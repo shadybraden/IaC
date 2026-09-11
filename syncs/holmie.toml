@@ -1211,3 +1211,16 @@ linked_repo = "compose_main"
 run_directory = "chhoto-url"
 additional_env_files = ["/etc/komodo/domain.env"]
 env_file_path = "/etc/komodo/env/chhoto-url-holmie.env"
+
+##
+
+[[stack]]
+name = "kener-holmie"
+tags = ["holmie", "criticality: 1"]
+[stack.config]
+server = "holmie"
+project_name = "kener-holmie"
+linked_repo = "compose_main"
+run_directory = "kener"
+additional_env_files = ["/etc/komodo/domain.env"]
+env_file_path = "/etc/komodo/env/kener-holmie.env"
