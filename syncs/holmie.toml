@@ -775,19 +775,6 @@ env_file_path = "/etc/komodo/env/dawarich-holmie.env"
 ##
 
 [[stack]]
-name = "bettershift-holmie"
-tags = ["holmie", "criticality: 5"]
-[stack.config]
-server = "holmie"
-project_name = "bettershift-holmie"
-linked_repo = "compose_main"
-run_directory = "bettershift"
-additional_env_files = ["/etc/komodo/domain.env"]
-env_file_path = "/etc/komodo/env/bettershift-holmie.env"
-
-##
-
-[[stack]]
 name = "mqtt-holmie"
 tags = ["holmie", "criticality: 4"]
 [stack.config]
