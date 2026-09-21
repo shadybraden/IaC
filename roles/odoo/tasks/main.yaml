@@ -1,0 +1,11 @@
+---
+- name: Setup folders for odoo
+  block:
+    - name: Set directory ownership recursively to uid/gid 100/101
+      become: true
+      ansible.builtin.file:
+        path: "/data/config_storage/odoo"
+        owner: 100
+        group: 101
+        recurse: true
+        state: directory
