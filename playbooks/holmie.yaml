@@ -15,3 +15,4 @@
     - roles/hedgedoc
     - roles/samba
     - roles/chhoto-url
+    - roles/neko
