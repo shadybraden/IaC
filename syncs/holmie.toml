@@ -221,7 +221,7 @@ env_file_path = "/etc/komodo/env/wireguard.env"
 
 [[stack]]
 name = "hoodik"
-tags = ["holmie", "criticality: 5"]
+tags = ["holmie", "criticality: 6"]
 [stack.config]
 server = "holmie"
 project_name = "hoodik"
@@ -724,7 +724,7 @@ env_file_path = "/etc/komodo/env/aircraft-holmie.env"
 
 [[stack]]
 name = "openwebui-holmie"
-tags = ["holmie", "criticality: 5"]
+tags = ["holmie", "criticality: 6"]
 [stack.config]
 server = "holmie"
 project_name = "openwebui-holmie"
@@ -910,7 +910,7 @@ env_file_path = "/etc/komodo/env/hugo-builder-holmie.env"
 
 [[stack]]
 name = "hugo-runner-holmie"
-tags = ["holmie", "criticality: 4"]
+tags = ["holmie", "criticality: 6"]
 [stack.config]
 server = "holmie"
 project_name = "hugo-runner-holmie"
@@ -990,7 +990,7 @@ env_file_path = "/etc/komodo/env/grimmory-holmie.env"
 
 [[stack]]
 name = "docmost-holmie"
-tags = ["holmie", "criticality: 5"]
+tags = ["holmie", "criticality: 6"]
 [stack.config]
 server = "holmie"
 project_name = "docmost-holmie"
@@ -1050,7 +1050,7 @@ infisical run --env=prod --path=/immich_kiosk --domain=[[INFISICAL_URL]] --token
 
 [[stack]]
 name = "mullvad_browser-holmie"
-tags = ["holmie", "criticality: 5"]
+tags = ["holmie", "criticality: 6"]
 [stack.config]
 server = "holmie"
 project_name = "mullvad_browser-holmie"
@@ -1096,7 +1096,7 @@ infisical run --env=prod --path=/samba --domain=[[INFISICAL_URL]] --token=$INFIS
 
 [[stack]]
 name = "ghost-holmie"
-tags = ["holmie", "criticality: 5"]
+tags = ["holmie", "criticality: 6"]
 [stack.config]
 server = "holmie"
 project_name = "ghost-holmie"
