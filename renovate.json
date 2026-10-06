@@ -17,6 +17,12 @@
       "commitMessagePrefix": ":boom:"
     },
     {
+      "matchUpdateTypes": [
+        "digest"
+      ],
+      "commitMessagePrefix": "🤏"
+    },
+    {
       "matchPackageNames": ["alpine"],
       "matchDatasources": ["docker"],
       "sourceUrl": "https://alpinelinux.org/releases/"
