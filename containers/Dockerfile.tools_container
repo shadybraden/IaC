@@ -19,3 +19,9 @@ ARG UDS_VERSION=v0.36.0
 RUN curl -fsSL "https://github.com/defenseunicorns/uds-cli/releases/download/${UDS_VERSION}/uds-cli_${UDS_VERSION}_Linux_amd64" -o /usr/local/bin/uds \
     && chmod +x /usr/local/bin/uds \
     && uds version
+
+# install brew
+RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# install VirusTotal CLI
+RUN brew install virustotal-cli
