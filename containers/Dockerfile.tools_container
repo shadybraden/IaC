@@ -15,13 +15,18 @@ RUN pip3 install ansible
 RUN npm install -g dclint@3.1.0
 
 # install UDS
+# renovate: datasource=github-tags depName=defenseunicorns/uds-cli
 ARG UDS_VERSION=v0.36.0
+ENV UDS_VERSION=${UDS_VERSION}
 RUN curl -fsSL "https://github.com/defenseunicorns/uds-cli/releases/download/${UDS_VERSION}/uds-cli_${UDS_VERSION}_Linux_amd64" -o /usr/local/bin/uds \
     && chmod +x /usr/local/bin/uds \
     && uds version
 
 # install VirusTotal CLI
-RUN curl -fsSL https://github.com/VirusTotal/vt-cli/releases/download/1.3.1/Linux64.zip -o /tmp/vt.zip && \
+# renovate: datasource=github-tags depName=VirusTotal/vt-cli
+ARG VTCLI_VERSION=1.3.1
+ENV VTCLI_VERSION=${VTCLI_VERSION}
+RUN curl -fsSL "https://github.com/VirusTotal/vt-cli/releases/download/${VTCLI_VERSION}/Linux64.zip" -o /tmp/vt.zip && \
     unzip -j /tmp/vt.zip -d /tmp/vt && \
     install -m 0755 /tmp/vt/vt /usr/local/bin/vt && \
     rm -rf /tmp/vt.zip /tmp/vt

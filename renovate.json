@@ -40,6 +40,15 @@
       ],
       "datasourceTemplate": "docker",
       "versioningTemplate": "semver"
-    }
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "(^|/)Dockerfile$"
+      ],
+      "matchStrings": [
+        "#\\s*renovate:\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)(?:\\s+versioning=(?<versioning>\\S+))?\\s*\\n\\s*ARG\\s+\\S+=(?<currentValue>\\S+)"
+      ]
+    },
   ]
 }
