@@ -1049,18 +1049,6 @@ infisical run --env=prod --path=/immich_kiosk --domain=[[INFISICAL_URL]] --token
 ##
 
 [[stack]]
-name = "mullvad_browser-holmie"
-tags = ["holmie", "criticality: 6"]
-[stack.config]
-server = "holmie"
-project_name = "mullvad_browser-holmie"
-linked_repo = "compose_main"
-run_directory = "mullvad_browser"
-additional_env_files = ["/etc/komodo/domain.env"]
-
-##
-
-[[stack]]
 name = "hedgedoc-holmie"
 tags = ["holmie", "criticality: 5"]
 [stack.config]
