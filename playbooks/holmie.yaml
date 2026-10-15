@@ -17,3 +17,4 @@
     - roles/chhoto-url
     - roles/neko
     - roles/odoo
+    - roles/artifactory

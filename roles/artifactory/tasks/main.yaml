@@ -1,0 +1,69 @@
+---
+- name: Prepare Artifactory host
+  block:
+    - name: Create Artifactory data directories
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        owner: "1030"
+        group: "1030"
+        mode: "0750"
+      loop:
+        - "/data/config_storage/artifactory"
+        - "/data/config_storage/artifactory/etc/security"
+      become: true
+
+    - name: Create Postgres data directory
+      ansible.builtin.file:
+        path: "/data/config_storage/artifactory-postgres"
+        state: directory
+        mode: "0755"
+      become: true
+
+    - name: Check for existing master key
+      ansible.builtin.stat:
+        path: "/data/config_storage/artifactory/etc/security/master.key"
+      register: master_key_stat
+      become: true
+
+    - name: Check for existing join key
+      ansible.builtin.stat:
+        path: "/data/config_storage/artifactory/etc/security/join.key"
+      register: join_key_stat
+      become: true
+
+    - name: Generate master key (only if missing)
+      ansible.builtin.shell: |
+        umask 077
+        openssl rand -hex 32 > "/data/config_storage/artifactory/etc/security/master.key"
+      args:
+        creates: "/data/config_storage/artifactory/etc/security/master.key"
+      when: not master_key_stat.stat.exists
+      become: true
+      no_log: true
+
+    - name: Generate join key (only if missing)
+      ansible.builtin.shell: |
+        umask 077
+        openssl rand -hex 32 > "/data/config_storage/artifactory/etc/security/join.key"
+      args:
+        creates: "/data/config_storage/artifactory/etc/security/join.key"
+      when: not join_key_stat.stat.exists
+      become: true
+      no_log: true
+
+    - name: Set ownership and permissions on master key
+      ansible.builtin.file:
+        path: "/data/config_storage/artifactory/etc/security/master.key"
+        owner: "1030"
+        group: "1030"
+        mode: "0600"
+      become: true
+
+    - name: Set ownership and permissions on join key
+      ansible.builtin.file:
+        path: "/data/config_storage/artifactory/etc/security/join.key"
+        owner: "1030"
+        group: "1030"
+        mode: "0600"
+      become: true
