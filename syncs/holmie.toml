@@ -1225,7 +1225,7 @@ infisical run --env=prod --path=/odoo --domain=[[INFISICAL_URL]] --token=$INFISI
 
 [[stack]]
 name = "artifactory-holmie"
-tags = ["holmie", "criticality: 5"]
+tags = ["holmie", "criticality: 6"]
 [stack.config]
 server = "holmie"
 project_name = "artifactory-holmie"
