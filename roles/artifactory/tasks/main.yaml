@@ -67,3 +67,13 @@
         group: "1030"
         mode: "0600"
       become: true
+
+    # Always overwrites the file on disk from templates/system.yaml.j2.
+    - name: Deploy system.yaml from template
+      ansible.builtin.template:
+        src: system.yaml.j2
+        dest: "/data/config_storage/artifactory/etc/system.yaml"
+        owner: "1030"
+        group: "1030"
+        mode: "0640"
+      become: true
