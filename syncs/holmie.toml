@@ -749,19 +749,6 @@ env_file_path = "/etc/komodo/env/crafty-holmie.env"
 ##
 
 [[stack]]
-name = "jetlag-holmie"
-tags = ["holmie", "criticality: 5"]
-[stack.config]
-server = "holmie"
-project_name = "jetlag-holmie"
-linked_repo = "compose_main"
-run_directory = "jetlag"
-additional_env_files = ["/etc/komodo/domain.env"]
-env_file_path = "/etc/komodo/env/jetlag-holmie.env"
-
-##
-
-[[stack]]
 name = "dawarich-holmie"
 tags = ["holmie", "criticality: 4"]
 [stack.config]
