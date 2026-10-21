@@ -11,4 +11,4 @@ services:
   podman:
     image: quay.io/podman/stable:v5.8.7
   php:
-    image: php:8.5.10
+    image: php:8.5.11
