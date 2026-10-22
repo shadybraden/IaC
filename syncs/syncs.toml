@@ -122,12 +122,3 @@ tags = ["turret"]
 linked_repo = "IaC"
 resource_path = ["syncs/turret.toml"]
 include_resources = false
-
-##
-
-[[resource_sync]]
-name = "openwrt"
-tags = ["openwrt"]
-[resource_sync.config]
-linked_repo = "IaC"
-resource_path = ["syncs/openwrt.toml"]
