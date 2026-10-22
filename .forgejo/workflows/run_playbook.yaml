@@ -12,7 +12,6 @@ on:
           - turret
           - qbit_port
           - version_check
-          - openwrt-pihole-update
       extra_var:
         description: "extra_var:"
         required: false
