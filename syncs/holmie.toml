@@ -181,19 +181,6 @@ env_file_path = "/etc/komodo/env/syncthing.env"
 ##
 
 [[stack]]
-name = "uptime-kuma"
-tags = ["holmie", "criticality: 2", "infrastructure"]
-[stack.config]
-server = "holmie"
-project_name = "uptime-kuma"
-linked_repo = "compose_main"
-run_directory = "uptime-kuma"
-additional_env_files = ["/etc/komodo/domain.env"]
-env_file_path = "/etc/komodo/env/uptime-kuma.env"
-
-##
-
-[[stack]]
 name = "vaultwarden"
 tags = ["holmie", "criticality: 1"]
 [stack.config]
