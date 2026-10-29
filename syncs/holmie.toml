@@ -608,32 +608,6 @@ env_file_path = "/etc/komodo/env/qui-holmie.env"
 ##
 
 [[stack]]
-name = "synapse-holmie"
-tags = ["holmie", "criticality: 5"]
-[stack.config]
-server = "holmie"
-project_name = "synapse-holmie"
-linked_repo = "compose_main"
-run_directory = "synapse"
-additional_env_files = ["/etc/komodo/domain.env"]
-env_file_path = "/etc/komodo/env/synapse-holmie.env"
-
-##
-
-[[stack]]
-name = "mautrix-discord-holmie"
-tags = ["holmie", "criticality: 5"]
-[stack.config]
-server = "holmie"
-project_name = "mautrix-discord-holmie"
-linked_repo = "compose_main"
-run_directory = "mautrix-discord"
-additional_env_files = ["/etc/komodo/domain.env"]
-env_file_path = "/etc/komodo/env/mautrix-discord-holmie.env"
-
-##
-
-[[stack]]
 name = "frigate-holmie"
 tags = ["holmie", "criticality: 5"]
 [stack.config]
