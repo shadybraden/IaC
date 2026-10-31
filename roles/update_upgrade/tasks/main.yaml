@@ -55,7 +55,7 @@
       method: POST
       headers:
         Title: "REBOOT REQUIRED on {{ inventory_hostname }}"
-        Priority: "min"
+        Priority: "default"
     when: needs_restarting_result.rc == 1
 
   # enable docker updates if desired
