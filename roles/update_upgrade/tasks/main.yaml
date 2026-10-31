@@ -53,7 +53,6 @@
     ansible.builtin.uri:
       url: "https://ntfy.holmlab.org/updates1Q7Mjean"
       method: POST
-      body: "Reboots needed:"
       headers:
         Title: "REBOOT REQUIRED on {{ inventory_hostname }}"
         Priority: "min"
