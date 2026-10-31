@@ -57,7 +57,7 @@
       headers:
         Title: "REBOOT REQUIRED on {{ inventory_hostname }}"
         Priority: "min"
-    when: reboot_check.rc | default(0) == 1
+    when: needs_restarting_result.rc == 1
 
   # enable docker updates if desired
   - name: Re-enable docker updates (RedHat)
