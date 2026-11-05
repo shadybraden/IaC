@@ -12,3 +12,5 @@ services:
     image: quay.io/podman/stable:v5.8.7
   php:
     image: php:8.5.12
+  FCOS:
+    image: quay.io/fedora/fedora-coreos:44.20261023.3.1
