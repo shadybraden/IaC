@@ -831,34 +831,6 @@ env_file_path = "/etc/komodo/env/umami-holmie.env"
 ##
 
 [[stack]]
-name = "hugo-builder-holmie"
-tags = ["holmie", "criticality: 5"]
-[stack.config]
-server = "holmie"
-project_name = "hugo-builder-holmie"
-linked_repo = "compose_main"
-run_directory = "hugo-builder"
-additional_env_files = ["/etc/komodo/domain.env"]
-env_file_path = "/etc/komodo/env/hugo-builder-holmie.env"
-
-##
-
-[[stack]]
-name = "hugo-runner-holmie"
-tags = ["holmie", "criticality: 6"]
-[stack.config]
-server = "holmie"
-project_name = "hugo-runner-holmie"
-linked_repo = "compose_main"
-run_directory = "hugo-runner"
-additional_env_files = [
-  { path = "/etc/komodo/domain.env", track = true }
-]
-pre_deploy.shell_mode = false
-
-##
-
-[[stack]]
 name = "meerkat-crm-holmie"
 tags = ["holmie", "criticality: 5"]
 [stack.config]

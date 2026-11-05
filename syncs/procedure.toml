@@ -222,39 +222,6 @@ executions = [
 ##
 
 [[procedure]]
-name = "hugo"
-
-[[procedure.config.stage]]
-name = "Pull repo"
-enabled = true
-executions = [
-  { execution.type = "PullRepo", execution.params.repo = "shadybradencom", enabled = true }
-]
-
-[[procedure.config.stage]]
-name = "run hugo builder"
-enabled = true
-executions = [
-  { execution.type = "DeployStack", execution.params.stack = "hugo-builder-holmie", execution.params.services = [], enabled = true }
-]
-
-[[procedure.config.stage]]
-name = "deploy to runner"
-enabled = true
-executions = [
-  { execution.type = "DeployStack", execution.params.stack = "hugo-runner-holmie", execution.params.services = [], enabled = true }
-]
-
-[[procedure.config.stage]]
-name = "destroy builder"
-enabled = true
-executions = [
-  { execution.type = "DestroyStack", execution.params.stack = "hugo-builder-holmie", execution.params.services = [], execution.params.remove_orphans = false, enabled = true },
-]
-
-##
-
-[[procedure]]
 name = "restart-forgejo-actions"
 config.failure_alert = true
 
