@@ -26,6 +26,11 @@
       "matchPackageNames": ["alpine"],
       "matchDatasources": ["docker"],
       "sourceUrl": "https://alpinelinux.org/releases/"
+    },
+    {
+      "matchPackageNames": ["quay.io/fedora/fedora-coreos"],
+      "matchDatasources": ["docker"],
+      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d{8})\\.(?<patch>\\d+)\\.(?<build>\\d+)$"
     }
   ],
   "customManagers": [
