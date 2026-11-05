@@ -12,7 +12,6 @@
     - roles/radicale
     - roles/trek
     - roles/nut_setup
-    - roles/hedgedoc
     - roles/samba
     - roles/chhoto-url
     - roles/neko
