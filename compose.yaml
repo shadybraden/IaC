@@ -13,4 +13,5 @@ services:
   php:
     image: php:8.5.12
   FCOS:
+    # renovate: datasource=custom.fcos-stable depName=fcos-stable
     image: quay.io/fedora/fedora-coreos:44.20261023.3.1

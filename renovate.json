@@ -31,9 +31,34 @@
       "matchPackageNames": ["quay.io/fedora/fedora-coreos"],
       "matchDatasources": ["docker"],
       "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d{8})\\.(?<patch>\\d+)\\.(?<build>\\d+)$"
+    },
+    {
+      "matchDatasources": ["custom.fcos-stable"],
+      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d{8})\\.(?<patch>\\d+)\\.(?<build>\\d+)$"
     }
   ],
+  "customDatasources": {
+    "fcos-stable": {
+      "defaultRegistryUrlTemplate": "https://builds.coreos.fedoraproject.org/streams/stable.json",
+      "format": "json",
+      "transformTemplates": [
+        "{\"releases\": [{\"version\": architectures.x86_64.artifacts.metal.release}], \"homepage\": \"https://fedoraproject.org/coreos/\"}"
+      ]
+    }
+  },
   "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Track the Fedora CoreOS stable stream for the FCOS compose image",
+      "managerFilePatterns": [
+        "/(^|/)compose\\.ya?ml$/"
+      ],
+      "matchStrings": [
+        "#\\s*renovate:\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)\\s*\\n\\s*image:\\s*quay\\.io/fedora/fedora-coreos:(?<currentValue>[\\w.]+)\\s*$"
+      ],
+      "datasourceTemplate": "custom.fcos-stable",
+      "depNameTemplate": "fcos-stable"
+    },
     {
       "customType": "regex",
       "description": "Update Docker image versions in YAML label fields",
